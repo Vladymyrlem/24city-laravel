@@ -10,11 +10,10 @@
             <th scope="col">Number</th>
             <th scope="col">Title</th>
             <th scope="col">Content</th>
+            <th scope="col">Excerpt</th>
             <th scope="col">Thumb</th>
-            <th scope="col">address</th>
-            <th scope="col">About Company</th>
-            <th scope="col">Category Company</th>
-            <th scope="col">Contacts</th>
+            <th scope="col">tags</th>
+            <th scope="col">Category</th>
             <th scope="col">Created_at</th>
         </tr>
         </thead>
@@ -23,9 +22,19 @@
         <tr>
             <th scope="row">{{ $news->id }}</th>
             <td>{{ $news->title}}</td>
-            <td>{!! $news->content !!}</td>
-            <td><img width="250px" height="auto" src="{{ asset($news->image) }}" alt=""></td>
-            <td>{!! $news->about_company !!}</td>
+            <td>
+                {{ $news->content }}
+                {{--                <?php--}}
+
+                {{--                    use Murdercode\LaravelShortcodePlus\Facades\LaravelShortcodePlus;--}}
+
+                {{--                    $html = $news->content;--}}
+                {{--                    return LaravelShortcodePlus::source($html)->parseAll();--}}
+                {{--                ?>--}}
+            </td>
+            <td>{!! $news->excerpt !!}</td>
+
+            <td><img width="250px" height="auto" src="{{ asset($news->image_url) }}" alt=""></td>
             <td>
                 {{--                @dd($news->tags)--}}
                 <ul>
@@ -56,16 +65,7 @@
 
                 @endforeach
             </td>
-            <td>
-                <ul>
-                    @php
-                        $phoneNumbers = explode('|', $news->contacts_phone);
-                    @endphp
-                    @foreach ($phoneNumbers as $phoneNumber)
-                        <li><a href="tel:{{ $phoneNumber }}">{{ $phoneNumber }}</a></li>
-                    @endforeach
-                </ul>
-            </td>
+
             <td>{{$news->created_at}}</td>
         </tr>
         </tbody>

@@ -13,13 +13,13 @@
         protected $table = "news_categories";
         protected $fillable = ['id', 'name', 'slug', 'parent_id'];
 
-        public function category()
+        public function categories()
         {
-            return $this->hasMany(NewsCategory::class, 'parent_id', 'category_id');
+            return $this->belongsToMany(NewsCategory::class, 'cats4news', 'news_id');
         }
 
         public function news()
         {
-            return $this->belongsToMany(News::class);
+            return $this->belongsToMany(News::class, 'cats4news', 'category_id');
         }
     }

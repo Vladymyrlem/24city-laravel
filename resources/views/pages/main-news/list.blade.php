@@ -32,7 +32,8 @@
             <tr>
                 <th scope="row">{{ $post->id }}</th>
                 <td><a href="{{ route('main-news.show', $post->id) }}">{{ $post->title }}</a></td>
-                <td>{!! $post->content !!}</td>
+                <td>{!! parseGalleryShortcode(parseVideoShortcode(parseSuListShortcode($post->content))) !!}
+                </td>
                 <td>{!! $post->excerpt !!}</td>
 
                 <td>

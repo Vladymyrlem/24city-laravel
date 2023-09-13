@@ -16,10 +16,12 @@
         public function show($id)
         {
             $adsPerPage = 10; // Adjust the number of companies per page as needed
-            $category = MainNewsCategory::orderBy('created_at', 'asc')->findOrFail($id); // Replace with your logic to retrieve a category by ID
-//            $mainnews = $category->mainnews()->paginate($adsPerPage);
-            $subcategoryCounts = $this->calculateAdsCounts($category->subcategories);
-            return view('pages.main-news.main-news-category-show', compact('category', 'subcategoryCounts'));
+            $category = MainNewsCategory::findOrFail($id);
+
+            // Retrieve the posts associated with this category
+            $news = $category->mainnews;
+
+            return view('pages.main-news.main-news-category-show', compact('category', 'news'));
         }
 
         private function calculateAdsCounts($subcategories)

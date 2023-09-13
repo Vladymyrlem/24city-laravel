@@ -22,6 +22,6 @@
 
         public function categories()
         {
-            return $this->belongsToMany(MainNewsCategory::class, 'cats4mainnews');
+            return $this->belongsToMany(MainNewsCategory::class, 'main_news_main_news_category');
         }
     }

@@ -174,3 +174,5 @@ function getParameters() {
 
     return args;
 }
+
+mix.copyDirectory('node_modules/tinymce/tinymce', 'public/js/tinymce');

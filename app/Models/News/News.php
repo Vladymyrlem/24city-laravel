@@ -12,7 +12,7 @@
 
         protected $table = 'news';
 
-        protected $fillable = ['id', 'name'];
+        protected $fillable = ['id', 'title', 'content', 'excerpt', 'image_url', 'status', 'slug'];
 
         public function tags()
         {
@@ -21,6 +21,6 @@
 
         public function categories()
         {
-            return $this->belongsToMany(NewsCategory::class, 'cats4news', 'news_id');
+            return $this->belongsToMany(NewsCategory::class, 'cats4news', 'category_id', 'news_id');
         }
     }

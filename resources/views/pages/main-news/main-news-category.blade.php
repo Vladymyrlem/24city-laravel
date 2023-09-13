@@ -30,14 +30,16 @@
                         {{--                        @endif--}}
                     </div>
                 @endif
-                @dd($category->mainnews)
                 <ol class="companies-list {{$category->slug}}-mainnews">
                     @foreach($category->mainnews as $news)
-                        <li class="company-item">
-                            <a href="{{ route('main-news.show', $news->id) }}">
-                                {{$news->title}}
-                            </a>
-                        </li>
+                        @if($news->status === 'publish')
+
+                            <li class="company-item">
+                                <a href="{{ route('main-news.show', $news->id) }}">
+                                    {{$news->title}}
+                                </a>
+                            </li>
+                        @endif
                     @endforeach
                 </ol>
                 {{--                {{ $mainnews->links('vendor.pagination.custom') }}--}}

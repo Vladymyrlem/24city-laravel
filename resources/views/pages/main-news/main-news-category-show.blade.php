@@ -59,9 +59,8 @@
     {{--            @endforeach--}}
     {{--        </ul>--}}
     {{--    @endif--}}
-    {{--    @dd($category->mainnews)--}}
+    {{--    @dd($news)--}}
     <ol class="companies-list {{$category->slug}}-mainnews">
-        {{--        @dd($category->mainnews)--}}
         @foreach($category->mainnews as $news)
             @if($news->status === 'publish')
                 <li class="company-item">
@@ -72,6 +71,5 @@
             @endif
         @endforeach
     </ol>
-    {{--    {{ $mainnews->links('vendor.pagination.custom') }}--}}
-
+    {{--    {{ $category->mainnews->links('vendor.pagination.custom') }}--}}
 @endsection

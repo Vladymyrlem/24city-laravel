@@ -15,7 +15,7 @@
 
         public function categories()
         {
-            return $this->belongsToMany(AdsCategory::class, 'parent_id', 'id');
+            return $this->belongsToMany(AdsCategory::class, 'categories4ads', 'id');
         }
 
         public function ads()

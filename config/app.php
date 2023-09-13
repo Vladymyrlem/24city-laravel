@@ -54,7 +54,7 @@
         |
         */
 
-        'url' => env('APP_URL', 'http://localhost'),
+        'url' => env('APP_URL', 'http://24city.laravel'),
 
         'asset_url' => env('ASSET_URL'),
 
@@ -195,7 +195,9 @@
             // App\Providers\BroadcastServiceProvider::class,
             App\Providers\EventServiceProvider::class,
             App\Providers\RouteServiceProvider::class,
-
+            Genert\BBCode\BBCodeServiceProvider::class,
+            UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+            Intervention\Image\ImageServiceProvider::class,
         ],
 
         /*
@@ -211,6 +213,8 @@
 
         'aliases' => Facade::defaultAliases()->merge([
             // 'ExampleClass' => App\Example\ExampleClass::class,
+            Genert\BBCode\Facades\BBCode::class,
+            'Image' => Intervention\Image\Facades\Image::class,
         ])->toArray(),
 
     ];

@@ -34,7 +34,8 @@
             <tr>
                 <th scope="row">{{ $post->id }}</th>
                 <td><a href="{{ route('company.show', $post->id) }}">{{ $post->title_company }}</a></td>
-                <td>{!! $post->content !!}</td>
+                <td>{!! parseGalleryShortcode($post->content) !!}
+                </td>
                 <td><img width="250px" height="auto" src="{{ asset($post->thumbnail) }}" alt=""></td>
                 <td><a target="_blank" href="{{ $post->adr_url }}">{{ $post->adr_title }}</a></td>
                 <td>{!! $post->about_company !!}</td>

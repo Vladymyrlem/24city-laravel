@@ -45,13 +45,16 @@
 
     Route::get('/peoples', [PeoplesController::class, 'index'])->name('peoples');
     Route::get('/news', [NewsController::class, 'index'])->name('news');
-    Route::get('/news/{id}', [AdsController::class, 'show'])->name('news.show')->whereNumber('id');
-
+    Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show')->whereNumber('id');
+    Route::get('/news/categories', [NewsCategoryController::class, 'index'])->name('news.category');
+    Route::get('/news/categories/{id}', [NewsCategoryController::class, 'show'])->name('news.category.show');
     Route::get('/main-news', [MainNewsController::class, 'index'])->name('main-news');
     Route::get('/main-news/{id}', [MainNewsController::class, 'show'])->name('main-news.show')->whereNumber('id');
     Route::get('/main-news/tags/{id}', [MainNewsController::class, 'showTag'])->name('main-news.show.tag');
     Route::get('/main-news/categories', [MainNewsCategoryController::class, 'index'])->name('main-news.category');
     Route::get('/main-news/categories/{id}', [MainNewsCategoryController::class, 'show'])->name('main-news.category.show');
+    Route::post('/upload/images', [HomeController::class, 'uploadImage'])->name('upload.post.image');
+    Route::post('/save-selected-posts', [HomeController::class, 'saveSelectedPosts'])->name('save-selected-posts');
 
     Route::get('/error', function () {
         abort(500);

@@ -16,11 +16,11 @@
 
         public function categories()
         {
-            return $this->belongsToMany(MainNewsCategory::class, 'mainnews_id', 'mainnews_id');
+            return $this->belongsTo(MainNewsCategory::class, 'mainnews_id', 'mainnews_id');
         }
 
         public function mainnews()
         {
-            return $this->hasMany(MainNews::class, 'id');
+            return $this->belongsToMany(MainNews::class);
         }
     }

@@ -47,4 +47,19 @@
             // Load the view and pass the category to it
             return view('pages.company.showCompanies', compact('category'));
         }
+
+        public function showParentCategory(CompanyCategory $category)
+        {
+            return view('pages.company.company-category', compact('category'));
+        }
+
+        public function showSubcategory(CompanyCategory $subcategory)
+        {
+            return view('pages.company.company-category-show', compact('subcategory'));
+        }
+
+        public function showSubchildCategory(CompanyCategory $subchildCategory)
+        {
+            return view('pages.company.company-category-show', compact('subchildCategory'));
+        }
     }

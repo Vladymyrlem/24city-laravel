@@ -1,45 +1,45 @@
 <!--begin::Table widget 14-->
 <div class="card card-flush h-md-100">
-	<!--begin::Header-->
-	<div class="card-header pt-7">
-		<!--begin::Title-->
-		<h3 class="card-title align-items-start flex-column">
-			<span class="card-label fw-bold text-gray-800">Projects Stats</span>
-			<span class="text-gray-400 mt-1 fw-semibold fs-6">Updated 37 minutes ago</span>
-		</h3>
-		<!--end::Title-->
-		<!--begin::Toolbar-->
-		<div class="card-toolbar">
-			<a href="#" class="btn btn-sm btn-light">History</a>
-		</div>
-		<!--end::Toolbar-->
-	</div>
-	<!--end::Header-->
-	<!--begin::Body-->
-	<div class="card-body pt-6">
-		<!--begin::Table container-->
-		<div class="table-responsive">
-			<!--begin::Table-->
-			<table class="table table-row-dashed align-middle gs-0 gy-3 my-0">
-				<!--begin::Table head-->
-				<thead>
-					<tr class="fs-7 fw-bold text-gray-400 border-bottom-0">
-						<th class="p-0 pb-3 min-w-175px text-start">ITEM</th>
-						<th class="p-0 pb-3 min-w-100px text-end">BUDGET</th>
-						<th class="p-0 pb-3 min-w-100px text-end">PROGRESS</th>
-						<th class="p-0 pb-3 min-w-175px text-end pe-12">STATUS</th>
-						<th class="p-0 pb-3 w-125px text-end pe-7">CHART</th>
-						<th class="p-0 pb-3 w-50px text-end">VIEW</th>
-					</tr>
-				</thead>
-				<!--end::Table head-->
-				<!--begin::Table body-->
-				<tbody>
-					<tr>
-						<td>
-							<div class="d-flex align-items-center">
-								<div class="symbol symbol-50px me-3">
-									<img src="assets/media/stock/600x600/img-49.jpg" class="" alt="" />
+    <!--begin::Header-->
+    <div class="card-header pt-7">
+        <!--begin::Title-->
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bold text-gray-800">Projects Stats</span>
+            <span class="text-gray-400 mt-1 fw-semibold fs-6">Updated 37 minutes ago</span>
+        </h3>
+        <!--end::Title-->
+        <!--begin::Toolbar-->
+        <div class="card-toolbar">
+            <a href="#" class="btn btn-sm btn-light">History</a>
+        </div>
+        <!--end::Toolbar-->
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-6">
+        <!--begin::Table container-->
+        <div class="table-responsive">
+            <!--begin::Table-->
+            <table class="table table-row-dashed align-middle gs-0 gy-3 my-0">
+                <!--begin::Table head-->
+                <thead>
+                <tr class="fs-7 fw-bold text-gray-400 border-bottom-0">
+                    <th class="p-0 pb-3 min-w-175px text-start">ITEM</th>
+                    <th class="p-0 pb-3 min-w-100px text-end">BUDGET</th>
+                    <th class="p-0 pb-3 min-w-100px text-end">PROGRESS</th>
+                    <th class="p-0 pb-3 min-w-175px text-end pe-12">STATUS</th>
+                    <th class="p-0 pb-3 w-125px text-end pe-7">CHART</th>
+                    <th class="p-0 pb-3 w-50px text-end">VIEW</th>
+                </tr>
+                </thead>
+                <!--end::Table head-->
+                <!--begin::Table body-->
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="symbol symbol-50px me-3">
+                                <img src="{{asset('assets/media/stock/600x600/img-49.jpg')}} class="" alt="" />
 								</div>
 								<div class="d-flex justify-content-start flex-column">
 									<a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Mivy App</a>
@@ -69,7 +69,7 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<div class="symbol symbol-50px me-3">
-									<img src="assets/media/stock/600x600/img-40.jpg" class="" alt="" />
+									<img src="{{asset('assets/media/stock/600x600/img-40.jpg')}} class="" alt="" />
 								</div>
 								<div class="d-flex justify-content-start flex-column">
 									<a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Avionica</a>
@@ -99,7 +99,7 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<div class="symbol symbol-50px me-3">
-									<img src="assets/media/stock/600x600/img-39.jpg" class="" alt="" />
+									<img src="{{asset('assets/media/stock/600x600/img-39.jpg')}} class="" alt="" />
 								</div>
 								<div class="d-flex justify-content-start flex-column">
 									<a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Charto CRM</a>
@@ -129,7 +129,7 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<div class="symbol symbol-50px me-3">
-									<img src="assets/media/stock/600x600/img-47.jpg" class="" alt="" />
+									<img src="{{asset('assets/media/stock/600x600/img-47.jpg')}} class="" alt="" />
 								</div>
 								<div class="d-flex justify-content-start flex-column">
 									<a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Tower Hill</a>
@@ -159,7 +159,7 @@
 						<td>
 							<div class="d-flex align-items-center">
 								<div class="symbol symbol-50px me-3">
-									<img src="assets/media/stock/600x600/img-48.jpg" class="" alt="" />
+									<img src="{{asset('assets/media/stock/600x600/img-48.jpg')}} class="" alt="" />
 								</div>
 								<div class="d-flex justify-content-start flex-column">
 									<a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">9 Degree</a>

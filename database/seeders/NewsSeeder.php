@@ -2266,7 +2266,14 @@
                     2
                 ]
             ];
-            foreach ($mainnewsSeeder as $postId => $categoryIds) {
+            $afficheSeeder = [
+                46 => [7],
+                47 => [7, 6],
+                48 => [7, 2],
+                49 => [2]
+            ];
+
+            foreach ($afficheSeeder as $postId => $categoryIds) {
                 // Cast post ID to an integer
                 $postId = (int)$postId;
 
@@ -2274,8 +2281,8 @@
                     // Cast category ID to an integer
                     $categoryId = (int)$categoryId;
 
-                    DB::table('cats4mainnews')->insert([
-                        'mainnews_id' => $postId,
+                    DB::table('cats4affiche')->insert([
+                        'affiche_id' => $postId,
                         'category_id' => $categoryId,
                         'created_at' => now('Europe/Kiev'),
                         'updated_at' => now('Europe/Kiev')

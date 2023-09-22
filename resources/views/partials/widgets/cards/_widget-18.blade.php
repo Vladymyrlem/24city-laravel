@@ -1,40 +1,41 @@
 <!--begin::Card widget 18-->
 <div class="card card-flush h-xl-100">
-	<!--begin::Body-->
-	<div class="card-body py-9">
-		<!--begin::Row-->
-		<div class="row gx-9 h-100">
-			<!--begin::Col-->
-			<div class="col-sm-6 mb-10 mb-sm-0">
-				<!--begin::Image-->
-				<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-400px min-h-sm-100 h-100" style="background-size: 100% 100%;background-image:url('assets/media/stock/600x600/img-65.jpg')"></div>
-				<!--end::Image-->
-			</div>
-			<!--end::Col-->
-			<!--begin::Col-->
-			<div class="col-sm-6">
-				<!--begin::Wrapper-->
-				<div class="d-flex flex-column h-100">
-					<!--begin::Header-->
-					<div class="mb-7">
-						<!--begin::Headin-->
-						<div class="d-flex flex-stack mb-6">
-							<!--begin::Title-->
-							<div class="flex-shrink-0 me-5">
-								<span class="text-gray-400 fs-7 fw-bold me-2 d-block lh-1 pb-1">Featured</span>
-								<span class="text-gray-800 fs-1 fw-bold">9 Degree</span>
-							</div>
-							<!--end::Title-->
-							<span class="badge badge-light-primary flex-shrink-0 align-self-center py-3 px-4 fs-7">In Process</span>
-						</div>
-						<!--end::Heading-->
-						<!--begin::Items-->
-						<div class="d-flex align-items-center flex-wrap d-grid gap-2">
-							<!--begin::Item-->
-							<div class="d-flex align-items-center me-5 me-xl-13">
-								<!--begin::Symbol-->
-								<div class="symbol symbol-30px symbol-circle me-3">
-									<img src="assets/media/avatars/300-3.jpg" class="" alt="" />
+    <!--begin::Body-->
+    <div class="card-body py-9">
+        <!--begin::Row-->
+        <div class="row gx-9 h-100">
+            <!--begin::Col-->
+            <div class="col-sm-6 mb-10 mb-sm-0">
+                <!--begin::Image-->
+                <div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-400px min-h-sm-100 h-100"
+                     style="background-size: 100% 100%;background-image:url('assets/media/stock/600x600/img-65.jpg')"></div>
+                <!--end::Image-->
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-sm-6">
+                <!--begin::Wrapper-->
+                <div class="d-flex flex-column h-100">
+                    <!--begin::Header-->
+                    <div class="mb-7">
+                        <!--begin::Headin-->
+                        <div class="d-flex flex-stack mb-6">
+                            <!--begin::Title-->
+                            <div class="flex-shrink-0 me-5">
+                                <span class="text-gray-400 fs-7 fw-bold me-2 d-block lh-1 pb-1">Featured</span>
+                                <span class="text-gray-800 fs-1 fw-bold">9 Degree</span>
+                            </div>
+                            <!--end::Title-->
+                            <span class="badge badge-light-primary flex-shrink-0 align-self-center py-3 px-4 fs-7">In Process</span>
+                        </div>
+                        <!--end::Heading-->
+                        <!--begin::Items-->
+                        <div class="d-flex align-items-center flex-wrap d-grid gap-2">
+                            <!--begin::Item-->
+                            <div class="d-flex align-items-center me-5 me-xl-13">
+                                <!--begin::Symbol-->
+                                <div class="symbol symbol-30px symbol-circle me-3">
+                                    <img src="{{asset('assets/media/avatars/300-3.jpg')}} class="" alt="" />
 								</div>
 								<!--end::Symbol-->
 								<!--begin::Info-->
@@ -101,10 +102,10 @@
 						<!--begin::Users group-->
 						<div class="symbol-group symbol-hover flex-nowrap">
 							<div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Melody Macy">
-								<img alt="Pic" src="assets/media/avatars/300-2.jpg" />
+								<img alt="Pic" src="{{asset('assets/media/avatars/300-2.jpg')}} />
 							</div>
 							<div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Michael Eberon">
-								<img alt="Pic" src="assets/media/avatars/300-3.jpg" />
+								<img alt="Pic" src="{{asset('assets/media/avatars/300-3.jpg')}} />
 							</div>
 							<div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Susan Redwood">
 								<span class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>

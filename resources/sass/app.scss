@@ -1,10 +1,5 @@
-body {
-    font-family: Roboto, sans-serif;
-}
+// Variables
+@import 'variables';
 
-.card-footer svg {
-    width: 20px;
-    height: 20px;
-}
-
-@import url("../vendor/shortcode-plus/app.css");
+// Bootstrap
+@import '~admin-lte/build/scss/adminlte';

@@ -1,26 +1,26 @@
 <!--begin::List widget 9-->
 <div class="card card-flush h-xl-100">
-	<!--begin::Header-->
-	<div class="card-header py-7">
-		<!--begin::Title-->
-		<h3 class="card-title align-items-start flex-column">
-			<span class="card-label fw-bold text-gray-800">Social Network Visits</span>
-			<span class="text-gray-400 mt-1 fw-semibold fs-6">8k social visitors</span>
-		</h3>
-		<!--end::Title-->
-		<!--begin::Toolbar-->
-		<div class="card-toolbar">
-			<a href="#" class="btn btn-sm btn-light">View All</a>
-		</div>
-		<!--end::Toolbar-->
-	</div>
-	<!--end::Header-->
-	<!--begin::Body-->
-	<div class="card-body card-body d-flex justify-content-between flex-column pt-3">
-		<!--begin::Item-->
-		<div class="d-flex flex-stack">
-			<!--begin::Flag-->
-			<img src="assets/media/svg/brand-logos/dribbble-icon-1.svg" class="me-4 w-30px" style="border-radius: 4px" alt="" />
+    <!--begin::Header-->
+    <div class="card-header py-7">
+        <!--begin::Title-->
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bold text-gray-800">Social Network Visits</span>
+            <span class="text-gray-400 mt-1 fw-semibold fs-6">8k social visitors</span>
+        </h3>
+        <!--end::Title-->
+        <!--begin::Toolbar-->
+        <div class="card-toolbar">
+            <a href="#" class="btn btn-sm btn-light">View All</a>
+        </div>
+        <!--end::Toolbar-->
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body card-body d-flex justify-content-between flex-column pt-3">
+        <!--begin::Item-->
+        <div class="d-flex flex-stack">
+            <!--begin::Flag-->
+            <img src="{{asset('assets/media/svg/brand-logos/dribbble-icon-1.svg')}} class="me-4 w-30px" style="border-radius: 4px" alt="" />
 			<!--end::Flag-->
 			<!--begin::Section-->
 			<div class="d-flex align-items-center flex-stack flex-wrap flex-row-fluid d-grid gap-2">
@@ -58,7 +58,7 @@
 		<!--begin::Item-->
 		<div class="d-flex flex-stack">
 			<!--begin::Flag-->
-			<img src="assets/media/svg/brand-logos/linkedin-1.svg" class="me-4 w-30px" style="border-radius: 4px" alt="" />
+			<img src="{{asset('assets/media/svg/brand-logos/linkedin-1.svg')}} class="me-4 w-30px" style="border-radius: 4px" alt="" />
 			<!--end::Flag-->
 			<!--begin::Section-->
 			<div class="d-flex align-items-center flex-stack flex-wrap flex-row-fluid d-grid gap-2">
@@ -96,7 +96,7 @@
 		<!--begin::Item-->
 		<div class="d-flex flex-stack">
 			<!--begin::Flag-->
-			<img src="assets/media/svg/brand-logos/slack-icon.svg" class="me-4 w-30px" style="border-radius: 4px" alt="" />
+			<img src="{{asset('assets/media/svg/brand-logos/slack-icon.svg')}} class="me-4 w-30px" style="border-radius: 4px" alt="" />
 			<!--end::Flag-->
 			<!--begin::Section-->
 			<div class="d-flex align-items-center flex-stack flex-wrap flex-row-fluid d-grid gap-2">
@@ -134,7 +134,7 @@
 		<!--begin::Item-->
 		<div class="d-flex flex-stack">
 			<!--begin::Flag-->
-			<img src="assets/media/svg/brand-logos/youtube-3.svg" class="me-4 w-30px" style="border-radius: 4px" alt="" />
+			<img src="{{asset('assets/media/svg/brand-logos/youtube-3.svg')}} class="me-4 w-30px" style="border-radius: 4px" alt="" />
 			<!--end::Flag-->
 			<!--begin::Section-->
 			<div class="d-flex align-items-center flex-stack flex-wrap flex-row-fluid d-grid gap-2">
@@ -172,7 +172,7 @@
 		<!--begin::Item-->
 		<div class="d-flex flex-stack">
 			<!--begin::Flag-->
-			<img src="assets/media/svg/brand-logos/instagram-2-1.svg" class="me-4 w-30px" style="border-radius: 4px" alt="" />
+			<img src="{{asset('assets/media/svg/brand-logos/instagram-2-1.svg')}} class="me-4 w-30px" style="border-radius: 4px" alt="" />
 			<!--end::Flag-->
 			<!--begin::Section-->
 			<div class="d-flex align-items-center flex-stack flex-wrap flex-row-fluid d-grid gap-2">
@@ -210,7 +210,7 @@
 		<!--begin::Item-->
 		<div class="d-flex flex-stack">
 			<!--begin::Flag-->
-			<img src="assets/media/svg/brand-logos/facebook-3.svg" class="me-4 w-30px" style="border-radius: 4px" alt="" />
+			<img src="{{asset('assets/media/svg/brand-logos/facebook-3.svg')}} class="me-4 w-30px" style="border-radius: 4px" alt="" />
 			<!--end::Flag-->
 			<!--begin::Section-->
 			<div class="d-flex align-items-center flex-stack flex-wrap flex-row-fluid d-grid gap-2">
@@ -245,4 +245,4 @@
 	</div>
 	<!--end::Body-->
 </div>
-<!--end::List widget 9-->
+<!--end::List widget 9-->

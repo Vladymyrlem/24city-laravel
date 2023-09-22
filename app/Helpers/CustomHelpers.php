@@ -20,7 +20,7 @@
 
                 if ($image) {
                     $classAttribute = trim("$galleryType $gallerySize");
-                    $imageTag = '<img src="' . $image->path . '" alt="Image ' . $imageId . '" class="' . $classAttribute . '" width="300" height="200">';
+                    $imageTag = '<img src="/' . $image->path . '" alt="' . ($image->alt_text ?: 'Image ' . $imageId) . '" class="gallery-item" width="300" height="200">';
 
                     // Check if a link is provided
                     if ($galleryLink && $galleryLink !== 'none') {

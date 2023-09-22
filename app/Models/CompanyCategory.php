@@ -9,12 +9,12 @@
     {
         protected $table = "company_category";
 //    protected $primaryKey = 'category_id';
-        protected $fillable = ['id', 'name', 'slug', 'parent_id'];
+        protected $fillable = ['id', 'name', 'slug', 'image', 'parent_id'];
 
 
         public function category()
         {
-            return $this->hasMany(CompanyCategory::class, 'parent_id', 'category_id');
+            return $this->hasMany(CompanyCategory::class, 'company_id', 'category_id');
         }
 
         public function subcategories()

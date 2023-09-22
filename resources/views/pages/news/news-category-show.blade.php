@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Company')
+@section('title', 'News')
 
 @section('content')
     <nav aria-label="breadcrumb">

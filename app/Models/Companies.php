@@ -47,4 +47,8 @@
             return $this->belongsToMany(CompanyCategory::class);
         }
 
+        public function relatedCompanies()
+        {
+            return $this->belongsToMany(Companies::class, 'company_relationships', 'parent_company_id', 'child_company_id');
+        }
     }

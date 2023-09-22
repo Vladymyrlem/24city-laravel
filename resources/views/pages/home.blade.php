@@ -9,21 +9,33 @@
         @method('post')
         <textarea name="" id="myeditorinstance" cols="30" rows="10"></textarea>
     </form>
+    <form action="{{ route('company.create') }}" method="post">
+        @csrf
+        @method('post')
+        <div id="phone-fields">
+            <div class="phone-field">
+                <input type="text" name="phones[]" placeholder="Phone Number">
+                <input type="checkbox" name="fax[]" value="1"> Fax
+            </div>
+        </div>
+
+        <button type="button" id="add-phone">Add Phone</button>
+        <button type="submit">Save phones</button>
+    </form>
     <form method="POST" action="{{ route('save-selected-posts') }}">
         @csrf
 
-        <div>
-            <h3>All Posts</h3>
+        <div id="companies-list">
             <ul id="all-posts">
                 <!-- Populate this ul with all created posts as li items -->
                 @foreach($companies as $post)
                     <li>
-                        <input type="checkbox" name="selected_posts[]" value="{{ $post->id }}">
+                        <input type="checkbox" name="related_posts[]" value="{{ $post->id }}">
                         {{ $post->title_company }}
                     </li>
                 @endforeach
             </ul>
-            {{ $companies->links('vendor.pagination.custom') }}
+            <div class="page_navigation"></div>
         </div>
 
         <div>

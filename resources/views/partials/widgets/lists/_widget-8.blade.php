@@ -1,28 +1,28 @@
 <!--begin::List widget 8-->
 <div class="card card-flush h-xl-100">
-	<!--begin::Header-->
-	<div class="card-header pt-7 mb-5">
-		<!--begin::Title-->
-		<h3 class="card-title align-items-start flex-column">
-			<span class="card-label fw-bold text-gray-800">Visits by Country</span>
-			<span class="text-gray-400 mt-1 fw-semibold fs-6">20 countries share 97% visits</span>
-		</h3>
-		<!--end::Title-->
-		<!--begin::Toolbar-->
-		<div class="card-toolbar">
-			<a href="/" class="btn btn-sm btn-light">View All</a>
-		</div>
-		<!--end::Toolbar-->
-	</div>
-	<!--end::Header-->
-	<!--begin::Body-->
-	<div class="card-body pt-0">
-		<!--begin::Items-->
-		<div class="m-0">
-			<!--begin::Item-->
-			<div class="d-flex flex-stack">
-				<!--begin::Flag-->
-				<img src="assets/media/flags/united-states.svg" class="me-4 w-25px" style="border-radius: 4px" alt="" />
+    <!--begin::Header-->
+    <div class="card-header pt-7 mb-5">
+        <!--begin::Title-->
+        <h3 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bold text-gray-800">Visits by Country</span>
+            <span class="text-gray-400 mt-1 fw-semibold fs-6">20 countries share 97% visits</span>
+        </h3>
+        <!--end::Title-->
+        <!--begin::Toolbar-->
+        <div class="card-toolbar">
+            <a href="/" class="btn btn-sm btn-light">View All</a>
+        </div>
+        <!--end::Toolbar-->
+    </div>
+    <!--end::Header-->
+    <!--begin::Body-->
+    <div class="card-body pt-0">
+        <!--begin::Items-->
+        <div class="m-0">
+            <!--begin::Item-->
+            <div class="d-flex flex-stack">
+                <!--begin::Flag-->
+                <img src="{{asset('assets/media/flags/united-states.svg')}} class="me-4 w-25px" style="border-radius: 4px" alt="" />
 				<!--end::Flag-->
 				<!--begin::Section-->
 				<div class="d-flex flex-stack flex-row-fluid d-grid gap-2">
@@ -60,7 +60,7 @@
 			<!--begin::Item-->
 			<div class="d-flex flex-stack">
 				<!--begin::Flag-->
-				<img src="assets/media/flags/brazil.svg" class="me-4 w-25px" style="border-radius: 4px" alt="" />
+				<img src="{{asset('assets/media/flags/brazil.svg')}} class="me-4 w-25px" style="border-radius: 4px" alt="" />
 				<!--end::Flag-->
 				<!--begin::Section-->
 				<div class="d-flex flex-stack flex-row-fluid d-grid gap-2">
@@ -98,7 +98,7 @@
 			<!--begin::Item-->
 			<div class="d-flex flex-stack">
 				<!--begin::Flag-->
-				<img src="assets/media/flags/turkey.svg" class="me-4 w-25px" style="border-radius: 4px" alt="" />
+				<img src="{{asset('assets/media/flags/turkey.svg')}} class="me-4 w-25px" style="border-radius: 4px" alt="" />
 				<!--end::Flag-->
 				<!--begin::Section-->
 				<div class="d-flex flex-stack flex-row-fluid d-grid gap-2">
@@ -136,7 +136,7 @@
 			<!--begin::Item-->
 			<div class="d-flex flex-stack">
 				<!--begin::Flag-->
-				<img src="assets/media/flags/france.svg" class="me-4 w-25px" style="border-radius: 4px" alt="" />
+				<img src="{{asset('assets/media/flags/france.svg')}} class="me-4 w-25px" style="border-radius: 4px" alt="" />
 				<!--end::Flag-->
 				<!--begin::Section-->
 				<div class="d-flex flex-stack flex-row-fluid d-grid gap-2">
@@ -174,7 +174,7 @@
 			<!--begin::Item-->
 			<div class="d-flex flex-stack">
 				<!--begin::Flag-->
-				<img src="assets/media/flags/india.svg" class="me-4 w-25px" style="border-radius: 4px" alt="" />
+				<img src="{{asset('assets/media/flags/india.svg')}} class="me-4 w-25px" style="border-radius: 4px" alt="" />
 				<!--end::Flag-->
 				<!--begin::Section-->
 				<div class="d-flex flex-stack flex-row-fluid d-grid gap-2">
@@ -212,7 +212,7 @@
 			<!--begin::Item-->
 			<div class="d-flex flex-stack">
 				<!--begin::Flag-->
-				<img src="assets/media/flags/sweden.svg" class="me-4 w-25px" style="border-radius: 4px" alt="" />
+				<img src="{{asset('assets/media/flags/sweden.svg')}} class="me-4 w-25px" style="border-radius: 4px" alt="" />
 				<!--end::Flag-->
 				<!--begin::Section-->
 				<div class="d-flex flex-stack flex-row-fluid d-grid gap-2">

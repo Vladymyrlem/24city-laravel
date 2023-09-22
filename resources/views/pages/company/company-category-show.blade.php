@@ -25,6 +25,9 @@
                     @endif
                 </li>
             @endforeach
+            <li>
+                {{ $company->title_company }}
+            </li>
         </ol>
     </nav>
 

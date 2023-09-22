@@ -64,6 +64,12 @@
 @foreach(getCustomJs() as $path)
     {!! sprintf('<script src="%s"></script>', asset($path)) !!}
 @endforeach
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('js/paginathing.min.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
 

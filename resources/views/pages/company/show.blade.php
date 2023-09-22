@@ -4,6 +4,39 @@
 
 @section('content')
     <h3>{{ $company->title_company }}</h3>
+    {{--    <div class="breadcrumbs">--}}
+    {{--        @if ($company->category)--}}
+    {{--    {{ Breadcrumbs::render('company.show', $category) }}--}}
+    {{--        @endif--}}
+    {{--    </div>--}}
+    {{--    <nav aria-label="breadcrumb">--}}
+    {{--        <ol class="breadcrumb">--}}
+    {{--            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>--}}
+    {{--            @php--}}
+    {{--                $breadcrumbCategories = [];--}}
+    {{--                $currentCategory = $category;--}}
+    {{--                while ($currentCategory) {--}}
+    {{--                    $breadcrumbCategories[] = $currentCategory;--}}
+    {{--                    $currentCategory = $currentCategory->parentCategory;--}}
+    {{--                }--}}
+    {{--            @endphp--}}
+    {{--            @foreach (array_reverse($breadcrumbCategories) as $breadcrumbCategory)--}}
+    {{--                <li class="breadcrumb-item {{ $breadcrumbCategory->id == $category->id ? 'active' : '' }}">--}}
+    {{--                    @if ($breadcrumbCategory->id == $category->id)--}}
+    {{--                        {{ $breadcrumbCategory->name }}--}}
+    {{--                    @else--}}
+    {{--                        <a href="{{ route('company.company-category-show', $breadcrumbCategory->id) }}">--}}
+    {{--                            {{ $breadcrumbCategory->name }}--}}
+    {{--                        </a>--}}
+    {{--                    @endif--}}
+    {{--                </li>--}}
+    {{--            @endforeach--}}
+    {{--            <li class="breadcrumb-item">--}}
+    {{--                {{ $company->title_company }}--}}
+    {{--            </li>--}}
+    {{--        </ol>--}}
+    {{--    </nav>--}}
+
     <table class="table table-bordered table-hover table-dark">
         <thead>
         <tr>
@@ -61,6 +94,17 @@
         </tr>
         </tbody>
     </table>
+    <section>
+        <ul>
+            @foreach($company->relatedCompanies as $related)
+                <li>
+                    <a href="{{ route('company.show', $related->id) }}">
+                        {{ $related->title_company }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </section>
     <script>
 
     </script>

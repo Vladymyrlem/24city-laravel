@@ -4,6 +4,8 @@
 
 @section('content')
     <h1>Companies Page</h1>
+    {{ Breadcrumbs::render('company.index') }}
+
     @isset($_SESSION['success'])
         <div class="alert alert-info" role="alert">
             {{   $_SESSION['success']  }}
@@ -84,7 +86,6 @@
     <script>
         {{--var companyCategories = <?php echo json_encode($companyCategories); ?>;--}}
         {{--var companyCategory = <?php echo json_encode($companyCategory); ?>;--}}
-
 
     </script>
 @endsection

@@ -2,8 +2,10 @@
 
     use App\Http\Controllers\Auth\SocialiteController;
     use App\Http\Controllers\DashboardController;
+    use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Route;
     use App\Http\Controllers\AuthController;
+    use App\Http\Controllers\AdminController;
     use App\Http\Controllers\CompaniesController;
     use App\Http\Controllers\CompanyCategoryController;
     use App\Http\Controllers\HomeController;
@@ -14,6 +16,10 @@
     use App\Http\Controllers\MainNewsController;
     use App\Http\Controllers\MainNewsCategoryController;
     use App\Http\Controllers\NewsCategoryController;
+    use App\Http\Controllers\AfficheController;
+    use App\Http\Controllers\AfficheCategoryController;
+    use App\Http\Controllers\RealEstateController;
+    use App\Http\Controllers\RealEstateCategoryController;
 
     /*
     |--------------------------------------------------------------------------
@@ -25,34 +31,70 @@
     | contains the "web" middleware group. Now create something great!
     |
     */
+    Auth::routes();
 
-    Route::get('/admin', [DashboardController::class, 'index'])->middleware(['auth', 'verified']);
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
     Route::get('/companies', [CompaniesController::class, 'index'])->name('companies');
-    Route::get('/company/{id}', [CompaniesController::class, 'show'])->name('company.show')->whereNumber('id');
-    Route::get('/company/categories', [CompanyCategoryController::class, 'index'])->name('company.company-category');
-//    Route::get('/company/categories/{category}', [CompanyCategoryController::class, 'showCompanies'])->name('category.showCompanies');
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+        Route::get('/company/create', [CompaniesController::class, 'create'])->name('company.create');
+        Route::post('/company/store', [CompaniesController::class, 'store'])->name('company.store');
+    });
 
 // Route for viewing a specific category by ID
-    Route::get('/company/categories/{id}', [CompanyCategoryController::class, 'show'])->name('company.company-category-show');
+    Route::prefix('company')->group(function () {
+        Route::get('/company/{id}', [CompaniesController::class, 'show'])->name('company.show')->whereNumber('id');
+        Route::get('/company/categories', [CompanyCategoryController::class, 'index'])->name('company.company-category');
+        Route::get('/categories/{id}', [CompanyCategoryController::class, 'show'])->name('company.company-category-show');
+        Route::get('/parent-category/{category}', [CompanyCategoryController::class, 'showParentCategory'])->name('company.parent-category.show');
+        Route::get('/subcategory/{subcategory}', [CompanyCategoryController::class, 'showSubcategory'])->name('company.subcategory.show');
+        Route::get('/subchild-category/{subchildCategory}', [CompanyCategoryController::class, 'showSubchildCategory'])->name('company.subchild-category.show');
+    });
 
-    Route::get('/ads', [AdsController::class, 'index'])->name('ads');
-    Route::get('/ads/{id}', [AdsController::class, 'show'])->name('ads.show')->whereNumber('id');
-    Route::get('/ads/categories', [AdsCategoryController::class, 'index'])->name('ads.ads-category');
-    Route::get('/ads/categories/{id}', [AdsCategoryController::class, 'show'])->name('ads.ads-category-show');
+    Route::prefix('ads')->group(function () {
+        Route::get('/', [AdsController::class, 'index'])->name('ads');
+        Route::get('/{id}', [AdsController::class, 'show'])->name('ads.show')->whereNumber('id');
+        Route::get('/categories', [AdsCategoryController::class, 'index'])->name('ads.ads-category');
+        Route::get('/categories/{id}', [AdsCategoryController::class, 'show'])->name('ads.ads-category-show');
+    });
 
-    Route::get('/peoples', [PeoplesController::class, 'index'])->name('peoples');
-    Route::get('/news', [NewsController::class, 'index'])->name('news');
-    Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show')->whereNumber('id');
-    Route::get('/news/categories', [NewsCategoryController::class, 'index'])->name('news.category');
-    Route::get('/news/categories/{id}', [NewsCategoryController::class, 'show'])->name('news.category.show');
-    Route::get('/main-news', [MainNewsController::class, 'index'])->name('main-news');
-    Route::get('/main-news/{id}', [MainNewsController::class, 'show'])->name('main-news.show')->whereNumber('id');
-    Route::get('/main-news/tags/{id}', [MainNewsController::class, 'showTag'])->name('main-news.show.tag');
-    Route::get('/main-news/categories', [MainNewsCategoryController::class, 'index'])->name('main-news.category');
-    Route::get('/main-news/categories/{id}', [MainNewsCategoryController::class, 'show'])->name('main-news.category.show');
+    Route::prefix('affiche')->group(function () {
+        Route::get('/', [AfficheController::class, 'index'])->name('affiche');
+        Route::get('/{id}', [AfficheController::class, 'show'])->name('affiche.show')->whereNumber('id');
+        Route::get('/categories', [AfficheCategoryController::class, 'index'])->name('affiche.affiche-category');
+        Route::get('/categories/{id}', [AfficheCategoryController::class, 'show'])->name('affiche.affiche-category-show');
+    });
+    Route::prefix('peoples')->group(function () {
+        Route::get('/', [PeoplesController::class, 'index'])->name('peoples');
+    });
+
+    Route::prefix('news')->group(function () {
+        Route::get('/', [NewsController::class, 'index'])->name('news');
+        Route::get('/{id}', [NewsController::class, 'show'])->name('news.show')->whereNumber('id');
+        Route::get('/categories', [NewsCategoryController::class, 'index'])->name('news.category');
+        Route::get('/categories/{id}', [NewsCategoryController::class, 'show'])->name('news.category.show');
+    });
+
+
+    Route::prefix('main-news')->group(function () {
+        Route::get('/', [MainNewsController::class, 'index'])->name('main-news');
+        Route::get('/{id}', [MainNewsController::class, 'show'])->name('main-news.show')->whereNumber('id');
+        Route::get('/tags/{id}', [MainNewsController::class, 'showTag'])->name('main-news.show.tag');
+        Route::get('/categories', [MainNewsCategoryController::class, 'index'])->name('main-news.category');
+        Route::get('/categories/{id}', [MainNewsCategoryController::class, 'show'])->name('main-news.category.show');
+    });
+
+
+    Route::prefix('real-estate')->group(function () {
+        Route::get('', [RealEstateController::class, 'index'])->name('real-estate');
+        Route::get('/{id}', [RealEstateController::class, 'show'])->name('real-estate.show')->whereNumber('id');
+        Route::get('/categories', [RealEstateCategoryController::class, 'index'])->name('real-estate.category');
+        Route::get('/categories/{id}', [RealEstateCategoryController::class, 'show'])->name('real-estate.category.show');
+    });
+
+
     Route::post('/upload/images', [HomeController::class, 'uploadImage'])->name('upload.post.image');
     Route::post('/save-selected-posts', [HomeController::class, 'saveSelectedPosts'])->name('save-selected-posts');
 
@@ -64,3 +106,8 @@
     Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
 
     require __DIR__ . '/auth.php';
+
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Auth::routes();

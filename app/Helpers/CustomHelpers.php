@@ -79,5 +79,25 @@
         }, $content);
     }
 
+    function getImageInfo($id)
+    {
+        // Replace 'Image' with your actual model name if it's different
+        $image = Images::find($id);
 
+        if ($image) {
+            return [
+                'id' => $image->id,
+                'title' => $image->title,
+                'alt' => $image->alt_text,
+                'description' => $image->descriptio,
+                'url' => $image->path,
+            ];
+        }
 
+        return null; // Return null if the image with the given ID doesn't exist
+    }
+
+    function get_sidebar($bladeTemplateName)
+    {
+        return view('partials.sidebar.' . $bladeTemplateName);
+    }

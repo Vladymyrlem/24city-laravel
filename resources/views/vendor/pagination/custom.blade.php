@@ -1,10 +1,10 @@
 @if ($paginator->hasPages())
-    <nav class="d-flex justify-items-center justify-content-between">
+    <div class="d-flex justify-items-center justify-content-between page_navigation">
         <div class="d-flex justify-content-between flex-fill d-sm-none">
             <ul class="pagination">
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
-                    <li class="page-item disabled" aria-disabled="true">
+                    <li class="page-item disabled " aria-disabled="true">
                         <span class="page-link">@lang('pagination.previous')</span>
                     </li>
                 @else
@@ -84,5 +84,5 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </div>
 @endif

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.master')
 
 @section('title', 'Новости')
 
@@ -37,8 +37,8 @@
                 <td>{!! $post->excerpt !!}</td>
 
                 <td>
-                    @if(!empty($post->image_url))
-                        <img width="250px" height="auto" src="{{ asset($post->image_url) }}" alt="">
+                    @if(!empty($post->image))
+                        <img width="250px" height="auto" src="{{ asset($post->image) }}" alt="">
                     @endif
                 </td>
                 <td>

@@ -4,6 +4,7 @@
 
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
+    use App\Models\Payments;
 
     class Companies extends Model
     {
@@ -50,5 +51,28 @@
         public function relatedCompanies()
         {
             return $this->belongsToMany(Companies::class, 'company_relationships', 'parent_company_id', 'child_company_id');
+        }
+
+//        public function contacts()
+//        {
+//            return $this->belongsToMany(Contacts::class, 'contacts', 'com', 'company_id');
+//        }
+        public function contacts()
+        {
+            return $this->hasMany(Contacts::class, 'company_id');
+        }
+
+        public function payments()
+        {
+            return $this->belongsToMany(Payments::class, 'payments4company', 'company_id', 'payment_id');
+        }
+//        public function payments()
+//        {
+//            return $this->hasMany(Payments::class);
+//        }
+
+        public function emails()
+        {
+            return $this->belongsToMany(CompanyEmails::class, 'emails4company', 'email_id', 'company_id');
         }
     }

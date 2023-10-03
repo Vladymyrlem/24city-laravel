@@ -14,6 +14,7 @@
     use Genert\BBCode\Facades\BBCode;
     use Illuminate\Database\Schema\Builder;
     use Illuminate\Support\Facades\Blade;
+    use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\View;
     use Illuminate\Support\ServiceProvider;
 
@@ -42,8 +43,31 @@
                 $adsCategories = Ads::all('id', 'ads_category');
                 $view->with('adsCategories', $adsCategories);
             });
+//            View::composer('pages.company.companies', function ($view) {
+//                $paymentMethods = Companies::whereNotNull('payment_methods')->get(['id', 'payment_methods']);
+//                $view->with('paymentMethods', $paymentMethods);
+//            });
 
-
-            KTBootstrap::init();
+//            Blade::directive('fullPostsListing', function ($expression) {
+//                $parameters = json_decode($expression, true);
+//
+//                // Get the table name from the parameters
+//                $tableName = $parameters['table'] ?? 'companies'; // Default to 'posts' table if not provided
+//
+//                // Define default values for other parameters
+//                $order = $parameters['order'] ?? 'ASC';
+//                $orderBy = $parameters['orderby'] ?? 'created_at';
+//                $posts = $parameters['posts'] ?? 10;
+//                $routeName = $parameters['route'] ?? 'company.show'; // Default route name
+//
+//                // Query the database using the table name
+//                $posts = DB::table($tableName)
+//                    ->orderBy($orderBy, $order)
+//                    ->take($posts)
+//                    ->get();
+//
+//                // Render the posts using a Blade view and pass the route name and posts
+//                return view('partials.list-posts', compact('posts', 'routeName'));
+//            });
         }
     }

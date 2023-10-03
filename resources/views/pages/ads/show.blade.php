@@ -1,6 +1,6 @@
-@extends('layout.app')
+@extends('layouts.master')
 
-@section('title', 'Company')
+@section('title', 'Объявления')
 
 @section('content')
     <h3>{{ $ads->title }}</h3>

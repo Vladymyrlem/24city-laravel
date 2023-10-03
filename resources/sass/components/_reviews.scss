@@ -1,0 +1,132 @@
+/* Reviews
+--------------------------------------------*/
+#reviews {
+    margin-top: 150px;
+    padding-bottom: 100px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+#reviews .stars {
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+#reviews .stars .big {
+    font-size: 36px;
+}
+
+#reviews .review {
+    color: var(--black, #151616);
+    text-align: center;
+
+    /* H3 */
+    font-family: Lato, sans-serif;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-bottom: 20px;
+}
+
+#reviews .author {
+    color: var(--prime, #0074B7);
+    text-align: center;
+
+    /* H4 */
+    font-family: Lato Medium, sans-serif !important;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#reviews-carousel {
+    width: 100%;
+    max-width: 1170px;
+}
+
+#reviews .carousel-indicators {
+    position: absolute;
+    bottom: auto;
+    left: 50%;
+    z-index: 15;
+    width: 60%;
+    margin-left: -30%;
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.slick-dots {
+    bottom: -40px;
+
+    li button {
+        width: 15px;
+        height: 15px;
+        padding: 0;
+        border-radius: 50%;
+        border: 1px solid black;
+        background: #fff;
+
+        &::before {
+            content: '';
+            opacity: 1;
+        }
+    }
+}
+
+.slick-dots li.slick-active button {
+    border-color: #0074B7;
+    background: #0074B7;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+
+    &::before {
+        background: #0074B7;
+        margin: 0;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1240px) {
+    //#reviews {
+    //    width: 100vw;
+    //
+    #reviews-carousel {
+
+        //width: auto;
+        max-width: 94vw;
+    }
+    //}
+}
+
+@media screen and (max-width: 768px) {
+    #reviews {
+        padding-bottom: 50px;
+        margin-top: 100px;
+    }
+    #reviews-carousel {
+        max-width: 90vw !important;
+
+    }
+}
+
+@media screen and (max-width: 560px) {
+    #reviews {
+        //padding-bottom: 30px;
+        margin-top: 50px;
+    }
+    #reviews-carousel {
+        max-width: 84vw !important;
+
+    }
+}

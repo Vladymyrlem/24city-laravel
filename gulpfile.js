@@ -14,8 +14,8 @@ gulp.task('styles', function () {
 
 // Concatenate and minify JavaScript files
 gulp.task('scripts', function () {
-    return gulp.src('resources/js/**/*.js')
-        .pipe(concat('app.js'))
+    return gulp.src('resources/js/admin.js')
+        .pipe(concat('admin.js'))
         .pipe(uglify())
         .pipe(gulp.dest('public/js'));
 });

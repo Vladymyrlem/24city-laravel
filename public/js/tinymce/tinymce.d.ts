@@ -101,19 +101,22 @@ declare class EventDispatcher<T extends {}> {
     once<K extends string>(name: K, callback: (event: EditorEvent<MappedEvent<T, K>>) => void, prepend?: boolean): this;
     has(name: string): boolean;
 }
-type UndoLevelType = 'fragmented' | 'complete';
+declare const enum UndoLevelType {
+    Fragmented = "fragmented",
+    Complete = "complete"
+}
 interface BaseUndoLevel {
     type: UndoLevelType;
     bookmark: Bookmark | null;
     beforeBookmark: Bookmark | null;
 }
 interface FragmentedUndoLevel extends BaseUndoLevel {
-    type: 'fragmented';
+    type: UndoLevelType.Fragmented;
     fragments: string[];
     content: '';
 }
 interface CompleteUndoLevel extends BaseUndoLevel {
-    type: 'complete';
+    type: UndoLevelType.Complete;
     fragments: null;
     content: string;
 }
@@ -1374,7 +1377,6 @@ interface DomParserSettings {
     forced_root_block?: boolean | string;
     forced_root_block_attrs?: Record<string, string>;
     inline_styles?: boolean;
-    pad_empty_with_br?: boolean;
     preserve_cdata?: boolean;
     remove_trailing_brs?: boolean;
     root_name?: string;
@@ -1862,7 +1864,6 @@ interface BaseEditorOptions {
     formats?: Formats;
     format_noneditable_selector?: string;
     height?: number | string;
-    help_accessibility?: boolean;
     hidden_input?: boolean;
     highlight_on_focus?: boolean;
     icons?: string;
@@ -1912,7 +1913,6 @@ interface BaseEditorOptions {
     noneditable_regexp?: RegExp | RegExp[];
     nowrap?: boolean;
     object_resizing?: boolean | string;
-    pad_empty_with_br?: boolean;
     paste_as_text?: boolean;
     paste_block_drop?: boolean;
     paste_data_images?: boolean;
@@ -2061,7 +2061,6 @@ interface EditorOptions extends NormalizedEditorOptions {
     noneditable_class: string;
     noneditable_regexp: RegExp[];
     object_resizing: string;
-    pad_empty_with_br: boolean;
     paste_as_text: boolean;
     preview_styles: string;
     promotion: boolean;

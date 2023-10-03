@@ -31,22 +31,39 @@
     | contains the "web" middleware group. Now create something great!
     |
     */
+    require __DIR__ . '/auth.php';
+
     Auth::routes();
 
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/companies', [CompaniesController::class, 'index'])->name('companies');
+    Route::get('/spravochnik', [CompanyCategoryController::class, 'index'])->name('company.company-category');
+    Route::get('/companies', [CompaniesController::class, 'list'])->name('companies.list');
 
     Route::prefix('admin')->group(function () {
         Route::get('/', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+        Route::get('/companies', [CompaniesController::class, 'index'])->name('companies');
+        /*Company Category Routes*/
+        Route::get('company/categories', [CompanyCategoryController::class, 'categoriesList'])->name('admin.company-categories');
+        Route::get('company/categories/{id}', [CompanyCategoryController::class, 'show'])->name('admin.company-category-show');
+        Route::get('company/category/create', [CompanyCategoryController::class, 'create'])->name('adminCompanyCategoryCreate');
+        Route::post('company/category/store', [CompanyCategoryController::class, 'store'])->name('adminCompanyCategoryStore');
+        Route::get('company/category/edit/{id}', [CompanyCategoryController::class, 'edit'])->name('adminCompanyCategoryEdit');
+        Route::put('company/category/update/{id}', [CompanyCategoryController::class, 'update'])->name('adminCompanyCategoryUpdate');
+        Route::get('company/category/delete/{id}', [CompanyCategoryController::class, 'delete'])->name('adminCompanyCategoryDelete');
+        Route::get('company/category/restore/{id}', [CompanyCategoryController::class, 'trash'])->name('adminCompanyCategoryRestore');
+
+        /*Company routes*/
         Route::get('/company/create', [CompaniesController::class, 'create'])->name('company.create');
         Route::post('/company/store', [CompaniesController::class, 'store'])->name('company.store');
+
+        /*Ads Routes*/
+        Route::get('/ads', [AdsController::class, 'index'])->name('ads.list');
     });
 
 // Route for viewing a specific category by ID
     Route::prefix('company')->group(function () {
-        Route::get('/company/{id}', [CompaniesController::class, 'show'])->name('company.show')->whereNumber('id');
-        Route::get('/company/categories', [CompanyCategoryController::class, 'index'])->name('company.company-category');
+        Route::get('/{id}', [CompaniesController::class, 'show'])->name('company.show')->whereNumber('id');
         Route::get('/categories/{id}', [CompanyCategoryController::class, 'show'])->name('company.company-category-show');
         Route::get('/parent-category/{category}', [CompanyCategoryController::class, 'showParentCategory'])->name('company.parent-category.show');
         Route::get('/subcategory/{subcategory}', [CompanyCategoryController::class, 'showSubcategory'])->name('company.subcategory.show');
@@ -54,7 +71,7 @@
     });
 
     Route::prefix('ads')->group(function () {
-        Route::get('/', [AdsController::class, 'index'])->name('ads');
+        Route::get('/', [AdsController::class, 'list'])->name('ads');
         Route::get('/{id}', [AdsController::class, 'show'])->name('ads.show')->whereNumber('id');
         Route::get('/categories', [AdsCategoryController::class, 'index'])->name('ads.ads-category');
         Route::get('/categories/{id}', [AdsCategoryController::class, 'show'])->name('ads.ads-category-show');
@@ -95,7 +112,7 @@
     });
 
 
-    Route::post('/upload/images', [HomeController::class, 'uploadImage'])->name('upload.post.image');
+    Route::post('/upload/images', [AdminController::class, 'uploadImage'])->name('upload.post.image');
     Route::post('/save-selected-posts', [HomeController::class, 'saveSelectedPosts'])->name('save-selected-posts');
 
     Route::get('/error', function () {
@@ -105,9 +122,3 @@
     Route::get('/auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
     Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
 
-    require __DIR__ . '/auth.php';
-
-
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-    Auth::routes();

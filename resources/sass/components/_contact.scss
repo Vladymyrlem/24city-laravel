@@ -1,0 +1,281 @@
+#contacts-section {
+    background: linear-gradient(90deg, #ECF2FF 0%, #FFF 71.35%);
+    padding: 100px 0 200px 0;
+
+    h2 {
+        color: var(--black, #151616);
+        font-family: Lato Medium, sans-serif !important;
+        font-size: 50px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 110%; /* 55px */
+        margin-bottom: 30px;
+    }
+
+    .contacts-grid {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        grid-gap: 30px 20px;
+        margin-bottom: 70px;
+
+        .contact-name {
+            color: #888;
+            /* H4 */
+            font-family: Lato Medium, sans-serif !important;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            padding-right: 0;
+            text-align: left;
+        }
+
+        .contact-value {
+            color: var(--prime, #0074B7);
+            /* H3 */
+            text-align: left;
+            font-family: Lato, sans-serif;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+        }
+    }
+
+    .address-title {
+        color: var(--black, #151616);
+        /* H4 */
+        font-family: Lato Medium, sans-serif !important;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 20px;
+    }
+
+    .contact-map-link {
+        color: var(--prime, #0074B7);
+        /* H4 */
+        font-family: Lato Medium, sans-serif !important;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        border-radius: 5px;
+        border: 2px solid var(--prime, #0074B7);
+        background: #FFF;
+        padding: 18px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 405px;
+        margin: 0 auto;
+    }
+}
+
+#contacts-us-section {
+    margin-top: 100px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    .contact-us-container {
+        width: 100%;
+        max-width: 770px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        color: var(--black, #151616);
+        /* H2 */
+        font-family: Lato Medium, sans-serif !important;
+        font-size: 50px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 20px;
+
+        span {
+            color: var(--prime, #0074B7);
+
+            /* H2 */
+            font-family: Lato, sans-serif;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+    }
+
+    h3 {
+        color: var(--black, #151616);
+
+        /* H3 */
+        font-family: Lato, sans-serif;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    form {
+        .approval {
+            .row {
+                margin-bottom: 30px;
+
+                &:last-child {
+                    margin-bottom: 15px;
+                }
+            }
+        }
+
+        .custom-checkbox {
+            text-align: left;
+            color: #757575;
+            font-family: Lato, sans-serif;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 140%; /* 16.8px */
+            text-transform: capitalize;
+            padding-left: 60px;
+            margin-bottom: 30px;
+
+
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+
+            &:first-child {
+                border-right: 1px solid rgba(0, 116, 183, 1);
+            }
+
+            .form-group_left:last-child, .form-group_right:last-child {
+                input {
+                    margin-bottom: 0;
+
+                }
+            }
+        }
+
+        input {
+            border-radius: 5px;
+            border: 1px solid #E0DDDD;
+            padding: 10px;
+            margin-bottom: 20px;
+
+            &::placeholder {
+                color: var(--grey, #AFADAD);
+
+                /* Body */
+                font-family: Lato, sans-serif;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 140%; /* 25.2px */
+            }
+
+
+            &[type="checkbox"] {
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    textarea {
+        margin-bottom: 20px;
+        height: 220px
+    }
+
+    button {
+        border-radius: 5px;
+        background: var(--prime, #0074B7);
+        width: 100%;
+        max-width: 370px;
+        padding: 18px;
+        color: var(--white, #FFF);
+
+        /* H4 */
+        font-family: Lato, sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+}
+
+#form_contact {
+    .validation {
+        display: none;
+
+        &.errror {
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #contacts-section {
+        padding-top: 50px;
+        padding-bottom: 100px;
+
+        .contacts-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    #contacts-us-section {
+        h2 {
+            font-size: 36px;
+            align-items: flex-start;
+            padding: 0 20px;
+            text-align: left;
+        }
+
+        h3 {
+            font-size: 20px;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        form .form-group:first-child {
+            border-right: none;
+            border-bottom: 1px solid rgb(0, 116, 183);
+            padding-bottom: 20px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 560px) {
+    #contacts-section .contacts-grid {
+        grid-gap: 0;
+
+        .contact-name {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .contact-value {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+    }
+    #contacts-us-section form .custom-checkbox {
+        margin-bottom: 0;
+        padding-left: 45px;
+    }
+    #contacts-us-section form input[type=checkbox] {
+        left: 5px;
+        top: 5px;
+    }
+}

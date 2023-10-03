@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.master')
 
 @section('title', 'Новости')
 

@@ -19,6 +19,7 @@
         "laravel/sanctum": "^3.0",
         "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.7",
+        "lavary/laravel-menu": "^1.8",
         "murdercode/laravel-shortcode-plus": "^3.0",
         "spatie/laravel-backup": "^8.3",
         "spatie/laravel-medialibrary": "^10.0.0",

@@ -4,6 +4,8 @@
 
     use App\Models\Companies;
     use App\Models\CompanyCategory;
+    use App\Models\Contacts;
+    use App\Models\TestCompany;
     use Diglactic\Breadcrumbs\Breadcrumbs;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
@@ -17,14 +19,23 @@
                 $post->phoneNumbersArray = explode('|', $post->contacts_phone);
             }
 
+            return view('admin.company.companies', compact('companies'));
+        }
+
+        public function list(Request $request)
+        {
+            $companies = TestCompany::paginate(20);
+
+
             return view('pages.company.companies', compact('companies'));
         }
 
         public function create()
         {
             $companies = Companies::all();
+            $categories = CompanyCategory::all(); // Replace with your logic to fetch categories
 
-            return view('pages.company.create', compact('companies'));
+            return view('admin.company.create', compact('companies', 'categories'));
         }
 
         public function store(Request $request)
@@ -33,20 +44,29 @@
 
             // Validate and process the selected posts
             $selectedPostIds = $request->input('selected_posts');
-            $phones = $request->input('phones', []);
-            $fax = $request->input('fax', []);
-
-            $formattedPhones = [];
-            foreach ($phones as $key => $phone) {
-                if (isset($fax[$key]) && $fax[$key] == '1') {
-                    $formattedPhones[] = $phone . '|fax';
-                } else {
-                    $formattedPhones[] = $phone;
-                }
-            }
-
-            $phoneNumbers = implode(', ', $formattedPhones);
-            dd($phoneNumbers, $selectedPostIds);
+            $categories = $request->input('categories');
+//            $phones = $request->input('phones');
+//            $phoneComments = $request->input('phone_comment');
+//            $faxValues = $request->input('fax');
+//
+//            $company = new TestCompany();
+//            $company->title_company = 'Test Post';
+//            $company->save();
+//
+//            for ($i = 0; $i < count($phones); $i++) {
+//                $phone = $phones[$i];
+//                $comment = $phoneComments[$i];
+//                $isFax = isset($faxValues[$i]) ? 1 : 0; // 1 якщо вибрано, 0 в іншому випадку
+//
+//                // Збереження даних в таблиці Contacts
+//                Contacts::create([
+//                    'company_id' => $company->id,
+//                    'contacts_phone' => $phone,
+//                    'contacts_comment_to_phone' => $comment,
+//                    'contacts_fax' => $isFax,
+//                ]);
+//            }
+            dd($categories);
             return redirect()->back()->with('success', 'Selected posts saved successfully.');
 
         }
@@ -116,8 +136,6 @@
                     ]);
                 }
             }
-
-            // You can add any additional logic or return a response as needed
         }
 
     }

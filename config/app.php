@@ -198,7 +198,6 @@
             Genert\BBCode\BBCodeServiceProvider::class,
             UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
             Intervention\Image\ImageServiceProvider::class,
-            Diglactic\Breadcrumbs\ServiceProvider::class
         ],
 
         /*

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.master')
 
 @section('title', 'Company')
 
@@ -34,7 +34,7 @@
             </td>
             <td>{!! $news->excerpt !!}</td>
 
-            <td><img width="250px" height="auto" src="{{ asset($news->image_url) }}" alt=""></td>
+            <td><img width="250px" height="auto" src="{{ asset($news->image) }}" alt=""></td>
             <td>
                 {{--                @dd($news->tags)--}}
                 <ul>

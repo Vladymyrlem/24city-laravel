@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.master')
 
 @section('title', 'Companies page')
 
@@ -26,6 +26,7 @@
             <th scope="col">Services List</th>
             <th scope="col">Additional Information</th>
             <th scope="col">Contacts</th>
+            <th scope="col">Payments</th>
             <th scope="col">Categories</th>
             <th scope="col">Created_at</th>
         </tr>
@@ -44,33 +45,56 @@
                 <td>{!! $post->services_list !!}</td>
                 <td>{!! $post->additional_information !!}</td>
                 <td>
-                    @if(!empty($post->phoneNumbersArray))
+                    @if(!empty($post->contacts))
                         <ul>
-                            @foreach ($post->phoneNumbersArray as $phoneNumber)
-                                <li><a href="tel:{{ $phoneNumber }}">{{ $phoneNumber }}</a></li>
+                            @foreach ($post->contacts as $phoneNumber)
+                                <li><a href="tel:{{ $phoneNumber->contacts_phone	 }}">{{ $phoneNumber->contacts_phone	 }}</a>
+                                    {{ $phoneNumber->contacts_comment_to_phone }}
+                                    @if($phoneNumber->contacts_fax == 1)
+                                        {{ 'Fax' }}
+                                    @else
+                                        {{ '' }}
+                                    @endif
+                                </li>
                             @endforeach
                         </ul>
                     @endif
                 </td>
                 <td>
-                    @foreach ($post->categories as $category)
-                        @if ($category->parent_id === null)
-                            <!-- Parent Category -->
-                            <strong><a href="{{ route('company.company-category-show', ['id' => $category->id]) }}">{{ $category->name }}</a>
-                            </strong>
-                            <ul>
-                                @foreach ($post->categories as $subcategory)
-                                    @if ($subcategory->parent_id === $category->id)
-                                        <!-- Subcategory -->
-                                        <li>
-                                            <a href="{{ route('company.company-category-show', ['id' => $subcategory->id]) }}">
-                                            {{ $subcategory->name }}</li>
-                                        </a>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        @endif
-                    @endforeach
+                    @if(!empty($post->payments))
+                        <ul>
+
+                            @foreach($post->payments as $payment)
+                                <li>
+                                    {{ $payment->payment_name }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </td>
+                <td>
+                    @if(!empty($post->categories))
+                        @foreach ($post->categories as $category)
+                            @if ($category->parent_id === null)
+                                <!-- Parent Category -->
+                                <strong><a href="{{ route('company.company-category-show', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                                </strong>
+                                <ul>
+                                    @foreach ($post->categories as $subcategory)
+                                        @if ($subcategory->parent_id === $category->id)
+                                            <!-- Subcategory -->
+                                            <li>
+                                                <a href="{{ route('company.company-category-show', ['id' => $subcategory->id]) }}">
+                                                {{ $subcategory->name }}</li>
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            @endif
+                        @endforeach
+                    @else
+                        {{ 'Categories not found' }}
+                    @endif
                 </td>
                 <td>{{$post->created_at}}</td>
             </tr>
@@ -80,8 +104,8 @@
     <div class="card-footer clearfix">
         {{ $companies->links('vendor.pagination.custom') }}
     </div>
-    <?php
-    ?>
+    <textarea name="about_company" id="about-company" cols="30" rows="10"></textarea>
+
 
     <script>
         {{--var companyCategories = <?php echo json_encode($companyCategories); ?>;--}}
@@ -89,3 +113,18 @@
 
     </script>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
+
+<script>
+    jQuery(document).ready(function ($) {
+
+        tinymce.init({
+            selector: '#about-company',
+            plugins: 'advlist code table lists link image media emoticons codesample save visualblocks',
+            menubar: 'insert',
+        });
+    });
+</script>
+

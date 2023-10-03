@@ -13,6 +13,13 @@
         {
             $ads = Ads::paginate(20);
             $categories = Ads::all('id', 'ads_category');
+            return view('admin.ads.list', compact('ads', 'categories'));
+        }
+
+        public function list(Request $request)
+        {
+            $ads = Ads::paginate(20);
+            $categories = Ads::all('id', 'ads_category');
             return view('pages.ads.list', compact('ads', 'categories'));
         }
 

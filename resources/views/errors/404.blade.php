@@ -1,3 +1,7 @@
-<x-system-layout>
+@extends('layout.master')
+
+@section('title', '404Page Not Found')
+
+@section('content')
     @include('pages.system.not_found')
-</x-system-layout>
+@endsection

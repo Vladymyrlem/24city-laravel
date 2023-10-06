@@ -35,7 +35,6 @@
 
     Auth::routes();
 
-
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/spravochnik', [CompanyCategoryController::class, 'index'])->name('company.company-category');
     Route::get('/companies', [CompaniesController::class, 'list'])->name('companies.list');
@@ -83,6 +82,7 @@
         Route::get('/categories', [AfficheCategoryController::class, 'index'])->name('affiche.affiche-category');
         Route::get('/categories/{id}', [AfficheCategoryController::class, 'show'])->name('affiche.affiche-category-show');
     });
+
     Route::prefix('peoples')->group(function () {
         Route::get('/', [PeoplesController::class, 'index'])->name('peoples');
     });
@@ -94,7 +94,6 @@
         Route::get('/categories/{id}', [NewsCategoryController::class, 'show'])->name('news.category.show');
     });
 
-
     Route::prefix('main-news')->group(function () {
         Route::get('/', [MainNewsController::class, 'index'])->name('main-news');
         Route::get('/{id}', [MainNewsController::class, 'show'])->name('main-news.show')->whereNumber('id');
@@ -103,14 +102,12 @@
         Route::get('/categories/{id}', [MainNewsCategoryController::class, 'show'])->name('main-news.category.show');
     });
 
-
     Route::prefix('real-estate')->group(function () {
         Route::get('', [RealEstateController::class, 'index'])->name('real-estate');
         Route::get('/{id}', [RealEstateController::class, 'show'])->name('real-estate.show')->whereNumber('id');
         Route::get('/categories', [RealEstateCategoryController::class, 'index'])->name('real-estate.category');
         Route::get('/categories/{id}', [RealEstateCategoryController::class, 'show'])->name('real-estate.category.show');
     });
-
 
     Route::post('/upload/images', [AdminController::class, 'uploadImage'])->name('upload.post.image');
     Route::post('/save-selected-posts', [HomeController::class, 'saveSelectedPosts'])->name('save-selected-posts');

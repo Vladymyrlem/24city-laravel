@@ -1,13 +1,6 @@
 jQuery.noConflict();
-jQuery(document).ready(function ($) {
-    $('.mylink').click(function () {
-        //  window.open( $(this).attr('rel') );
-    });
-});
 jQuery(window).on('load', function () {
-    if (jQuery(window).width() > 768) {
-        //	jQuery('.terms').masonry({ columnWidth:365, itemSelector:'.comp-menu', gutter: 30, isFitWidth: true });
-    }
+
     jQuery('.acf-editor-wrap').prepend('<p class="caption">Напишите что произошло, где, когда это было. В своем сообщении укажите настоящие имена и фамилии, или предоставьте фото документов или писем если речь идет о взаимодействии с органами власти или коммерческими структурами. Если есть видео в текст сообщения вставьте ссылку для размещения видеоматериала. Что бы ускорить процесс проверки сообщите ваш номер меседжера или профиль в соц сети для связи с вами если возникнут дополнительные вопросы</p>');
 });
 jQuery(document).ready(function ($) {
@@ -22,9 +15,7 @@ jQuery(document).ready(function ($) {
     $('li li:has(li)').find('a:first').addClass('arrow');
 
     $('div.breadcrumbs i.fa.fa-arrow-right:first-child').css('display', 'none');
-    // $.get("http://ipinfo.io", function (response) {
-    //     $('div#user-city a').attr('title', response.city);
-    // }, "jsonp")
+
 
 });
 try {
@@ -110,6 +101,7 @@ function sum($url, $id) {
         $('.voices-' + $id).html(counter);
     });
 }
+
 
 //var swiper = new Swiper('.swiper-container');
 jQuery('.carousel[data-type="multi"] .item').each(function () {
@@ -236,17 +228,7 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
 
-    jQuery("#section-ads-list").pajinate({
-        items_per_page: 10,
-        item_container_id: '.ads-list',
-        nav_panel_id: '.ads_page_navigation',
-        num_page_links_to_display: 4,
-        nav_label_first: '<<',
-        nav_label_last: '>>',
-        nav_label_prev: '<',
-        nav_label_next: '>'
-    });
-    jQuery("#companies-list #pagin-list").paginathing({
+    jQuery("#section-ads-list ul").paginathing({
         perPage: 10,
         limitPagination: 5,
         prevNext: true,
@@ -257,6 +239,17 @@ jQuery(document).ready(function ($) {
         lastText: '>>',
         activeClass: 'active',
     });
+    // jQuery("#companies-list #all-posts").paginathing({
+    //     perPage: 10,
+    //     limitPagination: 5,
+    //     prevNext: true,
+    //     firstLast: true,
+    //     prevText: '<',
+    //     nextText: '>',
+    //     firstText: '<<',
+    //     lastText: '>>',
+    //     activeClass: 'active',
+    // });
     jQuery("#company-categories tbody").paginathing({
         perPage: 20,
         limitPagination: 5,
@@ -268,69 +261,74 @@ jQuery(document).ready(function ($) {
         lastText: '>>',
         activeClass: 'active',
     });
-    jQuery("#main-news-list").pajinate({
-        items_per_page: 10,
-        item_container_id: '.news-list',
-        nav_panel_id: '.news_page_navigation',
-        num_page_links_to_display: 4,
-        nav_label_first: '<<',
-        nav_label_last: '>>',
-        nav_label_prev: '<',
-        nav_label_next: '>'
+    jQuery("#main-news-list").paginathing({
+        perPage: 10,
+        limitPagination: 5,
+        prevNext: true,
+        firstLast: true,
+        prevText: '<',
+        nextText: '>',
+        firstText: '<<',
+        lastText: '>>',
+        activeClass: 'active',
     });
-    jQuery("#searches-result").pajinate({
-        items_per_page: 8,
-        item_container_id: '.searches-list',
-        nav_panel_id: '.searches_page_navigation',
-        num_page_links_to_display: 4,
-        nav_label_first: '<<',
-        nav_label_last: '>>',
-        nav_label_prev: '<',
-        nav_label_next: '>'
+    jQuery("#searches-result").paginathing({
+        perPage: 8,
+        limitPagination: 5,
+        prevNext: true,
+        firstLast: true,
+        prevText: '<',
+        nextText: '>',
+        firstText: '<<',
+        lastText: '>>',
+        activeClass: 'active',
     });
 
-    jQuery("#section-affiche-list").pajinate({
-        items_per_page: 10,
-        item_container_id: '.affiche-list',
-        nav_panel_id: '.affiche_page_navigation',
-        num_page_links_to_display: 4,
-        nav_label_first: '<<',
-        nav_label_last: '>>',
-        nav_label_prev: '<',
-        nav_label_next: '>'
+    jQuery("#section-affiche-list").paginathing({
+        perPage: 10,
+        limitPagination: 5,
+        prevNext: true,
+        firstLast: true,
+        prevText: '<',
+        nextText: '>',
+        firstText: '<<',
+        lastText: '>>',
+        activeClass: 'active',
     });
-    jQuery("#section-shares-list").pajinate({
-        items_per_page: 10,
-        item_container_id: '.shares-list',
-        nav_panel_id: '.shares_page_navigation',
-        num_page_links_to_display: 4,
-        nav_label_first: '<<',
-        nav_label_last: '>>',
-        nav_label_prev: '<',
-        nav_label_next: '>'
+    jQuery("#section-shares-list").paginathing({
+        perPage: 10,
+        limitPagination: 5,
+        prevNext: true,
+        firstLast: true,
+        prevText: '<',
+        nextText: '>',
+        firstText: '<<',
+        lastText: '>>',
+        activeClass: 'active',
     });
 });
 if (jQuery(window).width() < 425) {
     jQuery(document).ready(function ($) {
-        jQuery("#section-ads-list").pajinate({
-            items_per_page: 10,
-            item_container_id: '.ads-list',
-            nav_panel_id: '.ads_page_navigation',
-            num_page_links_to_display: 2,
-            nav_label_first: '<<',
-            nav_label_last: '>>',
-            nav_label_prev: '<',
-            nav_label_next: '>'
+        jQuery("#section-ads-list").paginathing({
+            perPage: 10,
+            limitPagination: 5,
+            prevNext: true,
+            firstLast: true,
+            prevText: '<',
+            nextText: '>',
+            firstText: '<<',
+            lastText: '>>',
+            activeClass: 'active',
         });
-        jQuery("#main-news-list").pajinate({
-            num_page_links_to_display: 2,
-        });
-        jQuery("#section-affiche-list").pajinate({
-            num_page_links_to_display: 2,
-        });
-        jQuery("#section-shares-list").pajinate({
-            num_page_links_to_display: 2,
-        });
+        // jQuery("#main-news-list").paginathing({
+        //     num_page_links_to_display: 2,
+        // });
+        // jQuery("#section-affiche-list").pajinate({
+        //     num_page_links_to_display: 2,
+        // });
+        // jQuery("#section-shares-list").pajinate({
+        //     num_page_links_to_display: 2,
+        // });
     });
 }
 jQuery(document).ready(function ($) {
@@ -950,15 +948,3 @@ function diplay_hide(blockId) {
         jQuery(blockId).slideUp(500);
     }
 }
-
-jQuery(document).on('click', '.submitDeleteEntry', function () {
-    var id = this.id;
-    //alert(id);
-    jQuery.ajax({
-        type: 'POST',
-        url: my_ajax_object.ajax_url,
-        data: {"action": "fws_delete_row", "id": id},
-        success: function (data) {
-        }
-    });
-});

@@ -24,14 +24,10 @@
 <script src="{{ asset('js/slick.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-    });
-
-</script>
-
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/paginathing.min.js') }}"></script>
+<script src="{{ asset('js/jquery.collapsorz_1.1.min.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 <script src="{{ asset('js/wow.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="{{ asset('js/app.js') }}"></script>

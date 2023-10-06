@@ -109,65 +109,19 @@
 
 <!-- MODAL SECTION -->
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/select2.min.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/admin.js') }}"></script>
 <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
 <script src="{{ asset('js/paginathing.min.js') }}"></script>
+<script src="{{ asset('js/jquery.collapsorz_1.1.min.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 
 
 <script>
-    $(document).ready(function () {
-        // Get the blocked dates from PHP variable (passed from the controller)
 
-        // Function to initialize TinyMCE for the new editor
-        function initializeTinyMCE(editorId) {
-            tinymce.init({
-                selector: '#' + editorId,
-                // Additional TinyMCE settings...
-                plugins: 'advlist code table lists link image media emoticons codesample save visualblocks',
-                menubar: 'insert',
-                setup: function (editor) {
-                    editor.on('init change', function () {
-                        editor.save();
-                    });
-                },
-                images_file_types: 'jpg,svg,webp,png',
-                toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist advlist | code codesample | table | '
-                    + 'link image save visualblocks',
-                image_title: true,
-                automatic_uploads: true,
-                images_upload_url: '/upload/images',
-                file_picker_types: 'image',
-                file_picker_callback: function (cb, value, meta) {
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'file');
-                    input.setAttribute('accept', 'image/*');
-                    input.onchange = function () {
-                        var file = this.files[0];
-
-                        var reader = new FileReader();
-                        reader.readAsDataURL(file);
-                        reader.onload = function () {
-                            var id = 'blobid' + (new Date()).getTime();
-                            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-                            var base64 = reader.result.split(',')[1];
-                            var blobInfo = blobCache.create(id, file, base64);
-                            blobCache.add(blobInfo);
-                            cb(blobInfo.blobUri(), {title: file.name});
-                        };
-                    };
-                    input.click();
-                }
-            });
-        }
-
-
-        initializeTinyMCE('description-editor');
-        initializeTinyMCE('about-company');
-
-
-    });
 </script>
 </body>
 </html>

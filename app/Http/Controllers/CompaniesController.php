@@ -22,6 +22,7 @@
             return view('admin.company.companies', compact('companies'));
         }
 
+
         public function list(Request $request)
         {
             $companies = TestCompany::paginate(20);
@@ -45,6 +46,10 @@
             // Validate and process the selected posts
             $selectedPostIds = $request->input('selected_posts');
             $categories = $request->input('categories');
+            $thumbnail = $request->file('image');
+
+// Отримайте URL завантаженого зображення
+            $imageUrl = $thumbnail->storeUs('custom');
 //            $phones = $request->input('phones');
 //            $phoneComments = $request->input('phone_comment');
 //            $faxValues = $request->input('fax');
@@ -66,7 +71,7 @@
 //                    'contacts_fax' => $isFax,
 //                ]);
 //            }
-            dd($categories);
+            dd($imageUrl);
             return redirect()->back()->with('success', 'Selected posts saved successfully.');
 
         }
@@ -76,6 +81,22 @@
             $categories = CompanyCategory::where('parent_id', null)->with('subcategories')->get();
 
             return view('pages.company.company-category', compact('categories'));
+        }
+
+        function uploadImage(Request $request)
+        {
+            $uploadedFile = $request->file('file');
+            $originalFilename = $uploadedFile->getClientOriginalName();
+            $year = date('Y');
+            $month = date('m');
+
+// Generate the custom path
+            $customPath = "uploads/{$year}/{$month}";
+
+// Use storeAs with the custom path
+            $path = $uploadedFile->storeAs($customPath, $originalFilename, 'custom');
+// Return the URL
+            return response()->json(['location' => "/{$path}"]);
         }
 
         /**

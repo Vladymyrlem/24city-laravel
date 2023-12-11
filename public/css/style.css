@@ -302,7 +302,17 @@ div.head nav.top-navigation-wrapper div ul {
 /*#cart-punkt > a .cart-ico {width: 30%; background-color: #94e100; color: #fff;}*/
 
 /*#cart-punkt > a .cart-txt {width: 70%; text-align: left; padding-left: 15px; font-size: 12px;}*/
+.vs--searchable .vs__dropdown-toggle {
+    height: auto;
+}
 
+.vs__selected-options {
+    flex-wrap: wrap !important;
+}
+
+.vs__selected {
+    margin-right: 10px;
+}
 
 div.wrapper-front {
     display: flex;

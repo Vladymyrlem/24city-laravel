@@ -13,6 +13,7 @@
             unset($_SESSION['success']);
         @endphp
     @endisset
+    <a href="{{ route('adminCompaniesTrash') }}">Корзина</a>
     <table class="table table-bordered table-hover table-dark">
         <thead>
         <tr>
@@ -36,7 +37,7 @@
                 <th scope="row">{{ $post->id }}</th>
                 <td><a class="company-title post-title" href="{{ route('company.show', $post->id) }}">{{ $post->title_company }}</a>
                     <div class="actions-list" style="display:none;">
-                        <a href="/">Удалить</a>&nbsp;<a href="/">Редактировать</a>
+                        <a href="{{ route('company.delete', $post->id) }}">Удалить</a>&nbsp;<a href="{{ route('company.edit', $post->id) }}">Редактировать</a>
                     </div>
                 </td>
                 <td>{!! parseGalleryShortcode($post->content) !!}
@@ -63,24 +64,48 @@
                     @endif
                 </td>
                 <td>
-                    @foreach ($post->categories as $category)
-                        @if ($category->parent_id === null)
-                            <!-- Parent Category -->
-                            <strong><a href="{{ route('company.company-category-show', ['id' => $category->id]) }}">{{ $category->name }}</a>
-                            </strong>
-                            <ul>
-                                @foreach ($post->categories as $subcategory)
-                                    @if ($subcategory->parent_id === $category->id)
-                                        <!-- Subcategory -->
+                    <ul>
+                        @foreach ($post->categories->where('parent_id', null) as $parentCategory)
+                            <li>
+                                <a href="{{ route('company.company-category-show', $parentCategory->id) }}">
+                                    <h3> {{ $parentCategory->name }}</h3>
+                                </a>
+                                <ul>
+                                    @foreach ($post->categories->where('parent_id', $parentCategory->id) as $childCategory)
                                         <li>
-                                            <a href="{{ route('company.company-category-show', ['id' => $subcategory->id]) }}">
-                                            {{ $subcategory->name }}</li>
+                                            <h4>
+                                                <a href="{{ route('company.company-category-show', $childCategory->id) }}">
+                                                    {{ $childCategory->name }}
+                                                </a>
+                                            </h4>
+                                            <ul>
+                                                @foreach ($post->categories->where('parent_id', $childCategory->id) as $subchildCategory)
+                                                    <li>
+                                                        <h5>
+                                                            <a href="{{ route('company.company-category-show', $subchildCategory->id) }}">
+                                                                {{ $subchildCategory->name }}
+                                                            </a>
+                                                        </h5>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endforeach
+                        @foreach ($post->categories as $category)
+                            @if (!$post->categories->contains('id', $category->parent_id) && $category->parent_id !== null)
+                                <li>
+                                    <h5>
+                                        <a href="{{ route('company.company-category-show', $category->id) }}">
+                                            {{ $category->name }}
                                         </a>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        @endif
-                    @endforeach
+                                    </h5>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
                 </td>
                 <td>{{$post->created_at}}</td>
             </tr>

@@ -11,10 +11,7 @@
             <th scope="col">Title</th>
             <th scope="col">Content</th>
             <th scope="col">Thumb</th>
-            <th scope="col">address</th>
-            <th scope="col">About Company</th>
-            <th scope="col">Category Company</th>
-            <th scope="col">Contacts</th>
+            <th scope="col">Category</th>
             <th scope="col">Created_at</th>
         </tr>
         </thead>
@@ -30,7 +27,8 @@
                 @foreach ($ads->categories as $category)
                     @if ($category->parent_id === null)
                         <!-- Parent Category -->
-                        <strong><a href="{{ route('ads.ads-category-show', $category->id) }}">{{ $category->name }}</a>
+                        <strong><a
+                                href="{{ route('admin.ads-category-show', $category->id) }}">{{ $category->name }}</a>
                         </strong>
                         <ul>
                             @foreach ($ads->categories as $subcategory)

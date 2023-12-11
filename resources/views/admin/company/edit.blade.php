@@ -1,85 +1,155 @@
-@extends('admin.layouts.layout')
+@extends('layouts.app')
 
+@section('scripts')
+    <script src="{{ asset('js/app.js') }}"></script>
+
+@endsection
 @section('content')
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2 flex-column align-items-center">
+            <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="text-center">Редактирование категории</h1>
-                </div>
+                    <h1 class="m-0">Dashboard</h1>
+                </div><!-- /.col -->
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right d-flex justify-content-center">
-                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('adminCategory')}}">Categories</a></li>
-                        <li class="breadcrumb-item active">{{ $category->title }}</li>
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard v1</li>
                     </ol>
-                </div>
-            </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
         </div><!-- /.container-fluid -->
-    </section>
+    </div>
+    <!-- /.content-header -->
 
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+
+
+            <!-- Main row -->
             <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Категория "{{ $category->title }}"</h3>
+                <section class="col-lg-12 connectedSortable">
+                    <form role="form" action="{{ route('company.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('post')
+                        <div class="input-group mb-3">
+                            <label for="title_company" class="form-label">Название компании</label>
+                            <input type="text" name="title" id="title_company" class="form-control"/>
                         </div>
-                        <!-- /.card-header -->
 
-                        <form role="form" method="post"
-                              action="{{ route('adminCategoryUpdate', ['id' => $category->id]) }}">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="id" value="{{ $category->id }}">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="title">Title</label>
-                                    <input type="text" name="title"
-                                           class="form-control @error('title') is-invalid @enderror" id="title"
-                                           value="{{ $category->title }}">
-                                </div>
-                            </div>
-                            @if($errors->has('title'))
-                                @foreach($errors->get('title') as $error)
-                                    <div class="alert alert-danger" role="alert">
-                                        {{ $error }}
-                                    </div>
-                                @endforeach
-                            @endif
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="slug">Slug</label>
-                                    <input type="text" name="slug"
-                                           class="form-control @error('title') is-invalid @enderror" id="slug"
-                                           value="{{ $category->slug }}">
-                                </div>
-                            </div>
-                            @if($errors->has('slug'))
-                                @foreach($errors->get('slug') as $error)
-                                    <div class="alert alert-danger" role="alert">
-                                        {{ $error }}
-                                    </div>
-                                @endforeach
-                            @endif
-                            <!-- /.card-body -->
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Сохранить</button>
-                            </div>
-                        </form>
+                        <div class="company-categories mb-3" id="select2">
+                            <label for="company-category" class="form-label">Катeгорії компаній</label>
 
-                    </div>
-                    <!-- /.card -->
+                            <select2></select2>
+                        </div>
+                        <div id="company-thumbnail">
+                            <label for="">Картинка компании</label>
+                            <input type="file" name="thumbnail">
+                            {{--                            <image-upload></image-upload>--}}
+                        </div>
+                        <div id="address" class="mb-3">
+                            <label for="address-content-list">Адрес сайта
+                            </label>
+                            <address></address>
+                        </div>
+                        <div id="related-posts">
+                            <h3>Связанные компании, филиалы
+                            </h3>
+                            <related-posts></related-posts>
+                        </div>
+                        <div id="company-tags">
+                            <h3>Теги
+                            </h3>
+                            <tags></tags>
+                        </div>
+                        <div class="input-group">
+                            <label for="">Начальство
+                            </label>
+                            <div class="input-group-text bg-light p-4">
+                                <label for="">Должность</label>
+                                <input type="text" name="boss" id="boss-position">
+                            </div>
+                            <div class="input-group-text bg-light p-4">
+                                <label for="">Инициалы</label>
+                                <input type="text" name="boss_initials" id="boss-initials">
+                            </div>
+                        </div>
+                        <div id="phones" class="mb-3">
+                            <label for="">Контакты</label>
+                            <phone-numbers></phone-numbers>
+                        </div>
+                        <div id="emails">
+                            <label for="">Emails List</label>
+                            <emails></emails>
+                        </div>
+                        <div id="about-company-content">
+                            <label for="about-company">О Компании</label>
+                            <textarea name="about_company" id="about-company" cols="30" rows="10"></textarea>
+                        </div>
 
-                </div>
-                <!-- /.col -->
+
+                        <div id="social-list" class="mb-3">
+                            <label for="">Ccылки на соцсети</label>
+                            <social-list></social-list>
+                        </div>
+                        <div id="connectivity-list">
+                            <label for="">Другие варианты связи</label>
+                            <connectivity-list></connectivity-list>
+                        </div>
+                        <div id="payments">
+                            <h3>Оплата</h3>
+                            <div class="bg-light">
+                                <payment-methods></payment-methods>
+                            </div>
+                        </div>
+                        <div id="services-list-content">
+                            <label for="about-company">Предоставляемые услуги</label>
+                            <p>
+                                Напишите что произошло, где, когда это было. В своем сообщении укажите настоящие имена и
+                                фамилии, или предоставьте фото документов
+                                или писем если речь идет о взаимодействии с органами власти или коммерческими
+                                структурами. Если есть видео в текст сообщения вставьте
+                                ссылку для размещения видеоматериала. Что бы ускорить процесс проверки сообщите ваш
+                                номер меседжера или профиль в соц сети для связи
+                                с вами если возникнут дополнительные вопросы
+                            </p>
+                            <textarea name="about_company" id="about-company" cols="30" rows="10"></textarea>
+                        </div>
+                        <div id="additional-information-content">
+                            <label for="additional_information">Дополнительная информация
+                            </label>
+                            <p>
+                                Напишите что произошло, где, когда это было. В своем сообщении укажите настоящие имена и
+                                фамилии, или предоставьте фото документов
+                                или писем если речь идет о взаимодействии с органами власти или коммерческими
+                                структурами. Если есть видео в текст сообщения вставьте
+                                ссылку для размещения видеоматериала. Что бы ускорить процесс проверки сообщите ваш
+                                номер меседжера или профиль в соц сети для связи
+                                с вами если возникнут дополнительные вопросы
+                            </p>
+                            <textarea name="additional_information" id="additional-information" cols="30"
+                                      rows="10"></textarea>
+                        </div>
+
+                        <div id="gallery">
+                            {{--                            <vue-multi-image-upload></vue-multi-image-upload>--}}
+                        </div>
+                        <div id="related-news">
+                            <h3>Новости</h3>
+                            <div class="bg-light">
+                                <related-news></related-news>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-default">Save Posts</button>
+                    </form>
+                </section>
+
             </div>
-            <!-- /.row -->
+            <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 @endsection
-

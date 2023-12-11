@@ -35,6 +35,7 @@ $(document).ready(function () {
     });
 });
 export default {
+    name: 'Address',
     data() {
         return {
             isModalOpen: false,

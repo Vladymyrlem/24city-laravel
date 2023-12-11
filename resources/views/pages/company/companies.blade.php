@@ -2,9 +2,12 @@
 
 @section('title', 'Companies page')
 
+@section('scripts')
+    <script src="{{ asset('js/app.js') }}"></script>
+@endsection
 @section('content')
     <h1>Companies Page</h1>
-    {{ Breadcrumbs::render('company.index') }}
+    {{--    {{ Breadcrumbs::render('company.index') }}--}}
 
     @isset($_SESSION['success'])
         <div class="alert alert-info" role="alert">
@@ -26,6 +29,7 @@
             <th scope="col">Services List</th>
             <th scope="col">Additional Information</th>
             <th scope="col">Contacts</th>
+            <th scope="col">Email</th>
             <th scope="col">Payments</th>
             <th scope="col">Categories</th>
             <th scope="col">Created_at</th>
@@ -61,6 +65,16 @@
                     @endif
                 </td>
                 <td>
+                    @if(!empty($post->emails))
+                        <ul>
+                            @foreach ($post->emails as $email)
+                                <li><a href="mailto:{{ $email->link	 }}">{{ $email->value }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </td>
+                <td>
                     @if(!empty($post->payments))
                         <ul>
 
@@ -73,28 +87,57 @@
                     @endif
                 </td>
                 <td>
-                    @if(!empty($post->categories))
-                        @foreach ($post->categories as $category)
-                            @if ($category->parent_id === null)
-                                <!-- Parent Category -->
-                                <strong><a href="{{ route('company.company-category-show', ['id' => $category->id]) }}">{{ $category->name }}</a>
-                                </strong>
+                    <ul>
+                        @foreach ($post->categories->where('parent_id', null) as $parentCategory)
+                            <li>
+                                <a href="{{ route('company.company-category-show', $parentCategory->id) }}">
+                                    <h3> {{ $parentCategory->name }}</h3>
+                                </a>
                                 <ul>
-                                    @foreach ($post->categories as $subcategory)
-                                        @if ($subcategory->parent_id === $category->id)
-                                            <!-- Subcategory -->
-                                            <li>
-                                                <a href="{{ route('company.company-category-show', ['id' => $subcategory->id]) }}">
-                                                {{ $subcategory->name }}</li>
-                                            </a>
-                                        @endif
+                                    @foreach ($post->categories->where('parent_id', $parentCategory->id) as $childCategory)
+                                        <li>
+                                            <h4>
+                                                <a href="{{ route('company.company-category-show', $childCategory->id) }}">
+                                                    {{ $childCategory->name }}
+                                                </a>
+                                            </h4>
+                                            <ul>
+                                                @foreach ($post->categories->where('parent_id', $childCategory->id) as $subchildCategory)
+                                                    <li>
+                                                        <h5>
+                                                            <a href="{{ route('company.company-category-show', $subchildCategory->id) }}">
+                                                                {{ $subchildCategory->name }}
+                                                            </a>
+                                                        </h5>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
                                     @endforeach
                                 </ul>
+                            </li>
+                        @endforeach
+                        @foreach ($post->categories as $category)
+                            @if (!$post->categories->contains('id', $category->parent_id) && $category->parent_id !== null)
+                                <li>
+                                    <h5>
+                                        <a href="{{ route('company.company-category-show', $category->id) }}">
+                                            {{ $category->name }}
+                                        </a>
+                                    </h5>
+                                </li>
                             @endif
                         @endforeach
-                    @else
-                        {{ 'Categories not found' }}
-                    @endif
+                    </ul>
+
+
+                    {{--                    @if($post->categories->count() > 0)--}}
+
+                    {{--                    @include('pages.company.partials.categories', ['categories' => $post->categoryTree])--}}
+
+                    {{--                    @else--}}
+                    {{--                        {{ 'Categories not found' }}--}}
+                    {{--                    @endif--}}
                 </td>
                 <td>{{$post->created_at}}</td>
             </tr>

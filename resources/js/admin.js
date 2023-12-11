@@ -45,46 +45,33 @@ jQuery(document).ready(function () {
 
     initializeTinyMCE('description-editor');
     initializeTinyMCE('about-company');
-
+    initializeTinyMCE('services-list');
+    initializeTinyMCE('additional-information');
+    // jQuery('#company-category').select2({
+    //     placeholder: 'Select an option'
+    // });
 });
 
 jQuery(document).ready(function () {
-    jQuery('#all-posts').on('change', 'input[type="checkbox"]', function ($) {
-        var $selectedPostsList = jQuery('#selected-posts');
-
-        // Clear the selected posts list
-        $selectedPostsList.empty();
-
-        // Iterate through checkboxes to add selected posts to the selected list
-        jQuery('#all-posts input[type="checkbox"]:checked').each(function () {
-            var postId = jQuery(this).val();
-            var postTitle = jQuery(this).closest('li').text();
-            $selectedPostsList.append('<li><input type="hidden" name="selected_posts[]" value="' + postId + '">' + postTitle + '</li>');
-        });
-    });
+    // jQuery('#all-posts').on('change', 'input[type="checkbox"]', function ($) {
+    //     var $selectedPostsList = jQuery('#selected-posts');
+    //
+    //     // Clear the selected posts list
+    //     $selectedPostsList.empty();
+    //
+    //     // Iterate through checkboxes to add selected posts to the selected list
+    //     jQuery('#all-posts input[type="checkbox"]:checked').each(function () {
+    //         var postId = jQuery(this).val();
+    //         var postTitle = jQuery(this).closest('li').text();
+    //         $selectedPostsList.append('<li><input type="hidden" name="selected_posts[]" value="' + postId + '">' + postTitle + '</li>');
+    //     });
+    // });
     jQuery('.post-title').on('hover', function () {
         jQuery(this).find('.actions-list').show();
     });
 
-    jQuery("#company-categories").DataTable();
-    jQuery('#company-category').select2({
-        placeholder: 'Select an option'
+    // jQuery("#company-categories").DataTable();
 
-    });
 
-});
-
-jQuery(document).ready(function ($) {
-    jQuery(".companies-list").paginathing({
-        perPage: 10,
-        limitPagination: 5,
-        prevNext: true,
-        firstLast: true,
-        prevText: '<',
-        nextText: '>',
-        firstText: '<<',
-        lastText: '>>',
-        activeClass: 'active',
-    });
 });
 

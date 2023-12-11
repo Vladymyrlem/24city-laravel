@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.1.0",
         "almasaeed2010/adminlte": "~3.1",
+        "barryvdh/laravel-cors": "*",
         "barryvdh/laravel-debugbar": "^3.9",
         "diglactic/laravel-breadcrumbs": "^8.1",
         "genert/bbcode": "^1.1",

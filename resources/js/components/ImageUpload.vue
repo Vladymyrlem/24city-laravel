@@ -1,38 +1,47 @@
 <template>
     <div>
-        <input type="file" name="image" @change="handleFileUpload" accept="image/*">
-        <img v-if="previewUrl" :src="previewUrl" alt="Preview">
-        <input type="hidden" name="thumb_url" v-model="imageUrl">
+        <input type="file" @change="uploadImage" accept="image/*">
+
+        <div v-for="image in images" :key="image.id">
+            <img :src="image.image_path" alt="Зображення">
+        </div>
     </div>
 </template>
 
 <script>
 export default {
+    name: 'Company Thumbnail',
     data() {
         return {
-            previewUrl: null,
-            imageUrl: null,
-            selectedFile: null,
+            images: [], // Масив для збереження зображень
         };
     },
     methods: {
-        handleFileUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const file = event.target.files[0];
-                const formData = new FormData();
-                formData.append('file', file);
+        uploadImage(event) {
+            const formData = new FormData();
+            formData.append('image', event.target.files[0]);
 
-                axios.post('http://24city-laravel/api/upload-image', formData)
-                    .then(response => {
-                        // Отримайте URL з відповіді та призначте його змінній imageUrl
-                        this.imageUrl = response.data.location;
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
+            axios.post('/api/images', formData)
+                .then(response => {
+                    console.log(response.data.message);
+                    this.fetchImages(); // Оновити список зображень
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         },
+        fetchImages() {
+            axios.get('http://24city.laravel/api/images')
+                .then(response => {
+                    this.images = response.data;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        },
+    },
+    mounted() {
+        this.fetchImages(); // Отримати список зображень під час завантаження компонента
     },
 };
 </script>

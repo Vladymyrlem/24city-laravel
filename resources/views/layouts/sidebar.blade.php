@@ -1,7 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
-        <img src="{{asset('/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{asset('/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+             style="opacity: .8">
         <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
@@ -68,7 +69,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">
+                            <a href="{{ route('admin.company.create') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Создать компанию</p>
                             </a>
@@ -91,17 +92,17 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('ads.list') }}" class="nav-link">
+                            <a href="{{ route('admin.ads.list') }}" class="nav-link">
                                 <p>Все объявления</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">
-                                <p>Создать объявления</p>
+                            <a href="{{ route('admin.ads.create') }}" class="nav-link">
+                                <p>Создать объявление</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">
+                            <a href="{{ route('admin.ads-categories') }}" class="nav-link">
                                 <p>Категории объявлений</p>
                             </a>
                         </li>

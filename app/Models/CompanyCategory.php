@@ -11,6 +11,8 @@
 //    protected $primaryKey = 'category_id';
         protected $fillable = ['id', 'name', 'slug', 'image', 'parent_id'];
 
+        protected $connection = 'testing';
+
 
         public function category()
         {

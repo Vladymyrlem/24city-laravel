@@ -18,6 +18,7 @@
 import {VueMultiImageUpload} from '@zakerxa/vue-multiple-image-upload';
 
 export default {
+    name: 'Gallery',
     data() {
         return {
             component: {},

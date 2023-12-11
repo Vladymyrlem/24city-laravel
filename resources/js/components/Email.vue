@@ -23,6 +23,8 @@
         <div class="list-group">
             <div v-for="(email, index) in emails" :key="index" class="email-item list-group-item row">
                 <a :href="'mailto:' + email.address" class="col-md-9">{{ email.text }}</a>
+                <input type="hidden" name="email_text[]" :value="email.text">
+                <input type="hidden" name="email_link[]" :value="email.address">
                 <button @click="deleteEmail(index)" class="col-md-3 btn btn-danger">Видалити</button>
             </div>
         </div>
@@ -38,6 +40,7 @@ $(document).ready(function () {
     });
 });
 export default {
+    name: 'Email',
     data() {
         return {
             isModalOpen: false,

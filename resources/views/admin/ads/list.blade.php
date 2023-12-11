@@ -21,6 +21,7 @@
             <th scope="col">Excerpt</th>
             <th scope="col">Thumb</th>
             <th scope="col">Categories</th>
+            <th scope="col">Actions</th>
             <th scope="col">Created_at</th>
         </tr>
         </thead>
@@ -38,7 +39,8 @@
                     @foreach ($post->categories as $category)
                         @if ($category->parent_id === null)
                             <!-- Parent Category -->
-                            <strong><a href="{{ route('ads.ads-category-show', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                            <strong><a
+                                    href="{{ route('ads.ads-category-show', ['id' => $category->id]) }}">{{ $category->name }}</a>
                             </strong>
                             <ul>
                                 @foreach ($post->categories as $subcategory)
@@ -54,16 +56,18 @@
                         @endif
                     @endforeach
                 </td>
+                <td class="d-flex">
+                    <a href="{{ route('admin.ads.edit', $post->id) }}" class="btn btn-danger ml-2">Delete</a>
+                    <a href="{{ route('admin.ads.delete', $post->id) }}" class="btn btn-danger">Delete</a>
+                </td>
                 <td>{{$post->created_at}}</td>
             </tr>
         @endforeach
         </tbody>
     </table>
-    <div class="card-footer clearfix">
-        {{ $ads->links('vendor.pagination.custom') }}
-    </div>
-    <?php
-    ?>
+    {{--    <div class="card-footer clearfix">--}}
+    {{--        {{ $ads->links('vendor.pagination.custom') }}--}}
+    {{--    </div>--}}
 
 @endsection
 

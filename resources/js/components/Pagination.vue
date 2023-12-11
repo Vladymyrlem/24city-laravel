@@ -1,38 +1,47 @@
-<template id="page">
-    <nav aria-label="Page navigation">
+<template>
 
-        <ul class="pagination">
-
-            <li class="page-item" v-if="active > 3 && length > 6">
-                <a class="page-link" href="#" @click.stop.prevent="update(0)">{{ 1 }}</a>
+    <div>
+        <ul>
+            <!-- Відобразіть пости з властивості displayedItems -->
+            <li v-for="company in displayedItems" :key="company.id">
+                <!-- Ваш код для відображення поста -->
             </li>
-
-            <li v-if="active > 3 && length > 6" class="disabled page-item">
-                <a class="page-link" href="#">...</a>
-            </li>
-
-            <li class="page-item" v-for="n in numbers" :class="{'active' : n === active}">
-                <a class="page-link" href="#" @click.stop.prevent="update(n)">{{ n + 1 }}</a>
-            </li>
-
-            <li v-if="active < length-4 && length > 6" class="disabled page-item">
-                <a class="page-link" href="#">...</a>
-            </li>
-
-            <li class="page-item" v-if="active < length-4 && length > 6">
-                <a class="page-link" href="#" @click.stop.prevent="update(length-1)">{{ length }}</a>
-            </li>
-
         </ul>
-    </nav>
-</template>
+        <nav aria-label="Page navigation">
 
+            <ul class="pagination">
+
+                <li class="page-item" v-if="active > 3 && length > 6">
+                    <a class="page-link" href="#" @click.stop.prevent="update(0)">{{ 1 }}</a>
+                </li>
+
+                <li v-if="active > 3 && length > 6" class="disabled page-item">
+                    <a class="page-link" href="#">...</a>
+                </li>
+
+                <li class="page-item" v-for="n in numbers" :class="{'active' : n === active}">
+                    <a class="page-link" href="#" @click.stop.prevent="update(n)">{{ n + 1 }}</a>
+                </li>
+
+                <li v-if="active < length-4 && length > 6" class="disabled page-item">
+                    <a class="page-link" href="#">...</a>
+                </li>
+
+                <li class="page-item" v-if="active < length-4 && length > 6">
+                    <a class="page-link" href="#" @click.stop.prevent="update(length-1)">{{ length }}</a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</template>
 <script>
 export default {
+    name: 'Pagination',
     data: function () {
         return {
             n: 0,
-            active: 1
+            active: 0,
         }
     },
 
@@ -40,8 +49,8 @@ export default {
 
     computed: {
         length: function () {
-            console.log('length' + this.companies.length)
-            console.log('count' + this.count)
+            console.log('length: ' + this.companies.length)
+            console.log('count: ' + Math.ceil(this.companies.length / this.count))
             return Math.ceil(this.companies.length / this.count);
         },
 
@@ -68,23 +77,26 @@ export default {
         },
 
         numbers: function () {
-            var temp = [];
-            for (var i = this.min; i < this.max; i++) {
-                temp.push(i);
-            }
-            return temp
-        }
+            const pageCount = Math.ceil(this.companies.length / this.count);
+            const min = this.active < 3 ? 0 : this.active - 2;
+            const max = this.active < 3 ? Math.min(5, pageCount) : Math.min(this.active + 3, pageCount);
+
+            return Array.from({length: max - min}, (_, i) => min + i);
+        },
+
+
+        displayedItems() {
+            const start = this.active * this.count;
+            const end = start + this.count;
+            return this.companies.slice(start, end);
+        },
     },
 
     methods: {
         update: function (n) {
             this.active = n;
-            this.$emit('page-item', this.active); // Відправити подію до батьківського компонента
-        }
+            this.$emit('page-item', this.active);
+        },
     }
 }
 </script>
-
-<style scoped>
-
-</style>

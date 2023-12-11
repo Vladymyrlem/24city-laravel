@@ -20,12 +20,13 @@
 
 <script>
 export default {
+    name: 'Social List',
     data() {
         return {
             links: [
                 {
                     url: '',
-                    messenger: 'Skype'
+                    messenger: 'Facebook'
                 }
             ]
         };
@@ -35,7 +36,7 @@ export default {
             event.preventDefault();
             this.links.push({
                 url: '',
-                messenger: 'Skype'
+                messenger: 'Facebook'
             });
         },
         deleteLink(index) {

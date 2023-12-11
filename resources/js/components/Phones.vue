@@ -27,6 +27,7 @@
 
 <script>
 export default {
+    name: 'Phones',
     data() {
         return {
             items: [{phone: '', comment: '', isFax: false}]

@@ -1,15 +1,17 @@
 <?php
 
-    use Illuminate\Database\Migrations\Migration;
-    use Illuminate\Database\Schema\Blueprint;
-    use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-    return new class extends Migration {
-        /**
-         * Run the migrations.
-         */
-        public function up(): void
-        {
+return new class extends Migration {
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        if (!Schema::hasTable('test_contacts')) {
+
             Schema::create('test_contacts', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('company_id'); // Зовнішній ключ для зв'язку з companies таблицею
@@ -23,12 +25,13 @@
                 $table->timestamps();
             });
         }
+    }
 
-        /**
-         * Reverse the migrations.
-         */
-        public function down(): void
-        {
-            Schema::dropIfExists('test_contacts');
-        }
-    };
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('test_contacts');
+    }
+};

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'PANEL ADMIN') }}</title>
+    <title>@yield('title')</title>
     <meta name="_token" content="{!! csrf_token() !!}"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -15,8 +15,11 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="{{ asset('css/vue3-select.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://select2.github.io/select2-bootstrap-theme/css/select2-bootstrap.css">
 
     @yield('styles')
 
@@ -88,7 +91,8 @@
 
 </div>
 <!-- ./wrapper -->
-
+<!-- Passing BASE URL to AJAX -->
+<input id="url" type="hidden" value="{{ \Request::url() }}">
 <!-- REQUIRED SCRIPTS -->
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -97,28 +101,27 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
 <script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
-<script src="{{ asset('js/admin.js') }}"></script>
 <script src="{{ asset('js/slick.min.js') }}"></script>
 
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
 
-@yield('scripts')
-<!-- Passing BASE URL to AJAX -->
-<input id="url" type="hidden" value="{{ \Request::url() }}">
+{{--@yield('scripts')--}}
+
 
 <!-- MODAL SECTION -->
+<script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('js/select2.min.js') }}"></script>
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('js/admin.js') }}"></script>
-<script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
 <script src="{{ asset('js/paginathing.min.js') }}"></script>
 <script src="{{ asset('js/jquery.collapsorz_1.1.min.js') }}"></script>
-<script src="{{ asset('js/script.js') }}"></script>
+<script src="{{ asset('js/admin.js') }}" async></script>
 
+<script src="{{ asset('js/script.js') }}" async></script>
+@yield('scripts')
 
 <script>
 

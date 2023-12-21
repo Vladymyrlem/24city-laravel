@@ -1,8 +1,9 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\AdsController;
-use App\Http\Controllers\AdsCategoryController;
+use App\Http\Controllers\Admin\AdsController;
+use App\Http\Controllers\Admin\AdsCategoryController;
 
 Route::get('/ads', [AdsController::class, 'index'])->name('admin.ads.list');
 Route::get('/ads/create', [AdsController::class, 'create'])->name('admin.ads.create');

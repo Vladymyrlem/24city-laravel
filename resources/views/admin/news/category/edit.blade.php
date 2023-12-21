@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right d-flex justify-content-center">
                         <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('admin.ads-categories')}}">Ads Categories</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.company-categories')}}">Categories</a></li>
                         <li class="breadcrumb-item active">{{ $category->name }}</li>
                     </ol>
                 </div>
@@ -31,7 +31,7 @@
                         <!-- /.card-header -->
 
                         <form role="form" method="post"
-                              action="{{ route('adminCompanyCategoryUpdate', $category->id) }}">
+                              action="{{ route('adminNewsCategoryUpdate', $category->id) }}">
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="id" value="{{ $category->id }}">
@@ -76,7 +76,7 @@
                                                 {{ str_repeat('-', $cat->depth) . $cat->name }}
                                             </option>
                                             @if (!empty($cat->children))
-                                                @include('admin.ads.category.subcategories', ['categories' => $cat->children, 'selectedCategoryId' => $currentCategory->id])
+                                                @include('admin.news.category.subcategories', ['categories' => $cat->children, 'selectedCategoryId' => $currentCategory->id])
                                             @endif
                                         @endforeach
                                     </select>

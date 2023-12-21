@@ -22,7 +22,7 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <form role="form" action="{{ route('company.store') }}" method="post" enctype="multipart/form-data">
+            <form role="form" action="{{ route('admin.company.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('post')
 
@@ -216,7 +216,8 @@
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
-                                <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
+                                <button type="button" class="btn btn-tool" title="Contacts"
+                                        data-widget="chat-pane-toggle">
                                     <i class="fas fa-comments"></i>
                                 </button>
                                 <button type="button" class="btn btn-tool" data-card-widget="remove">
@@ -235,7 +236,8 @@
                                         <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                                     </div>
                                     <!-- /.direct-chat-infos -->
-                                    <img class="direct-chat-img" src="{{ asset('/img/user1-128x128.jpg') }}" alt="message user image">
+                                    <img class="direct-chat-img" src="{{ asset('/img/user1-128x128.jpg') }}"
+                                         alt="message user image">
                                     <!-- /.direct-chat-img -->
                                     <div class="direct-chat-text">
                                         Is this template really for free? That's unbelievable!
@@ -251,7 +253,8 @@
                                         <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
                                     </div>
                                     <!-- /.direct-chat-infos -->
-                                    <img class="direct-chat-img" src="{{ asset('/img/user3-128x128.jpg') }}" alt="message user image">
+                                    <img class="direct-chat-img" src="{{ asset('/img/user3-128x128.jpg') }}"
+                                         alt="message user image">
                                     <!-- /.direct-chat-img -->
                                     <div class="direct-chat-text">
                                         You better believe it!
@@ -267,7 +270,8 @@
                                         <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
                                     </div>
                                     <!-- /.direct-chat-infos -->
-                                    <img class="direct-chat-img" src="{{ asset('/img/user1-128x128.jpg') }}" alt="message user image">
+                                    <img class="direct-chat-img" src="{{ asset('/img/user1-128x128.jpg') }}"
+                                         alt="message user image">
                                     <!-- /.direct-chat-img -->
                                     <div class="direct-chat-text">
                                         Working with AdminLTE on a great new app! Wanna join?
@@ -283,7 +287,8 @@
                                         <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
                                     </div>
                                     <!-- /.direct-chat-infos -->
-                                    <img class="direct-chat-img" src="{{ asset('/img/user3-128x128.jpg') }}" alt="message user image">
+                                    <img class="direct-chat-img" src="{{ asset('/img/user3-128x128.jpg') }}"
+                                         alt="message user image">
                                     <!-- /.direct-chat-img -->
                                     <div class="direct-chat-text">
                                         I would love to.
@@ -300,7 +305,8 @@
                                 <ul class="contacts-list">
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{ asset('/img/user1-128x128.jpg') }}" alt="User Avatar">
+                                            <img class="contacts-list-img" src="{{ asset('/img/user1-128x128.jpg') }}"
+                                                 alt="User Avatar">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -315,7 +321,8 @@
                                     <!-- End Contact Item -->
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{ asset('/img/user7-128x128.jpg') }}" alt="User Avatar">
+                                            <img class="contacts-list-img" src="{{ asset('/img/user7-128x128.jpg') }}"
+                                                 alt="User Avatar">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -330,7 +337,8 @@
                                     <!-- End Contact Item -->
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{ asset('/img/user3-128x128.jpg') }}" alt="User Avatar">
+                                            <img class="contacts-list-img" src="{{ asset('/img/user3-128x128.jpg') }}"
+                                                 alt="User Avatar">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -345,7 +353,8 @@
                                     <!-- End Contact Item -->
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{ asset('/img/user5-128x128.jpg') }}" alt="User Avatar">
+                                            <img class="contacts-list-img" src="{{ asset('/img/user5-128x128.jpg') }}"
+                                                 alt="User Avatar">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -360,7 +369,8 @@
                                     <!-- End Contact Item -->
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{ asset('/img/user6-128x128.jpg') }}" alt="User Avatar">
+                                            <img class="contacts-list-img" src="{{ asset('/img/user6-128x128.jpg') }}"
+                                                 alt="User Avatar">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -375,7 +385,8 @@
                                     <!-- End Contact Item -->
                                     <li>
                                         <a href="#">
-                                            <img class="contacts-list-img" src="{{ asset('/img/user8-128x128.jpg') }}" alt="User Avatar">
+                                            <img class="contacts-list-img" src="{{ asset('/img/user8-128x128.jpg') }}"
+                                                 alt="User Avatar">
 
                                             <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -397,7 +408,8 @@
                         <div class="card-footer">
                             <form action="#" method="post">
                                 <div class="input-group">
-                                    <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                    <input type="text" name="message" placeholder="Type Message ..."
+                                           class="form-control">
                                     <span class="input-group-append">
                       <button type="button" class="btn btn-primary">Send</button>
                     </span>
@@ -534,7 +546,9 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
+                            <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add
+                                item
+                            </button>
                         </div>
                     </div>
                     <!-- /.card -->
@@ -555,7 +569,8 @@
                                 <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
                                     <i class="far fa-calendar-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
+                                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse"
+                                        title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
                             </div>
@@ -606,27 +621,31 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            <canvas class="chart" id="line-chart"
+                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer bg-transparent">
                             <div class="row">
                                 <div class="col-4 text-center">
-                                    <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
+                                    <input type="text" class="knob" data-readonly="true" value="20" data-width="60"
+                                           data-height="60"
                                            data-fgColor="#39CCCC">
 
                                     <div class="text-white">Mail-Orders</div>
                                 </div>
                                 <!-- ./col -->
                                 <div class="col-4 text-center">
-                                    <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
+                                    <input type="text" class="knob" data-readonly="true" value="50" data-width="60"
+                                           data-height="60"
                                            data-fgColor="#39CCCC">
 
                                     <div class="text-white">Online</div>
                                 </div>
                                 <!-- ./col -->
                                 <div class="col-4 text-center">
-                                    <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
+                                    <input type="text" class="knob" data-readonly="true" value="30" data-width="60"
+                                           data-height="60"
                                            data-fgColor="#39CCCC">
 
                                     <div class="text-white">In-Store</div>
@@ -651,7 +670,8 @@
                             <div class="card-tools">
                                 <!-- button with a dropdown -->
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                                    <button type="button" class="btn btn-success btn-sm dropdown-toggle"
+                                            data-toggle="dropdown" data-offset="-52">
                                         <i class="fas fa-bars"></i>
                                     </button>
                                     <div class="dropdown-menu" role="menu">

@@ -111,63 +111,67 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            UI Elements
-                            <i class="fas fa-angle-left right"></i>
+                            Новости
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/UI/general.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>General</p>
+                            <a href="{{ route('admin.news.list') }}" class="nav-link">
+                                <p>Все новости</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/icons.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Icons</p>
+                            <a href="{{ route('admin.news.create') }}" class="nav-link">
+                                <p>Создать новость</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/buttons.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Buttons</p>
+                            <a href="{{ route('admin.news-categories') }}" class="nav-link">
+                                <p>Категории новостей</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/sliders.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Sliders</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/modals.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Modals & Alerts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/navbar.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Navbar & Tabs</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/timeline.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Timeline</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/UI/ribbons.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Ribbons</p>
+                            <a href="{{ route('admin.news-tags') }}" class="nav-link">
+                                <p>Теги новостей</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Главные новости
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.main-news.list') }}" class="nav-link">
+                                <p>Все главные новости</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.main-news.create') }}" class="nav-link">
+                                <p>Создать главну новость</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.main-news-categories') }}" class="nav-link">
+                                <p>Категории главных нвостей</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.main-news-tags') }}" class="nav-link">
+                                <p>Теги главных новостей</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>

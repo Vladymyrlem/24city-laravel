@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\NewsCategoryController;
-use App\Http\Controllers\NewsTagController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\NewsCategoryController;
+use App\Http\Controllers\Admin\NewsTagController;
 
-Route::get('/ads', [NewsController::class, 'index'])->name('admin.news.list');
+Route::get('/news', [NewsController::class, 'list'])->name('admin.news.list');
 Route::get('/news/create', [NewsController::class, 'create'])->name('admin.news.create');
 Route::post('/news/store', [NewsController::class, 'store'])->name('admin.news.store');
 Route::get('/news/edit/{id}', [NewsController::class, 'edit'])->name('admin.news.edit');

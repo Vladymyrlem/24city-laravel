@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\News\MainNews;
 use App\Models\News\MainNewsCategory;
 use App\Models\Tag;
@@ -12,7 +13,14 @@ class MainNewsController extends Controller
 {
     public function index(Request $request)
     {
-        return 'Hello world';
+        $page = $request->input('page', 20);
+
+        // Define the number of posts per page
+        $perPage = 20; // You can adjust this as needed
+        $news = MainNews::where('status', 'publish')
+            ->paginate($perPage, ['*'], 'page', $page);;
+        $tags = Tag::all();
+        return view('pages.main-news.list', compact('news', 'tags'));
     }
 
     /**
@@ -25,6 +33,12 @@ class MainNewsController extends Controller
     {
         $news = MainNews::find($id);
         return view('pages.main-news.show', compact('news'));
+    }
+
+    public function showNews($id)
+    {
+        $news = MainNews::find($id);
+        return view('admin.main-news.show', compact('news'));
     }
 
     /**

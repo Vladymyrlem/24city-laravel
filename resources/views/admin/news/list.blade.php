@@ -23,6 +23,7 @@
             <th scope="col">Tags</th>
             <th scope="col">Categories</th>
             <th scope="col">Created_at</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -42,15 +43,21 @@
                     @endif
                 </td>
                 <td>
+
                     <ul>
-                        @foreach ($post->tags as $tag)
+                        @forelse ($post->tags as $tag)
                             <li>
                                 <a href="{{ route('news.show.tag', $tag->id) }}">
                                     {{ $tag->name }}
                                 </a>
                             </li>
-                        @endforeach
+                        @empty
+                            <li>
+                                {{ 'Тегів не знайдено' }}
+                            </li>
+                        @endforelse
                     </ul>
+
                 </td>
                 <td>
                     @foreach ($post->categories as $category)
@@ -61,6 +68,14 @@
                     @endforeach
                 </td>
                 <td>{{$post->created_at}}</td>
+                <td class="actions d-flex">
+                    <a href="{{ route('admin.news.delete', $post->id) }}" class="btn btn-danger">Delete</a>&nbsp;
+                    <a href="{{ route('admin.news.edit', $post->id) }}"
+                       class="btn btn-warning d-flex align-items-center">
+                        <i class="nav-icon fas fa-edit"></i>
+                        &nbsp;Edit
+                    </a>
+                </td>
             </tr>
         @endforeach
         </tbody>
@@ -100,7 +115,7 @@
 //        $result = array_merge($result, $postArray);
 //    }
 
-    // Print the resulting associative array
+// Print the resulting associative array
 //    print_r($result);
 
 //

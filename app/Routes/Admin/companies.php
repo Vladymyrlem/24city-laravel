@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CompaniesController;
-use App\Http\Controllers\CompanyCategoryController;
+use App\Http\Controllers\Admin\CompaniesController;
+use App\Http\Controllers\Admin\CompanyCategoryController;
 
 Route::get('/companies', [CompaniesController::class, 'index'])->name('companies');
 

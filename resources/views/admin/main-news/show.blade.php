@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Company')
+@section('title', 'News')
 
 @section('content')
     <h3>{{ $news->title }}</h3>
@@ -39,7 +39,7 @@
                 {{--                @dd($news->tags)--}}
                 <ul>
                     @foreach ($news->tags as $tag)
-                        <li><a href="{{ route('main-news.show.tag', $tag->id) }}">{{$tag->name}}</a></li>
+                        <li><a href="{{ route('admin.main-news-tag-show', $tag->id) }}">{{$tag->name}}</a></li>
                         {{--                    @if ($category->parent_id === null)--}}
                         {{--                        <!-- Parent Category -->--}}
                         {{--                        <strong><a href="{{ route('company.company-category-show', ['id' => $category->id]) }}">{{ $category->name }}</a>--}}
@@ -61,7 +61,7 @@
             </td>
             <td>
                 @foreach ($news->categories as $cat)
-                    <li><a href="{{ route('main-news.category.show', $cat->id) }}">{{$cat->name}}</a></li>
+                    <li><a href="{{ route('admin.main-news-category-show', $cat->id) }}">{{$cat->name}}</a></li>
 
                 @endforeach
             </td>

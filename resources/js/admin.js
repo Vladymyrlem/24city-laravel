@@ -70,7 +70,8 @@ jQuery(document).ready(function () {
         jQuery(this).find('.actions-list').show();
     });
 
-    // jQuery("#company-categories").DataTable();
+    jQuery("#company-categories").DataTable();
+    jQuery("#news-tags").DataTable();
 
 
 });

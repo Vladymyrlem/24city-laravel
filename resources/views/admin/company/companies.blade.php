@@ -35,9 +35,11 @@
         @foreach($companies as $post)
             <tr>
                 <th scope="row">{{ $post->id }}</th>
-                <td><a class="company-title post-title" href="{{ route('company.show', $post->id) }}">{{ $post->title_company }}</a>
+                <td><a class="company-title post-title"
+                       href="{{ route('company.show', $post->id) }}">{{ $post->title_company }}</a>
                     <div class="actions-list" style="display:none;">
-                        <a href="{{ route('company.delete', $post->id) }}">Удалить</a>&nbsp;<a href="{{ route('company.edit', $post->id) }}">Редактировать</a>
+                        <a href="{{ route('admin.company.delete', $post->id) }}">Удалить</a>&nbsp;<a
+                            href="{{ route('admin.company.edit', $post->id) }}">Редактировать</a>
                     </div>
                 </td>
                 <td>{!! parseGalleryShortcode($post->content) !!}
@@ -51,7 +53,8 @@
                     @if(!empty($post->contacts))
                         <ul>
                             @foreach ($post->contacts as $phoneNumber)
-                                <li><a href="tel:{{ $phoneNumber->contacts_phone	 }}">{{ $phoneNumber->contacts_phone	 }}</a>
+                                <li>
+                                    <a href="tel:{{ $phoneNumber->contacts_phone	 }}">{{ $phoneNumber->contacts_phone	 }}</a>
                                     {{ $phoneNumber->contacts_comment_to_phone }}
                                     @if($phoneNumber->contacts_fax == 1)
                                         {{ 'Fax' }}

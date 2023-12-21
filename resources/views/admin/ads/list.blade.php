@@ -57,7 +57,7 @@
                     @endforeach
                 </td>
                 <td class="d-flex">
-                    <a href="{{ route('admin.ads.edit', $post->id) }}" class="btn btn-danger ml-2">Delete</a>
+                    <a href="{{ route('admin.ads.edit', $post->id) }}" class="btn btn-danger ml-2">Edit</a>
                     <a href="{{ route('admin.ads.delete', $post->id) }}" class="btn btn-danger">Delete</a>
                 </td>
                 <td>{{$post->created_at}}</td>

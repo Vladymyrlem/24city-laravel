@@ -1,51 +1,68 @@
 @extends('layouts.app')
 
-@section('title', 'Company categories')
+@section('title', 'News categories')
 
 @section('content')
-    <h1>Company categories</h1>
+    <h1>News categories</h1>
     <div class="container">
         <div class="row">
-            @foreach ($categories as $category)
-                @if (!$category->parent_id)
-                    <!-- Check if it's a top-level category -->
-                    <div class="col-4">
-                        <h2 class="category"><a href="{{ route('news.category.show', $category->id) }}">{{ $category->name }}</a></h2>
+            <table class="col-12 table" id="news-categories">
+                <thead>
+                <tr>
+                    <th>Название категории</th>
+                    <th>Slug</th>
+                    <th>Редактировать категорию</th>
+                    <th>Удалить категорию</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($categories as $category)
+                    @if (!$category->parent_id)
+                        <!-- Check if it's a top-level category -->
 
-                        {{--                        @if ($category->subcategories->count() > 0)--}}
-                        {{--                            <ul>--}}
-                        {{--                                @foreach ($category->subcategories as $subcategory)--}}
-                        {{--                                    <li>--}}
-                        {{--                                        <h3 class="subcatgory">--}}
-                        {{--                                            <a href="{{ route('company.company-category-show', $subcategory->id) }}">--}}
-                        {{--                                                {{ $subcategory->name }}--}}
-                        {{--                                            </a>--}}
-                        {{--                                        </h3>--}}
-                        {{--                                        @if ($subcategory->subcategories->count() > 0)--}}
-                        {{--                                            @include('pages.company.subcategories', ['subcategories' => $subcategory->subcategories])--}}
-                        {{--                                        @endif--}}
-                        {{--                                    </li>--}}
-                        {{--                                @endforeach--}}
-                        {{--                            </ul>--}}
-                        {{--                        @endif--}}
-                    </div>
-                @endif
-                <ol class="companies-list {{$category->slug}}-mainnews">
-                    @foreach($category->news as $news)
-                        @if($news->status === 'publish')
+                        <tr>
+                            <td>
+                                <h2 class="category"><a
+                                        href="{{ route('admin.news-category-show', $category->id) }}">{{ $category->name }}</a>
+                                </h2>
+                            </td>
+                            <td>{{ $category->slug }}</td>
+                            <td><a href="{{ route('adminNewsCategoryEdit', $category->id) }}" class="btn btn-outline">Редактировать</a>
+                            </td>
+                            <td><a href="{{ route('adminNewsCategoryDelete', $category->id) }}" class="btn btn-danger">Удалить</a>
+                            </td>
+                        </tr>
 
-                            <li class="company-item">
-                                <a href="{{ route('news.show', $news->id) }}">
-                                    {{$news->title}}
-                                </a>
-                            </li>
+                        @if (optional($category->subcategories)->count() > 0)
+                            {{--                            <ul class="subcategory">--}}
+                            @foreach ($category->subcategories as $subcategory)
+                                <tr class="subcategory-item">
+                                    <td>
+                                        <h3 class="subcatgory">
+                                            <a href="{{ route('admin.news-category-show', $subcategory->id) }}">
+                                                {{ $subcategory->name }}
+                                            </a>
+                                            {{$subcategory->news->count(0)}}
+                                        </h3>
+                                    </td>
+                                    <td>{{ $subcategory->slug }}</td>
+                                    <td><a href="{{ route('adminNewsCategoryEdit', $subcategory->id) }}"
+                                           class="btn btn-outline">Редактировать</a></td>
+                                    <td><a href="{{ route('adminNewsCategoryDelete', $category->id) }}"
+                                           class="btn btn-danger">Удалить</a></td>
+                                    @if ($subcategory->subcategories->count() > 0)
+                                        @include('admin.news.subcategories', ['subcategories' => $subcategory->subcategories])
+                                    @endif
+                                </tr>
+                            @endforeach
+                            {{--                            </ul>--}}
                         @endif
-                    @endforeach
-                </ol>
-                {{--                {{ $mainnews->links('vendor.pagination.custom') }}--}}
-            @endforeach
-        </div>
 
+                    @endif
+                @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection
 

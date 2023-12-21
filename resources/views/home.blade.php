@@ -48,12 +48,10 @@
                     <div class="col-md-4 col-12">
                         <h3 class="carousel-title"><a href="{{ route('ads') }}">Обьявления</a></h3>
                         <div class="front-slider slider single-item">
-
                             @foreach($ads as $post)
                                 @include('partials.slider.ads-carousel')
                             @endforeach
                         </div>
-
                     </div>
                     <div class="col-md-4 col-12">
                         <h3 class="carousel-title"><a href="{{ route('company.company-category') }}">Компании</a></h3>

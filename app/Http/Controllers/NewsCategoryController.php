@@ -122,7 +122,7 @@ class NewsCategoryController extends Controller
         // Retrieve the posts associated with this category
         $news = $category->news;
 
-        return view('pages.news.news-category-show', compact('category', 'news'));
+        return view('admin.news.news-category-show', compact('category', 'news'));
     }
 
     public function categoriesList()

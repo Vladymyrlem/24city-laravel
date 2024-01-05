@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Main;
 use App\Models\News\MainNews;
+use App\Models\RealEstate\RealEstate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -36,5 +37,10 @@ class Tag extends Model
     public function mainnews()
     {
         return $this->morphedByMany(MainNews::class, 'taggables');
+    }
+
+    public function realestate()
+    {
+        return $this->morphedByMany(RealEstate::class, 'taggables');
     }
 }

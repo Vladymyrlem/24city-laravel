@@ -85,8 +85,6 @@ class CompaniesController extends Controller
 
     public function store(Request $request)
     {
-
-
         // Validate and process the selected posts
         $selectedPostIds = $request->input('related_companies');
         $thumbnail = $request->file('image');

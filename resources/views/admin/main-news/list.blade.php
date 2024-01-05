@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Страница объявлений')
+@section('title', 'Страница Главніх новостей')
 
 @section('content')
     <h1>Страница объявлений</h1>
@@ -53,11 +53,13 @@
                     </ul>
                 </td>
                 <td>
+                    @dd($post)
                     @foreach ($post->categories as $category)
 
                         @if ($category->parent_id === null)
                             <!-- Parent Category -->
-                            <strong><a href="{{ route('main-news.category.show', $category->id) }}">{{ $category->name }}</a>
+                            <strong><a
+                                    href="{{ route('main-news.category.show', $category->id) }}">{{ $category->name }}</a>
                             </strong>
                             <ul>
                                 @foreach ($post->categories as $subcategory)
@@ -113,7 +115,7 @@
 //        $result = array_merge($result, $postArray);
 //    }
 
-    // Print the resulting associative array
+// Print the resulting associative array
 //    print_r($result);
 
 //

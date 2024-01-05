@@ -38,10 +38,10 @@ class AdsController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show($slug)
     {
-        $ads = Ads::find($id);
-        return view('pages.ads.show', compact('ads'));
+        $ads = Ads::find($slug);
+        return view('admin.ads.show', compact('ads'));
     }
 
     public function create()

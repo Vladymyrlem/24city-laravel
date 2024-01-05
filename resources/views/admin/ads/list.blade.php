@@ -30,7 +30,7 @@
         @foreach($ads as $post)
             <tr>
                 <th scope="row">{{ $post->id }}</th>
-                <td><a href="{{ route('ads.show', $post->id) }}">{{ $post->title }}</a></td>
+                <td><a href="{{ route('ads.show', $post->slug) }}">{{ $post->title }}</a></td>
                 <td>{!! $post->content !!}</td>
                 <td>{!! $post->excerpt !!}</td>
 
@@ -39,15 +39,15 @@
                     @foreach ($post->categories as $category)
                         @if ($category->parent_id === null)
                             <!-- Parent Category -->
-                            <strong><a
-                                    href="{{ route('ads.ads-category-show', ['id' => $category->id]) }}">{{ $category->name }}</a>
+                            <strong>
+                                <a href="{{ route('admin.ads-category-show',$category->id) }}">{{ $category->name }}</a>
                             </strong>
                             <ul>
                                 @foreach ($post->categories as $subcategory)
                                     @if ($subcategory->parent_id === $category->id)
                                         <!-- Subcategory -->
                                         <li>
-                                            <a href="{{ route('ads.ads-category-show', ['id' => $subcategory->id]) }}">
+                                            <a href="{{ route('admin.ads-category-show', $subcategory->id) }}">
                                             {{ $subcategory->name }}</li>
                                         </a>
                                     @endif
@@ -57,7 +57,7 @@
                     @endforeach
                 </td>
                 <td class="d-flex">
-                    <a href="{{ route('admin.ads.edit', $post->id) }}" class="btn btn-danger ml-2">Edit</a>
+                    <a href="{{ route('admin.ads.edit', $post->id) }}" class="btn btn-warning ml-2">Edit</a>&nbsp;
                     <a href="{{ route('admin.ads.delete', $post->id) }}" class="btn btn-danger">Delete</a>
                 </td>
                 <td>{{$post->created_at}}</td>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Company')
+@section('title', 'News')
 
 @section('content')
     <h3>{{ $news->title }}</h3>

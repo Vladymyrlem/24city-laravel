@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Новости')
+@section('title', 'Акции')
 
 @section('content')
-    <h1>Новости</h1>
+    <h1>Акции</h1>
     @isset($_SESSION['success'])
         <div class="alert alert-info" role="alert">
             {{   $_SESSION['success']  }}
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
         @php($index = 1)
-        @foreach($news as $post)
+        @foreach($shares as $post)
 
             <tr>
                 <th scope="row">{{ $post->id }}</th>
@@ -100,7 +100,7 @@
 //        $result = array_merge($result, $postArray);
 //    }
 
-    // Print the resulting associative array
+// Print the resulting associative array
 //    print_r($result);
 
 //

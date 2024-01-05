@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Страница объявлений')
+@section('title', 'Страница афиш')
 
 @section('content')
-    <h1>Страница объявлений</h1>
+    <h1>Страница афиш</h1>
     @isset($_SESSION['success'])
         <div class="alert alert-info" role="alert">
             {{   $_SESSION['success']  }}
@@ -37,7 +37,8 @@
                 <td>
                     {{--                    @dd($post->categories)--}}
                     @foreach ($post->categories as $category)
-                        <strong><a href="{{ route('affiche.affiche-category-show',  $category->id) }}">{{ $category->name }}</a>
+                        <strong><a
+                                href="{{ route('affiche.affiche-category-show',  $category->id) }}">{{ $category->name }}</a>
                         </strong>
                     @endforeach
                 </td>

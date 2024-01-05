@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Страница объявлений')
+@section('title', 'Люди')
 
 @section('content')
     <h1>Люди</h1>
@@ -17,8 +17,6 @@
         <tr>
             <th scope="col">Number</th>
             <th scope="col">Title</th>
-            <th scope="col">Content</th>
-            <th scope="col">Excerpt</th>
             <th scope="col">Images</th>
             <th scope="col">Slug</th>
             <th scope="col">Created_at</th>
@@ -29,9 +27,7 @@
         @foreach($peoples as $post)
             <tr>
                 <th scope="row">{{ $index++ }}</th>
-                <td>{{ $post->title }}</td>
-                <td>{!! $post->content !!}</td>
-                <td>{!! $post->excerpt !!}</td>
+                <td><a href="{{ route('admin.peoples.show', $post->slug) }}">{{ $post->title }}</a></td>
                 <td><img width="250px" height="auto" src="{{ asset($post->image) }}" alt=""></td>
                 <td>{{$post->slug}}</td>
                 <td>{{$post->created_at}}</td>

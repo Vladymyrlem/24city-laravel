@@ -29,7 +29,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-    !-- Main Header -->
+    <!-- Main Header -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -77,7 +77,7 @@
 
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper pl-2 pr-2 pl-md-5 pr-md-5">
+    <div class="content-wrapper pl-2 pr-2 pl-md-5 pr-md-5 h-auto">
         @yield('content')
     </div>
     <!-- /.content-wrapper -->
@@ -87,7 +87,13 @@
         <div class="float-right d-none d-sm-block">
             <b>Version</b> 3.1.0
         </div>
-        <strong>Copyright &copy; 2014-2023 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+        @php
+            use Carbon\Carbon;
+$currentYear = Carbon::now()->year;
+        @endphp
+        <strong>Copyright &copy; 2022 - {{ $currentYear }} <a href="https://hudzhal.com.ua"> Created by Hudzhal
+                Volodymyr</a>.</strong> All
+        rights
         reserved.
     </footer>
 

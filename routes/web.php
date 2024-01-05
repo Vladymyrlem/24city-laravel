@@ -21,6 +21,7 @@ use App\Http\Controllers\AfficheCategoryController;
 use App\Http\Controllers\RealEstateController;
 use App\Http\Controllers\RealEstateCategoryController;
 use App\Http\Controllers\ProxyController;
+use UniSharp\LaravelFilemanager\Lfm;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,8 +42,11 @@ Route::get('/spravochnik', [CompanyCategoryController::class, 'index'])->name('c
 Route::get('/companies', [CompaniesController::class, 'list'])->name('companies.list');
 Route::get('/proxy', [ProxyController::class, 'proxy']);
 
-Route::prefix('admin')->group(function () {
+Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+    Route::prefix('/laravel-filemanager')->group(function () {
+        Lfm::routes();
+    });
     /*Company routes*/
     require_once app_path('Routes/Admin/companies.php');
     /*Ads Routes*/
@@ -51,6 +55,18 @@ Route::prefix('admin')->group(function () {
     require_once app_path('Routes/Admin/news.php');
     /*Main News Routes*/
     require_once app_path('Routes/Admin/main-news.php');
+    /*Real Estate Routes*/
+    require_once app_path('Routes/Admin/real-estate.php');
+    /*Peoples Routes*/
+    require_once app_path('Routes/Admin/peoples.php');
+    /*Outlines Routes*/
+    require_once app_path('Routes/Admin/outlines.php');
+    /*Press Routes*/
+    require_once app_path('Routes/Admin/press.php');
+    /*Affiche Routes*/
+    require_once app_path('Routes/Admin/affiche.php');
+    /*Shares Routes*/
+    require_once app_path('Routes/Admin/shares.php');
 });
 // Route for viewing a specific category by ID
 Route::prefix('company')->group(function () {

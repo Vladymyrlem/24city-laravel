@@ -1,20 +1,26 @@
 <?php
 
-    namespace App\Models\Ads;
+namespace App\Models\Ads;
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-    use App\Models\Ads\AdsCategory;
+use App\Models\Tag;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Ads\AdsCategory;
 
-    class Ads extends Model
+class Ads extends Model
+{
+    use HasFactory;
+
+    protected $table = "ads";
+    protected $fillable = ['id', 'title', 'content', 'excerpt', 'ads_category', 'image', 'slug'];
+
+    public function categories()
     {
-        use HasFactory;
-
-        protected $table = "ads";
-        protected $fillable = ['id', 'title', 'content', 'excerpt', 'ads_category', 'image', 'slug'];
-
-        public function categories()
-        {
-            return $this->belongsToMany(AdsCategory::class, 'categories4ads');
-        }
+        return $this->belongsToMany(AdsCategory::class, 'categories4ads');
     }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggables');
+    }
+}

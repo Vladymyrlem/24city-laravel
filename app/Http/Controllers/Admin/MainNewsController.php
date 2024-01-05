@@ -20,7 +20,7 @@ class MainNewsController extends Controller
         $news = MainNews::where('status', 'publish')
             ->paginate($perPage, ['*'], 'page', $page);;
         $tags = Tag::all();
-        return view('pages.main-news.list', compact('news', 'tags'));
+        return view('admin.main-news.list', compact('news', 'tags'));
     }
 
     /**

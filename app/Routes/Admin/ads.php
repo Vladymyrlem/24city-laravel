@@ -14,6 +14,7 @@ Route::get('/ads/forceDelete/{id}', [AdsController::class, 'forceDelete'])->name
 Route::get('/ads/delete/{id}', [AdsController::class, 'destroy'])->name('admin.ads.delete');
 Route::get('/ads/restore/{id}', [AdsController::class, 'restore'])->name('admin.ads.restore');
 Route::get('/ads/trash', [AdsController::class, 'trash'])->name('adminAdsTrash');
+Route::get('/ads/{slug}', [AdsController::class, 'show'])->name('admin.ads.show');
 
 Route::get('ads/categories', [AdsCategoryController::class, 'categoriesList'])->name('admin.ads-categories');
 Route::get('ads/categories/{id}', [AdsCategoryController::class, 'show'])->name('admin.ads-category-show');

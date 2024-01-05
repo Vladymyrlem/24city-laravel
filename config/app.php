@@ -57,6 +57,7 @@ return [
     'url' => env('APP_URL', 'http://24city.laravel'),
 
     'asset_url' => env('ASSET_URL'),
+    'admin_url' => env('ADMIN_URL', 'admin'),
 
     /*
     |--------------------------------------------------------------------------
@@ -199,6 +200,7 @@ return [
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         \Fruitcake\Cors\CorsServiceProvider::class,
+        App\Providers\CustomDateServiceProvider::class,
 
     ],
 

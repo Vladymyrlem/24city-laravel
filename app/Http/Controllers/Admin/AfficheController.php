@@ -15,6 +15,12 @@ class AfficheController extends Controller
         return view('pages.affiche.list', compact('affiche', 'categories'));
     }
 
+    public function list(Request $request)
+    {
+        $affiche = Affiche::paginate(10);
+        return view('admin.affiche.list', compact('affiche'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -24,6 +30,6 @@ class AfficheController extends Controller
     public function show($id)
     {
         $affiche = Affiche::find($id);
-        return view('pages.affiche.show', compact('affiche'));
+        return view('фвьшт.affiche.show', compact('affiche'));
     }
 }

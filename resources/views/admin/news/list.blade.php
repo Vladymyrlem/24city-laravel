@@ -17,7 +17,7 @@
         <tr>
             <th scope="col">Number</th>
             <th scope="col">Title</th>
-            <th scope="col">Content</th>
+            {{--            <th scope="col">Content</th>--}}
             <th scope="col">Excerpt</th>
             <th scope="col">Thumb</th>
             <th scope="col">Tags</th>
@@ -29,25 +29,27 @@
         <tbody>
         @php($index = 1)
         @foreach($news as $post)
-
             <tr>
                 <th scope="row">{{ $post->id }}</th>
-                <td><a href="{{ route('news.show', $post->id) }}">{{ $post->title }}</a></td>
-                <td>{!! parseGalleryShortcode(parseVideoShortcode($post->content)) !!}
+                <td>
+                    <a href="{{ route('adminNewsShow', $post->id) }}">{{ $post->title }}</a>
                 </td>
-                <td>{!! $post->excerpt !!}</td>
-
+                {{--                <td>--}}
+                {{--                    {!! parseGalleryShortcode(parseVideoShortcode($post->content)) !!}--}}
+                {{--                </td>--}}
+                <td>
+                    {!! $post->excerpt !!}
+                </td>
                 <td>
                     @if(!empty($post->image))
                         <img width="250px" height="auto" src="{{ asset($post->image) }}" alt="">
                     @endif
                 </td>
                 <td>
-
                     <ul>
                         @forelse ($post->tags as $tag)
                             <li>
-                                <a href="{{ route('news.show.tag', $tag->id) }}">
+                                <a href="{{ route('admin.news.show.tag', $tag->id) }}">
                                     {{ $tag->name }}
                                 </a>
                             </li>
@@ -57,13 +59,14 @@
                             </li>
                         @endforelse
                     </ul>
-
                 </td>
                 <td>
                     @foreach ($post->categories as $category)
-
                         <!-- Parent Category -->
-                        <strong><a href="{{ route('news.category.show', $category->id) }}">{{ $category->name }}</a>
+                        <strong>
+                            <a href="{{ route('admin.news-category-show', $category->id) }}">
+                                {{ $category->name }}
+                            </a>
                         </strong>
                     @endforeach
                 </td>
@@ -83,9 +86,6 @@
     <div class="card-footer clearfix">
         {{--        {{ $news->links('vendor.pagination.custom') }}--}}
     </div>
-    <?php
-    ?>
-
 @endsection
 <?php
 //    $jsonData = $categories;

@@ -23,6 +23,12 @@ class RealEstateCategoryController extends Controller
         return view('pages.real-estate.real-estate-category-show', compact('category', 'subcategoryCounts', 'real_estate'));
     }
 
+    public function categoriesList()
+    {
+        $categories = RealEstateCategory::all(); // Replace with your logic to fetch categories
+        return view('admin.real-estate.real-estate-category', compact('categories'));
+    }
+
     private function calculateAfficheCounts($subcategories)
     {
         $counts = [];

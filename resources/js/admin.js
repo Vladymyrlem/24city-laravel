@@ -47,6 +47,12 @@ jQuery(document).ready(function () {
     initializeTinyMCE('about-company');
     initializeTinyMCE('services-list');
     initializeTinyMCE('additional-information');
+    initializeTinyMCE('ads-content');
+    initializeTinyMCE('excerpt-ads');
+    initializeTinyMCE('real-estate-content');
+    initializeTinyMCE('excerpt-real-estate');
+    initializeTinyMCE('news-content');
+    initializeTinyMCE('excerpt-news');
     // jQuery('#company-category').select2({
     //     placeholder: 'Select an option'
     // });

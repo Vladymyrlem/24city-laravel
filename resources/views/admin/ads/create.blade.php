@@ -69,7 +69,7 @@
                         </div>
                         <div id="about-company-content">
                             <label for="ads-content">Контент</label>
-                            <textarea name="content" id="ads-company" cols="30" rows="10"></textarea>
+                            <textarea name="content" id="ads-content" cols="30" rows="10"></textarea>
                         </div>
 
                         <div id="services-list-content">

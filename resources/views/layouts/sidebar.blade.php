@@ -171,7 +171,172 @@
                         </li>
                     </ul>
                 </li>
-
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Обзоры
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.outlines.list') }}" class="nav-link">
+                                <p>Все обзоры</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.outlines.create') }}" class="nav-link">
+                                <p>Создать обзор</p>
+                            </a>
+                        </li>
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a href="{{ route('admin.outlines-categories') }}" class="nav-link">--}}
+                        {{--                                <p>Категории обзоров</p>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                        <li class="nav-item">
+                            <a href="{{ route('admin.outlines-tags') }}" class="nav-link">
+                                <p>Теги обзоров</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Афишы
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.affiche.list') }}" class="nav-link">
+                                <p>Все афишы</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.affiche.create') }}" class="nav-link">
+                                <p>Создать афишу</p>
+                            </a>
+                        </li>
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a href="{{ route('admin.outlines-categories') }}" class="nav-link">--}}
+                        {{--                                <p>Категории обзоров</p>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                        <li class="nav-item">
+                            <a href="{{ route('admin.affiche-tags') }}" class="nav-link">
+                                <p>Теги афиш</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Люди
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.peoples.list') }}" class="nav-link">
+                                <p>Все люди</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.peoples.create') }}" class="nav-link">
+                                <p>Добавить нового</p>
+                            </a>
+                        </li>
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a href="{{ route('admin.peoples-tags') }}" class="nav-link">--}}
+                        {{--                                <p>Теги людей</p>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Недвижимость
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.real-estate.list') }}" class="nav-link">
+                                <p>Вся недвижимость</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.real-estate.create') }}" class="nav-link">
+                                <p>Добавить недвижимость</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.real-estate-categories') }}" class="nav-link">
+                                <p>Категории недвижимости</p>
+                            </a>
+                        </li>
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a href="{{ route('admin.real-estate-tags') }}" class="nav-link">--}}
+                        {{--                                <p>Теги недвижимости</p>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Преса
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.press.list') }}" class="nav-link">
+                                <p>Вся преса</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.press.create') }}" class="nav-link">
+                                <p>Добавить новую пресу</p>
+                            </a>
+                        </li>
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a href="{{ route('admin.press-tags') }}" class="nav-link">--}}
+                        {{--                                <p>Теги людей</p>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Акции
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.shares.list') }}" class="nav-link">
+                                <p>Все акции</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.shares.create') }}" class="nav-link">
+                                <p>Добавить новую акцию</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>

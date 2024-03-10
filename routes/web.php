@@ -67,6 +67,8 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     require_once app_path('Routes/Admin/affiche.php');
     /*Shares Routes*/
     require_once app_path('Routes/Admin/shares.php');
+    require_once app_path('Routes/Admin/tags.php');
+
 });
 // Route for viewing a specific category by ID
 Route::prefix('company')->group(function () {

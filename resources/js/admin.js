@@ -75,10 +75,49 @@ jQuery(document).ready(function () {
     jQuery('.post-title').on('hover', function () {
         jQuery(this).find('.actions-list').show();
     });
-
     jQuery("#company-categories").DataTable();
     jQuery("#news-tags").DataTable();
 
-
+    jQuery('#main-news-category,#news-category').select2({
+        theme: "bootstrap"
+    });
+    // jQuery('#news-category').select2({
+    //     theme: "bootstrap"
+    // });
+    jQuery('#tag_id').select2({
+        theme: "bootstrap"
+    });
+    jQuery.each(jQuery('.nav-sidebar ul.nav').find('li'), function () {
+        jQuery(this).toggleClass('active',
+            window.location.pathname.indexOf(jQuery(this).find('a.nav-link').attr('href')) > -1);
+    });
+    // jQuery('.nav-link').on('click', function () {
+    //     localStorage.setItem('activeLink', $(this).attr('href'));
+    //     jQuery(this).parent('nav').addClass('menu-is-opening menu-open');
+    // });
+    // jQuery('.nav-link').on('click', function () {
+    //     const activeLink = $(this).attr('href');
+    //     jQuery(this).addClass('active').siblings().removeClass('active');
+    //     $(this).closest('ul.nav').addClass('menu-is-opening menu-open');
+    //
+    //     localStorage.setItem('activeLink', activeLink);
+    // });
+    // const activeLink = localStorage.getItem('activeLink');
+    //
+    // if (activeLink) {
+    //     jQuery('.nav-link').removeClass('active');
+    //
+    //     // Знайти лінк з потрібним href та додати клас active
+    //     const $activeLink = jQuery(`.nav-link[href="${activeLink}"]`);
+    //     $activeLink.addClass('active');
+    //
+    //     // Додавання класу до батьківського тегу <nav>
+    //     $activeLink.closest('nav').addClass('menu-is-opening menu-open');
+    // }
+    // if (activeLink) {
+    //     jQuery('.nav-link').removeClass('active');
+    //     jQuery(`.nav-link[href="${activeLink}"]`).addClass('active');
+    //     $(`.nav-link[href="${activeLink}"]`).closest('nav').addClass('menu-is-opening menu-open');
+    //
+    // }
 });
-

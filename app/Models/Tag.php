@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Main;
+use App\Models\Ads\Ads;
 use App\Models\News\MainNews;
 use App\Models\RealEstate\RealEstate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +22,7 @@ class Tag extends Model
         'name',
         'slug'
     ];
-    protected $connection = 'testing';
+//    protected $connection = 'testing';
 
     /**
      * Получить все посты, которым присвоен этот тег.
@@ -29,6 +30,14 @@ class Tag extends Model
     public function news()
     {
         return $this->morphedByMany(News::class, 'taggables');
+    }
+
+    /**
+     * Получить все посты, которым присвоен этот тег.
+     */
+    public function ads()
+    {
+        return $this->morphedByMany(Ads::class, 'taggables');
     }
 
     /**

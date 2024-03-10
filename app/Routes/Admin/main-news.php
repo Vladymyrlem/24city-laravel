@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\MainNewsCategoryController;
 use App\Http\Controllers\Admin\MainNewsTagController;
 
 Route::get('/main-news', [MainNewsController::class, 'index'])->name('admin.main-news.list');
-//Route::get('/main-news/{newsid}', [MainNewsController::class, 'showNews'])->name('admin.mainNewsShow');
+Route::get('/main-news/{slug}', [MainNewsController::class, 'showNews'])->name('admin.mainNewsShow');
 Route::get('/main-news/create', [MainNewsController::class, 'create'])->name('admin.main-news.create');
 Route::post('/main-news/store', [MainNewsController::class, 'store'])->name('admin.main-news.store');
 Route::get('/main-news/edit/{id}', [MainNewsController::class, 'edit'])->name('admin.main-news.edit');

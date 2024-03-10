@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Страница Главніх новостей')
+@section('title', 'Страница Главных новостей')
 
 @section('content')
-    <h1>Страница объявлений</h1>
+    <h1>Страница Главных новостей</h1>
     @isset($_SESSION['success'])
         <div class="alert alert-info" role="alert">
             {{   $_SESSION['success']  }}
@@ -17,12 +17,13 @@
         <tr>
             <th scope="col">Number</th>
             <th scope="col">Title</th>
-            <th scope="col">Content</th>
-            <th scope="col">Excerpt</th>
+            {{--            <th scope="col">Content</th>--}}
+            {{--            <th scope="col">Excerpt</th>--}}
             <th scope="col">Thumb</th>
             <th scope="col">Tags</th>
             <th scope="col">Categories</th>
             <th scope="col">Created_at</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -32,9 +33,9 @@
             <tr>
                 <th scope="row">{{ $post->id }}</th>
                 <td><a href="{{ route('main-news.show', $post->id) }}">{{ $post->title }}</a></td>
-                <td>{!! parseGalleryShortcode(parseVideoShortcode(parseSuListShortcode($post->content))) !!}
-                </td>
-                <td>{!! $post->excerpt !!}</td>
+                {{--                <td>{!! parseGalleryShortcode(parseVideoShortcode(parseSuListShortcode($post->content))) !!}--}}
+                {{--                </td>--}}
+                {{--                <td>{!! $post->excerpt !!}</td>--}}
 
                 <td>
                     @if(!empty($post->image))
@@ -53,7 +54,7 @@
                     </ul>
                 </td>
                 <td>
-                    @dd($post)
+                    {{--                    @dd($post)--}}
                     @foreach ($post->categories as $category)
 
                         @if ($category->parent_id === null)
@@ -76,6 +77,7 @@
                     @endforeach
                 </td>
                 <td>{{$post->created_at}}</td>
+                <td><a class="btn btn-warning" href="{{ route('admin.main-news.edit',$post->id) }}">Edit</a></td>
             </tr>
         @endforeach
         </tbody>

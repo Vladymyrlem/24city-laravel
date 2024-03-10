@@ -3,27 +3,29 @@
 @section('title', 'Tag' )
 
 @section('content')
-    <h1>{{ $newsTag->name }}</h1>
+    <h1>Тег {{ $tag->name }}</h1>
     {{--    @dd($newsTag->mainnews)--}}
-    @if($newsTag->mainnews->count() > 0)
-        <h2>Головні Новини</h2>
+    @if($tag->mainnews->count() > 0)
+        <h2>Новини {{ $tag->id }}</h2>
         <ul>
-            @foreach($newsTag->mainnews as $news)
+            @foreach($tag->mainnews as $news)
                 <li>
-                    <a href="{{ route('admin.mainNewsShow', ['newsid' => $news->id]) }}">
+                    <a href="{{ route('admin.mainNewsShow', ['slug' => $news->slug]) }}">
                         {{ $news->title }}
                     </a>
                 </li>
             @endforeach
         </ul>
     @endif
-    {{--    @if($newsTag->news->count() > 0)--}}
-    {{--        <h2>Новини</h2>--}}
-    {{--        <ul>--}}
-    {{--            @foreach($newsTag->news as $news)--}}
-    {{--                {{ $news->title }}--}}
-    {{--            @endforeach--}}
-    {{--        </ul>--}}
-    {{--    @endif--}}
+    @if($tag->ads->count() > 0)
+        <h2>Об'яви</h2>
+        <ul>
+            @foreach($tag->ads as $ads)
+                <li>
+                    <a href="{{ route('admin.ads.show', ['adsId' => $ads->id]) }}">{{ $ads->title }}</a>
+                </li>
+            @endforeach
+        </ul>
+    @endif
 @endsection
 

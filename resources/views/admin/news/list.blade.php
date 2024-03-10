@@ -32,7 +32,7 @@
             <tr>
                 <th scope="row">{{ $post->id }}</th>
                 <td>
-                    <a href="{{ route('adminNewsShow', $post->id) }}">{{ $post->title }}</a>
+                    <a href="{{ route('admin-news-show', $post->id) }}">{{ $post->title }}</a>
                 </td>
                 {{--                <td>--}}
                 {{--                    {!! parseGalleryShortcode(parseVideoShortcode($post->content)) !!}--}}
@@ -49,7 +49,7 @@
                     <ul>
                         @forelse ($post->tags as $tag)
                             <li>
-                                <a href="{{ route('admin.news.show.tag', $tag->id) }}">
+                                <a href="{{ route('admin.tag.show', $tag->id) }}">
                                     {{ $tag->name }}
                                 </a>
                             </li>

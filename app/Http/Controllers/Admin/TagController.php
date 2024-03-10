@@ -28,4 +28,10 @@ class TagController extends Controller
 
         return view('admin.affiche.affiche-tags', compact('tags'));
     }
+
+    public function showTag($id)
+    {
+        $tag = Tag::find($id);
+        return view('admin.tags.show', compact('tag'));
+    }
 }

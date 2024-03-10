@@ -27,8 +27,8 @@ class MainNews extends Model
         return $this->belongsToMany(MainNewsCategory::class, 'main_news_main_news_category');
     }
 
-    public function company()
+    public function mainnews()
     {
-        return $this->belongsTo(Companies::class);
+        return $this->belongsTo(MainNews::class);
     }
 }

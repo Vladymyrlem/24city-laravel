@@ -33,12 +33,12 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param int $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show($slug)
     {
-        $news = News::find($id);
+        $news = News::find($slug);
         return view('pages.news.show', compact('news'));
     }
 }

@@ -3,14 +3,19 @@ const sass = require('gulp-sass')(require('sass'));
 const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
-
+const sourcemaps = require('gulp-sourcemaps');
+const rename = require('gulp-rename');
 // Compile SASS to CSS and minify it
 gulp.task('styles', function () {
     return gulp.src('resources/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(cleanCSS())
+        .pipe(rename({suffix: '.min'})) // Додаємо суфікс .min до файлу
+        .pipe(sourcemaps.init()) // Додаємо sourcemaps
+        .pipe(sourcemaps.write('.')) // Зберігаємо sourcemaps в тій же папці
         .pipe(gulp.dest('public/css'));
 });
+
 
 // Concatenate and minify JavaScript files
 gulp.task('scripts', function () {

@@ -9,6 +9,8 @@ use App\Models\Ads\Ads;
 use App\Models\Ads\AdsCategory;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class AdsController extends Controller
 {
@@ -48,14 +50,55 @@ class AdsController extends Controller
     {
         $ads = Ads::all();
         $categories = AdsCategory::all(); // Replace with your logic to fetch categories
+        $tags = Tag::all(); // Replace with your logic to fetch categories
 
-        return view('admin.ads.create', compact('ads', 'categories'));
+        return view('admin.ads.create', compact('ads', 'categories', 'tags'));
     }
+
 
     public function store(Request $request)
     {
+//        if (!$request->user()->can('store', Ads::class)) {
+//            abort(403);
+//        }
+        $maxId = DB::table('ads')->max('id');
 
+        // Встановлення id на одиницю більше за максимальне значення
+        $newId = $maxId + 1;
+
+        // Створення запису в транзакції
+        DB::transaction(function () use ($request, $newId) {
+            $ads = new Ads();
+            $ads->id = $newId;
+            $ads->title = $request->input('title');
+            $ads->content = $request->input('content');
+            $ads->excerpt = $request->input('excerpt_ads');
+
+            // Збереження змін у базі даних
+            $ads->save();
+
+            // Отримання категорії
+            $category = AdsCategory::find($request->input('categories'));
+
+            // Генерація slug
+            $slug = Str::slug($request->input('title'));
+            $ads->slug = $slug;
+
+            // Збереження змін у базі даних
+            $ads->save();
+
+            // Прикріплення категорії, якщо існує
+            if ($category) {
+                $ads->categories()->attach($request->input('categories'));
+            }
+
+            // Синхронізація тегів
+            $ads->tags()->sync($request->input('tags_id'));
+        });
+
+        return redirect()->back()->with('success', 'Ads saved successfully.');
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -68,7 +111,9 @@ class AdsController extends Controller
         $ads = Ads::find($id);
         $categories = AdsCategory::all();
         $tags = Tag::all();
-        return view('admin.ads.edit', compact('categories', 'tags', 'ads'));
+        $postCategories = $ads->categories->pluck('id')->toArray();
+
+        return view('admin.ads.edit', compact('categories', 'tags', 'ads', 'postCategories'));
     }
 
     /**
@@ -81,7 +126,7 @@ class AdsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'category_id' => ['required'],
+            'categories' => ['required'],
             'title' => ['required', 'min:2', 'max:255'],
             'content' => ['required', 'min:2', 'max:255']
         ]);
@@ -89,7 +134,14 @@ class AdsController extends Controller
         $ads = Ads::find($request->input('id'));
         $ads->update($request->all());
         $ads->tags()->sync($request->tags_id);
+        $ads->categories()->sync($request->categories);
         return redirect()->route('admin.ads.list')->with('success', 'Изменения сохранены');
+    }
+
+    public function tagsList()
+    {
+        $adsTags = Ads::with('tags')->get();
+        return view('admin.ads.ads-tag', compact('adsTags'));
     }
 
     public function destroy($id)

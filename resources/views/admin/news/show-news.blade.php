@@ -3,7 +3,7 @@
 @section('title', 'News')
 
 @section('content')
-    <h3>{{ $news->title }}</h3>
+    <h3>{{ $newsPost->title }}</h3>
     <table class="table table-bordered table-hover table-dark">
         <thead>
         <tr>
@@ -20,32 +20,32 @@
         <tbody>
 
         <tr>
-            <th scope="row">{{ $news->id }}</th>
-            <td>{{ $news->title}}</td>
+            <th scope="row">{{ $newsPost->id }}</th>
+            <td>{{ $newsPost->title ?? ''}}</td>
             <td>
-                {{ $news->content }}
+                {{ $newsPost->content }}
                 {{--                <?php--}}
 
                 {{--                    use Murdercode\LaravelShortcodePlus\Facades\LaravelShortcodePlus;--}}
 
-                {{--                    $html = $news->content;--}}
+                {{--                    $html = $newsPost->content;--}}
                 {{--                    return LaravelShortcodePlus::source($html)->parseAll();--}}
                 {{--                ?>--}}
             </td>
-            <td>{!! $news->excerpt !!}</td>
+            <td>{!! $newsPost->excerpt !!}</td>
 
-            <td><img width="250px" height="auto" src="{{ asset($news->image_url) }}" alt=""></td>
+            <td><img width="250px" height="auto" src="{{ asset($newsPost->image_url) }}" alt=""></td>
             <td>
-                {{--                @dd($news->tags)--}}
+                {{--                @dd($newsPost->tags)--}}
                 <ul>
-                    @foreach ($news->tags as $tag)
+                    @foreach ($newsPost->tags as $tag)
                         <li><a href="{{ route('news.show.tag', $tag->id) }}">{{$tag->name}}</a></li>
                         {{--                    @if ($category->parent_id === null)--}}
                         {{--                        <!-- Parent Category -->--}}
                         {{--                        <strong><a href="{{ route('company.company-category-show', ['id' => $category->id]) }}">{{ $category->name }}</a>--}}
                         {{--                        </strong>--}}
                         {{--                        <ul>--}}
-                        {{--                            @foreach ($news->categories as $subcategory)--}}
+                        {{--                            @foreach ($newsPost->categories as $subcategory)--}}
                         {{--                                @if ($subcategory->parent_id === $category->id)--}}
                         {{--                                    <!-- Subcategory -->--}}
                         {{--                                    <li>--}}
@@ -60,13 +60,13 @@
                 </ul>
             </td>
             <td>
-                @foreach ($news->categories as $cat)
+                @foreach ($newsPost->categories as $cat)
                     <li><a href="{{ route('news.category.show', $cat->id) }}">{{$cat->name}}</a></li>
 
                 @endforeach
             </td>
 
-            <td>{{$news->created_at}}</td>
+            <td>{{$newsPost->created_at}}</td>
         </tr>
         </tbody>
     </table>

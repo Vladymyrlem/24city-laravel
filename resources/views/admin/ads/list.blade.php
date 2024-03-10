@@ -17,10 +17,11 @@
         <tr>
             <th scope="col">Number</th>
             <th scope="col">Title</th>
-            <th scope="col">Content</th>
-            <th scope="col">Excerpt</th>
+            {{--            <th scope="col">Content</th>--}}
+            {{--            <th scope="col">Excerpt</th>--}}
             <th scope="col">Thumb</th>
             <th scope="col">Categories</th>
+            <th scope="col">Tags</th>
             <th scope="col">Actions</th>
             <th scope="col">Created_at</th>
         </tr>
@@ -30,10 +31,9 @@
         @foreach($ads as $post)
             <tr>
                 <th scope="row">{{ $post->id }}</th>
-                <td><a href="{{ route('ads.show', $post->slug) }}">{{ $post->title }}</a></td>
-                <td>{!! $post->content !!}</td>
-                <td>{!! $post->excerpt !!}</td>
-
+                <td><a href="{{ route('admin.ads.show', $post->id) }}">{{ $post->title }}</a></td>
+                {{--                <td>{!! $post->content !!}</td>--}}
+                {{--                <td>{!! $post->excerpt !!}</td>--}}
                 <td><img width="250px" height="auto" src="{{ asset($post->image) }}" alt=""></td>
                 <td>
                     @foreach ($post->categories as $category)
@@ -48,13 +48,28 @@
                                         <!-- Subcategory -->
                                         <li>
                                             <a href="{{ route('admin.ads-category-show', $subcategory->id) }}">
-                                            {{ $subcategory->name }}</li>
-                                        </a>
+                                                {{ $subcategory->name }}</a>
+                                        </li>
                                     @endif
                                 @endforeach
                             </ul>
                         @endif
                     @endforeach
+                </td>
+                <td>
+                    <ul>
+                        @forelse ($post->tags as $tag)
+                            <li>
+                                <a href="{{ route('admin.tag.show', $tag->id) }}">
+                                    {{ $tag->name }}
+                                </a>
+                            </li>
+                        @empty
+                            <li>
+                                {{ 'Тегів не знайдено' }}
+                            </li>
+                        @endforelse
+                    </ul>
                 </td>
                 <td class="d-flex">
                     <a href="{{ route('admin.ads.edit', $post->id) }}" class="btn btn-warning ml-2">Edit</a>&nbsp;
@@ -66,7 +81,7 @@
         </tbody>
     </table>
     {{--    <div class="card-footer clearfix">--}}
-    {{--        {{ $ads->links('vendor.pagination.custom') }}--}}
+    {{ $ads->links('vendor.pagination.custom') }}
     {{--    </div>--}}
 
 @endsection

@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
-@section('title', 'Company')
+@section('title', 'Ads')
 
 @section('content')
     <h3>{{ $ads->title }}</h3>
@@ -10,8 +10,10 @@
             <th scope="col">Number</th>
             <th scope="col">Title</th>
             <th scope="col">Content</th>
+            <th scope="col">Excerpt</th>
             <th scope="col">Thumb</th>
             <th scope="col">Category</th>
+            <th scope="col">Tags</th>
             <th scope="col">Created_at</th>
         </tr>
         </thead>
@@ -21,8 +23,8 @@
             <th scope="row">{{ $ads->id }}</th>
             <td>{{ $ads->title}}</td>
             <td>{!! $ads->content !!}</td>
-            <td><img width="250px" height="auto" src="{{ asset($ads->image) }}" alt=""></td>
-            <td>{!! $ads->about_company !!}</td>
+            <td>{!! $ads->excerpt !!}</td>
+            <td><img width="250" src="{{ asset($ads->image) }}" alt=""></td>
             <td>
                 @foreach ($ads->categories as $category)
                     @if ($category->parent_id === null)
@@ -46,12 +48,17 @@
             </td>
             <td>
                 <ul>
-                    @php
-                        $phoneNumbers = explode('|', $ads->contacts_phone);
-                    @endphp
-                    @foreach ($phoneNumbers as $phoneNumber)
-                        <li><a href="tel:{{ $phoneNumber }}">{{ $phoneNumber }}</a></li>
-                    @endforeach
+                    @forelse ($ads->tags as $tag)
+                        <li>
+                            <a href="{{ route('admin.tag.show', $tag->id) }}">
+                                {{ $tag->name }}
+                            </a>
+                        </li>
+                    @empty
+                        <li>
+                            {{ 'Тегів не знайдено' }}
+                        </li>
+                    @endforelse
                 </ul>
             </td>
             <td>{{$ads->created_at}}</td>

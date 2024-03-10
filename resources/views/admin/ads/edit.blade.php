@@ -32,28 +32,32 @@
             <div class="row">
                 <section class="col-lg-12 connectedSortable">
                     <form role="form" action="{{ route('admin.ads.update', $ads->id) }}" method="post"
-                          enctype="multipart/form-data">
+                          enctype="multipart/form-data" class="d-flex flex-column">
                         @csrf
-                        @method('post')
-                        <div class="input-group mb-3">
+                        @method('PUT')
+                        <input type="hidden" name="id" value="{{ $ads->id }}">
+
+                        <div class="mb-3 text-left">
                             <label for="ads-title" class="form-label">Назва об'яви</label>
                             <input type="text" name="title" id="ads-title" class="form-control"
                                    value="{{ old('title')?? $ads->title }}"/>
                         </div>
 
-                        <div class="company-categories mb-3" id="select2">
+                        <div class="company-categories text-left mb-3" id="select2">
                             <label for="company-category" class="form-label">Катeгорії об'яв</label>
                             <select name="categories[]" id="ads-category" class="form-select" multiple>
                                 @foreach ($categories as $category)
                                     @if ($category->parent_id === null)
-                                        <option class="row" value="{{ $category->id }}">
+                                        <option class="row"
+                                                value="{{ $category->id }}" {{ in_array($category->id, $postCategories) ? 'selected' : '' }}>
                                             {{ $category->name }}
                                         </option>
                                         @foreach ($categories as $subcategory)
                                             @if ($subcategory->parent_id === $category->id)
-                                                &nbsp;&nbsp;
-                                                <option class="row" value="{{ $subcategory->id }}">
-                                                    {{ $subcategory->name }}
+
+                                                <option class="row"
+                                                        value="{{ $subcategory->id }}" {{ in_array($subcategory->id, $postCategories) ? 'selected' : '' }}>
+                                                    &nbsp;&nbsp;{{ $subcategory->name }}
                                                 </option>
                                                 @if (is_array($subcategory->subcategories) && $subcategory->subcategories->count() > 0)
                                                     @include('admin.ads.category.subcategories-select', ['subcategories' => $subcategory->subcategories])
@@ -64,21 +68,25 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div id="ads-thumbnail">
+                        <div id="ads-thumbnail" class="text-left mb-3">
                             <label for="">Картинка компании</label>
                             <input type="file" name="thumb">
                         </div>
-                        <div id="about-company-content">
+                        <div id="about-company-content" class="text-left mb-3">
                             <label for="ads-content">Контент</label>
-                            <textarea name="content" id="ads-company" cols="30" rows="10"></textarea>
+                            <textarea name="content" id="ads-content" cols="30" rows="10">
+                                {!! old('content')?? $ads->content !!}
+                            </textarea>
                         </div>
 
-                        <div id="services-list-content">
+                        <div id="services-list-content" class="text-left mb-3">
                             <label for="excerpt-ads">Короткий опис об'яви</label>
-                            <textarea name="excerpt_ads" id="excerpt-ads" cols="30" rows="10"></textarea>
+                            <textarea name="excerpt_ads" id="excerpt-ads" cols="30" rows="10">
+                                {!! old('content')?? $ads->excerpt !!}
+                            </textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-default">Save Posts</button>
+                        <button type="submit" class="btn btn-warning w-auto">Save Posts</button>
                     </form>
                 </section>
 

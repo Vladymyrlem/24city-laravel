@@ -63,6 +63,27 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="mb-3 form-group">
+                            <label for="tag_id" class="form-label">Select a tag(s) + ctrl</label>
+                            <select class="form-select" id="tag_id" name="tags_id[]" multiple>
+                                @foreach($tags as $tag)
+                                    <option
+                                        @if(!empty(old('tags_id')))
+                                            @foreach(old('tags_id') as $tag_id)
+                                                {{ $tag->id == $tag_id? 'selected' : '' }}
+                                            @endforeach
+                                        @endif
+                                        value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('tags_id'))
+                                @foreach($errors->get('tags_id') as $error)
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $error }}
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
                         <div id="ads-thumbnail">
                             <label for="">Картинка об'яви</label>
                             <input type="file" name="thumb">
@@ -77,7 +98,7 @@
                             <textarea name="excerpt_ads" id="excerpt-ads" cols="30" rows="10"></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-default">Save Posts</button>
+                        <button type="submit" class="btn btn-primary">Save Posts</button>
                     </form>
                 </section>
 

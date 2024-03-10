@@ -15,7 +15,7 @@ Route::get('/news/forceDelete/{id}', [NewsController::class, 'forceDelete'])->na
 Route::get('/news/delete/{id}', [NewsController::class, 'destroy'])->name('admin.news.delete');
 Route::get('/news/restore/{id}', [NewsController::class, 'restore'])->name('admin.news.restore');
 Route::get('/news/trash', [NewsController::class, 'trash'])->name('adminNewsTrash');
-Route::get('/news/show/{slug}', [NewsController::class, 'showNews'])->name('admin-news-show');
+Route::get('/news/{id}', [NewsController::class, 'showNews'])->name('admin-news-show');
 
 Route::get('/news/categories', [NewsCategoryController::class, 'categoriesList'])->name('admin.news-categories');
 Route::get('/news/categories/{slug}', [NewsCategoryController::class, 'show'])->name('admin.news-category-show');

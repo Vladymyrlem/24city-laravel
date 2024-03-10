@@ -87,12 +87,16 @@ class OutlinesController extends Controller
         return redirect()->route('outlines');
     }
 
+    /*
+     * Trash outlines
+     * */
     public function trash()
     {
         $outlines = Outlines::onlyTrashed()->paginate(20);
         return view('adminOutlinesTrash', compact('outlines'));
     }
 
+    /*Restore outlines*/
     public function restore($id)
     {
         Outlines::onlyTrashed()->where('id', $id)->restore();

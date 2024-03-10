@@ -38,10 +38,14 @@ class NewsController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showNews($slug)
+    public function showNews($id)
     {
-        $news = News::find($slug);
-        return view('admin.news.show-news', compact('news'));
+        $newsPost = News::find($id);
+        if ($newsPost) {
+            return view('admin.news.show-news', compact('newsPost'));
+        } else {
+            abort(404); // Видає 404 помилку, якщо пост не знайдений
+        }
     }
 
     /**
@@ -54,8 +58,10 @@ class NewsController extends Controller
     {
         $news = News::find($id);
         $categories = NewsCategory::all();
+        $postCategories = $news->categories->pluck('id')->toArray();
+
         $tags = Tag::all();
-        return view('admin.news.edit', compact('categories', 'tags', 'news'));
+        return view('admin.news.edit', compact('categories', 'tags', 'news', 'postCategories'));
     }
 
     /**

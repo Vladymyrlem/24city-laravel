@@ -15,9 +15,16 @@
 
         public function categories()
         {
-            return $this->belongsToMany(AdsCategory::class, 'categories4ads', 'id');
+            return $this->belongsToMany(AdsCategory::class, 'ads_categories', 'id');
         }
-
+        public function parentCategory()
+        {
+            return $this->belongsTo(AdsCategory::class, 'parent_id');
+        }
+        public function subcategories()
+        {
+            return $this->hasMany(AdsCategory::class, 'parent_id');
+        }
         public function ads()
         {
             return $this->belongsToMany(Ads::class, 'categories4ads');

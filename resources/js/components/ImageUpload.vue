@@ -31,7 +31,7 @@ export default {
                 });
         },
         fetchImages() {
-            axios.get('http://24city.laravel/api/images')
+            axios.get('https://testwork.hudzhal.com.ua/api/images')
                 .then(response => {
                     this.images = response.data;
                 })

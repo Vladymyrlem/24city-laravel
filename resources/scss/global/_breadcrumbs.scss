@@ -1,0 +1,64 @@
+div.breadcrumbs {
+  position: relative;
+  float: left;
+  z-index: 101;
+  display: flex;
+  flex-flow: row-reverse;
+  align-items: center;
+  background: 0 0;
+  margin: 0;
+  padding: 0 !important;
+  
+  a {
+	color: #172648 !important;
+	font-family: Roboto,sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 14px;
+	width: max-content;
+  }
+  
+  span {
+	color: #172648 !important;
+	font-family: Roboto,sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 14px;
+	width: max-content;
+	
+	&:last-child {
+	  margin: 0 2px 0 0;
+	}
+	
+	&:not(:last-child) {
+	  margin: 0 2px 0 2px;
+	}
+  }
+  
+  a:hover {
+	cursor: pointer;
+  }
+}
+
+.breadcrumbs span[itemprop=itemListElement] {
+  display: inline-block;
+  padding: 0;
+  margin-top: -3px;
+  vertical-align: middle;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  &:hover {
+	max-width: none;
+  }
+}
+@media (min-width: 560px) and (max-width: 768px) {
+  #breadcrumbs, .breadcrumbs {
+	flex-wrap: wrap-reverse !important;
+	justify-content: flex-end;
+  }
+}

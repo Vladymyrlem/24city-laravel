@@ -23,7 +23,7 @@
             <th scope="row">{{ $news->id }}</th>
             <td>{{ $news->title}}</td>
             <td>
-                {{ $news->content }}
+                {!!  $news->content !!}
                 {{--                <?php--}}
 
                 {{--                    use Murdercode\LaravelShortcodePlus\Facades\LaravelShortcodePlus;--}}

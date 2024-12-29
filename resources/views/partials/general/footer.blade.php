@@ -8,6 +8,9 @@
         <div id="top-footer">
             <div id="left-foot" class="foot">
                 <h5 class="foot-title">Разделы</h5>
+                <nav>
+{{--                    {!! Navigation::foot_left() !!}--}}
+                </nav>
                 {{--                <?php wp_nav_menu(array(--}}
                 {{--                    'container' => 'div',--}}
                 {{--                    'theme_location' => 'foot-left',--}}

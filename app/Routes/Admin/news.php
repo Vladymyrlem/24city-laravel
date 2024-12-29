@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\NewsTagController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\NewsCategoryController;
-use App\Http\Controllers\Admin\NewsTagController;
+//use App\Http\Controllers\Admin\NewsTagController;
 
 Route::get('/news', [NewsController::class, 'list'])->name('admin.news.list');
 Route::get('/news/create', [NewsController::class, 'create'])->name('admin.news.create');

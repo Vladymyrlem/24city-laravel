@@ -6,6 +6,7 @@
     <title>@yield('title')</title>
     <meta name="_token" content="{!! csrf_token() !!}"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -118,8 +119,11 @@ $currentYear = Carbon::now()->year;
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.tiny.cloud/1/yb6etqlz0shtx6vy9c2yni2kuv4970cjvtg1pw4k22nyl2sl/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 
-<script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
+{{--<script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>--}}
 <script src="{{ asset('js/slick.min.js') }}"></script>
 
 <!-- AdminLTE App -->
@@ -137,9 +141,8 @@ $currentYear = Carbon::now()->year;
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/paginathing.min.js') }}"></script>
 <script src="{{ asset('js/jquery.collapsorz_1.1.min.js') }}"></script>
-<script src="{{ asset('js/admin.js') }}" async></script>
-
-<script src="{{ asset('js/script.js') }}" async></script>
+<script src="{{ asset('js/admin.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 @yield('scripts')
 
 <script>

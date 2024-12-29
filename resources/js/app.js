@@ -22,7 +22,8 @@ import SelectCategory from './components/SelectCategory'
 import Payments from './components/Payments'
 import SelectedNews from './components/SelectedNews'
 import Tags from './components/Tags'
-
+import Menu from './components/Menu'
+import MenuItems from './components/MenuItems'
 const app = createApp({})
 app.component('phone-numbers', Phones)
 app.mount('#phones')
@@ -43,7 +44,7 @@ const connectivity = createApp({})
 connectivity.component('connectivity-list', Connectivity)
 connectivity.mount('#connectivity-list')
 
-axios.defaults.baseURL = 'http://24city.laravel/api'; // Замініть на адресу вашого API
+axios.defaults.baseURL = 'https://testwork.hudzhal.com.ua/api'; // Замініть на адресу вашого API
 
 const selectedPosts = createApp({});
 selectedPosts.config.globalProperties.$axios = axios;
@@ -84,3 +85,10 @@ const select2 = createApp({})
 // Define a new global component called button-counter
 select2.component('select2', SelectCategory)
 select2.mount('#select2')
+const menus = createApp({})
+menus.component("menus", Menu)
+menus.mount('#menus')
+
+const menu_items = createApp({})
+menu_items.component("menu-items", MenuItems)
+menu_items.mount('#menu-items')

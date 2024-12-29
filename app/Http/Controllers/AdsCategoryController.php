@@ -10,17 +10,19 @@ class AdsCategoryController extends Controller
     public function index()
     {
         $ads = AdsCategory::all(); // Replace with your logic to fetch categories
-        return view('admin.ads.ads-category', compact('ads'));
+        return view('pages.ads.ads-category', compact('ads'));
     }
 
     public function show($id)
     {
-        $adsPerPage = 10; // Adjust the number of companies per page as needed
-        $category = AdsCategory::orderBy('created_at', 'asc')->findOrFail($id); // Replace with your logic to retrieve a category by ID
-        $ads = $category->ads()->paginate($adsPerPage);
-        $subcategoryCounts = $this->calculateAdsCounts($category->subcategories);
-        return view('admin.ads.ads-category-show', compact('category', 'subcategoryCounts', 'ads'));
+        $adsPerPage = 10; // Змініть кількість оголошень на сторінку за потребою
+        $ads_category = AdsCategory::with('ads')->findOrFail($id); // Завантажте категорію з оголошеннями
+        $category = AdsCategory::findOrFail($id); // Завантажте категорію з оголошеннями
+        $ads = $category->ads()->paginate($adsPerPage); // Застосуйте пагінацію до відносини ads
+//        $subcategoryCounts = $this->calculateAdsCounts($ads_category->subcategories);
+        return view('pages.ads.ads-category-show', compact('ads_category', 'ads','category'));
     }
+
 
     private function calculateAdsCounts($subcategories)
     {

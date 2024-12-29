@@ -1,0 +1,27 @@
+.news {
+  .comm-count, .post-views {
+	display: flex;
+	margin-right: 15px;
+	align-items: center;
+	font-size: 10px;
+  }
+}
+
+.top-main-news .post-views {
+  display: flex;
+  margin-right: 15px;
+  align-items: center;
+  font-size: 10px;
+}
+
+.right-title .post-views.entry-meta > span.post-views-icon.dashicons {
+  font-size: 14px;
+}
+
+
+.news {
+  .post-views span, .right-title .likes-count span {
+	height: max-content;
+	font-size: 10px;
+  }
+}

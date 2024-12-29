@@ -40,7 +40,7 @@
             // Update defaultStringLength
             Builder::defaultStringLength(191);
             View::composer('pages.ads.list', function ($view) {
-                $adsCategories = Ads::all('id', 'ads_category');
+                $adsCategories = Ads::all('id');
                 $view->with('adsCategories', $adsCategories);
             });
 //            View::composer('pages.company.companies', function ($view) {

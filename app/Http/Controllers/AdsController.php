@@ -20,7 +20,7 @@ class AdsController extends Controller
     public function list(Request $request)
     {
         $ads = Ads::paginate(10);
-        $categories = AdsCategory::all('id', 'ads_category');
+        $categories = AdsCategory::all('id');
         return view('pages.ads.list', compact('ads', 'categories'));
     }
 

@@ -1,0 +1,13 @@
+.entry-thumbnail-mob {
+  display: none;
+}
+
+.lyudi-blogi {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  
+  .post-bottom {
+	padding-right: 15px;
+  }
+}

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -20,8 +21,12 @@ use App\Http\Controllers\AfficheController;
 use App\Http\Controllers\AfficheCategoryController;
 use App\Http\Controllers\RealEstateController;
 use App\Http\Controllers\RealEstateCategoryController;
+use App\Http\Controllers\SharesController;
 use App\Http\Controllers\ProxyController;
+use Lavary\Menu\Menu;
 use UniSharp\LaravelFilemanager\Lfm;
+use Spatie\Navigation\Navigation;
+use Spatie\Navigation\Section;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +46,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/spravochnik', [CompanyCategoryController::class, 'index'])->name('company.company-category');
 Route::get('/companies', [CompaniesController::class, 'list'])->name('companies.list');
 Route::get('/proxy', [ProxyController::class, 'proxy']);
+Route::get('/news', [NewsController::class, 'index'])->name('page.news');
 
 Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -68,6 +74,7 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     /*Shares Routes*/
     require_once app_path('Routes/Admin/shares.php');
     require_once app_path('Routes/Admin/tags.php');
+    require_once app_path('Routes/Admin/menus.php');
 
 });
 // Route for viewing a specific category by ID
@@ -103,7 +110,12 @@ Route::prefix('news')->group(function () {
     Route::get('/categories', [NewsCategoryController::class, 'index'])->name('news.category');
     Route::get('/categories/{id}', [NewsCategoryController::class, 'show'])->name('news.category.show');
 });
-
+Route::prefix('shares')->group(function () {
+    Route::get('/', [SharesController::class, 'index'])->name('shares');
+    Route::get('/{id}', [SharesController::class, 'show'])->name('shares.show')->whereNumber('id');
+    Route::get('/categories', [SharesController::class, 'index'])->name('shares.category');
+    Route::get('/categories/{id}', [SharesController::class, 'show'])->name('shares.category.show');
+});
 Route::prefix('main-news')->group(function () {
     Route::get('/', [MainNewsController::class, 'index'])->name('main-news');
     Route::get('/{id}', [MainNewsController::class, 'show'])->name('main-news.show')->whereNumber('id');
@@ -111,7 +123,11 @@ Route::prefix('main-news')->group(function () {
     Route::get('/categories', [MainNewsCategoryController::class, 'index'])->name('main-news.category');
     Route::get('/categories/{id}', [MainNewsCategoryController::class, 'show'])->name('main-news.category.show');
 });
-
+Route::prefix('products')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('products');
+});
 Route::prefix('real-estate')->group(function () {
     Route::get('', [RealEstateController::class, 'index'])->name('real-estate');
     Route::get('/{id}', [RealEstateController::class, 'show'])->name('real-estate.show')->whereNumber('id');
@@ -129,3 +145,16 @@ Route::get('/auth/google', [SocialiteController::class, 'redirectToGoogle']);
 Route::get('/auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
 Route::get('/auth/redirect/{provider}', [SocialiteController::class, 'redirect']);
 
+
+
+
+Navigation::make('foot_left', function () {
+    return Menu::new()
+        ->add('Главная', '/')
+        ->add('Справочник', '/company')
+        ->add('Афиша', '/affiche')
+        ->add('Объявления', '/ads')
+        ->add('Пресса', '/press')
+        ->add('Недвижимость', '/')
+        ->setActiveFromRequest();
+});

@@ -186,7 +186,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Lavary\Menu\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -200,8 +200,7 @@ return [
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         \Fruitcake\Cors\CorsServiceProvider::class,
-        App\Providers\CustomDateServiceProvider::class,
-
+        App\Providers\CustomDateServiceProvider::class
     ],
 
     /*
@@ -218,6 +217,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         Genert\BBCode\Facades\BBCode::class,
+//        'Menu' => Spatie\Menu\Laravel\Facades\Menu::class,
+        'Menu'      => Lavary\Menu\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 

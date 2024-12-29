@@ -35,7 +35,7 @@ export default {
             }
         },
         createNewTagViaApi() {
-            axios.post('http://24city.laravel/api/tags', {name: this.newTagName})
+            axios.post('https://testwork.hudzhal.com.ua/api/tags', {name: this.newTagName})
                 .then(response => {
                     this.tags.push(response.data);
                     this.selectedTag = response.data.id;
@@ -46,7 +46,7 @@ export default {
                 });
         },
         fetchTags() {
-            axios.get('http://24city.laravel/api/tags')
+            axios.get('https://testwork.hudzhal.com.ua/api/tags')
                 .then(response => {
                     this.tags = response.data;
                 })

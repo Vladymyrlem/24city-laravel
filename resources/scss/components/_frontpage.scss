@@ -1,0 +1,50 @@
+div {
+  &.wrapper-front {
+	display: flex;
+	flex-flow: column;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	max-width: 1000px;
+  }
+  
+  &.wrapper {
+	display: flex;
+	flex-flow: column;
+	width: 100%;
+	height: 100%;
+	background: #f0f0f0;
+	padding-left: 0;
+  }
+}
+div#primary {
+  display: flex;
+  flex-flow: row;
+  background-color: #f1f1f1;
+  margin-bottom: 24vh;
+}
+@media (min-width: 1440px) {
+  div {
+	&.col-home-logo {
+	  position: static;
+	}
+	
+	&.home-logo {
+	  position: static;
+	  width: max-content;
+	}
+  }
+}
+
+@media (min-width: 1230px) {
+  div {
+	&.col-home-logo {
+	  position: static;
+	}
+	
+	&.home-logo {
+	  position: static;
+	  width: max-content;
+	}
+  }
+}

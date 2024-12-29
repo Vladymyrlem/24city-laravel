@@ -31,12 +31,12 @@
             <!-- Main row -->
             <div class="row">
                 <section class="col-lg-12 connectedSortable">
-                    <form role="form" action="{{ route('company.store') }}" method="post" enctype="multipart/form-data">
+                    <form role="form" action="{{ route('admin.company.update',$company->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('post')
                         <div class="input-group mb-3">
                             <label for="title_company" class="form-label">Название компании</label>
-                            <input type="text" name="title" id="title_company" class="form-control"/>
+                            <input type="text" name="title" id="title_company" value="{{ $company->title_company }}" class="form-control"/>
                         </div>
 
                         <div class="company-categories mb-3" id="select2">
@@ -46,7 +46,7 @@
                         </div>
                         <div id="company-thumbnail">
                             <label for="">Картинка компании</label>
-                            <input type="file" name="thumbnail">
+                            <input type="file" name="thumbnail" src="{{ $company->thumbnail }}">
                             {{--                            <image-upload></image-upload>--}}
                         </div>
                         <div id="address" class="mb-3">
@@ -69,11 +69,11 @@
                             </label>
                             <div class="input-group-text bg-light p-4">
                                 <label for="">Должность</label>
-                                <input type="text" name="boss" id="boss-position">
+                                <input type="text" name="boss" id="boss-position" value="{{ $company->boss }}">
                             </div>
                             <div class="input-group-text bg-light p-4">
                                 <label for="">Инициалы</label>
-                                <input type="text" name="boss_initials" id="boss-initials">
+                                <input type="text" name="boss_initials" id="boss-initials" value="{{ $company->boss_position }}">
                             </div>
                         </div>
                         <div id="phones" class="mb-3">
@@ -115,7 +115,10 @@
                                 номер меседжера или профиль в соц сети для связи
                                 с вами если возникнут дополнительные вопросы
                             </p>
-                            <textarea name="about_company" id="about-company" cols="30" rows="10"></textarea>
+                            <textarea name="about_company" id="about-company" cols="30" rows="10">
+                                                                {!!   $company->about_company !!}
+
+                            </textarea>
                         </div>
                         <div id="additional-information-content">
                             <label for="additional_information">Дополнительная информация
@@ -130,7 +133,10 @@
                                 с вами если возникнут дополнительные вопросы
                             </p>
                             <textarea name="additional_information" id="additional-information" cols="30"
-                                      rows="10"></textarea>
+                                      rows="10">
+                                                                                                {!! $company->additional_information !!}
+
+                            </textarea>
                         </div>
 
                         <div id="gallery">

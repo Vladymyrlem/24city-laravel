@@ -11,10 +11,12 @@
         "dev-vite": "vite",
         "build": "vite build",
         "gulp-watch": "gulp watch",
-        "gulp-scss": "gulp styles",
+        "gulp-styles": "gulp styles",
         "gulp": "gulp default",
         "gulp-js": "gulp scripts",
-        "gulp-minify": "gulp minify-css"
+        "gulp-minify": "gulp minify-css",
+        "gulp-scss": "gulp scss",
+        "convert-css": "node convert-css-to-scss.js"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
@@ -22,6 +24,8 @@
         "axios": "^1.5.1",
         "bootstrap": "^4.6.2",
         "bootstrap-vue": "^2.23.1",
+        "browser-sync": "^3.0.3",
+        "browser-sync-webpack-plugin": "^2.3.0",
         "gulp": "^4.0.2",
         "gulp-sass": "^5.1.0",
         "jquery": "^3.6",
@@ -46,6 +50,7 @@
         "@fullcalendar/interaction": "^6.1.8",
         "@zakerxa/vue-multiple-image-upload": "^1.0.8",
         "bootstrap-table": "^1.22.1",
+        "css-scss": "^0.1.1",
         "datatables.net-dt": "^1.13.5",
         "gulp-clean-css": "^4.3.0",
         "gulp-concat": "^2.6.1",

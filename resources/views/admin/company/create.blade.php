@@ -149,7 +149,8 @@
                                 с вами если возникнут дополнительные вопросы
                             </p>
                             <textarea name="additional_information" id="additional-information" cols="30"
-                                      rows="10"></textarea>
+                                      rows="10">
+                            </textarea>
                         </div>
 
                         <div id="gallery">

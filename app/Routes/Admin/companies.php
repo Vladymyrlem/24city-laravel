@@ -16,7 +16,7 @@ Route::put('company/category/update/{id}', [CompanyCategoryController::class, 'u
 Route::delete('company/category/delete/{id}', [CompanyCategoryController::class, 'delete'])->name('adminCompanyCategoryDelete');
 Route::get('company/category/trash/{id}', [CompanyCategoryController::class, 'trash'])->name('adminCompanyCategoryDelete');
 Route::get('company/category/restore/{id}', [CompanyCategoryController::class, 'restore'])->name('adminCompanyCategoryRestore');
-
+Route::post('/company_categories/update', [CompanyCategoryController::class, 'updateCategories']);
 Route::get('/company/create', [CompaniesController::class, 'create'])->name('admin.company.create');
 Route::post('/company/store', [CompaniesController::class, 'store'])->name('admin.company.store');
 Route::get('/company/edit/{id}', [CompaniesController::class, 'edit'])->name('admin.company.edit');

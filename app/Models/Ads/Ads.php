@@ -12,7 +12,7 @@ class Ads extends Model
     use HasFactory;
 
     protected $table = "ads";
-    protected $fillable = ['id', 'title', 'content', 'excerpt', 'ads_category', 'image', 'slug'];
+    protected $fillable = ['id', 'title', 'content', 'excerpt', 'image', 'slug'];
 
     public function categories()
     {

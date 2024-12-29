@@ -219,7 +219,7 @@ export default {
         // fetchCompanies() {
         //     this.isSearching = true;  // Встановіть значення isSearching перед відправкою запиту
         //
-        //     axios.get('http://24city-laravel/api/companies_2') // Ваш маршрут для отримання компаній
+        //     axios.get('https://testwork.hudzhal.com.ua/api/companies_2') // Ваш маршрут для отримання компаній
         //         .then(response => {
         //             // Додайте нові пости до вже наявних
         //             this.companies = response.data;

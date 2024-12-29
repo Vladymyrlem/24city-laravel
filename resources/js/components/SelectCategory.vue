@@ -32,7 +32,7 @@ export default {
     },
     created() {
         // Завантажити список категорій з сервера
-        axios.get('http://24city.laravel/api/company_categories')
+        axios.get('https://testwork.hudzhal.com.ua/api/company_categories')
             .then(response => {
                 this.categories = response.data;
             })
@@ -44,7 +44,7 @@ export default {
         const selectedValuesString = JSON.stringify(this.selectedCategory);
 
         console.log('Selected Categories:', this.selectedCategory);
-        axios.post('http://24city.laravel/api/store', {selectedValues: selectedValuesString})
+        axios.post('https://testwork.hudzhal.com.ua/api/store', {selectedValues: selectedValuesString})
             .then(response => {
                 this.selectedCategory = response.data;
             })
@@ -82,7 +82,7 @@ export default {
             const selectedValuesString = JSON.stringify(this.selectedCategory);
 
             console.log('Selected Categories:', this.selectedCategory);
-            axios.post('http://24city.laravel/api/store', {selectedValues: selectedValuesString})
+            axios.post('https://testwork.hudzhal.com.ua/api/store', {selectedValues: selectedValuesString})
                 .then(response => {
                     this.selectedCategory = response.data;
                 })

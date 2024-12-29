@@ -224,7 +224,99 @@ class CompaniesController extends Controller
         return redirect()->back()->with('success', 'Selected posts saved successfully.');
 
     }
+    public function edit($id)
+    {
+        // Отримання компанії за ID
+        $company = Companies::with(['contacts', 'categories', 'emails', 'payments', 'relatedCompanies'])->findOrFail($id);
 
+        // Завантаження необхідних даних для форми (категорії, методи оплати тощо)
+        $categories = CompanyCategory::all();
+        $paymentMethods = Payments::all();
+
+        return view('admin.company.edit', compact('company', 'categories', 'paymentMethods'));
+    }
+    public function update(Request $request, $id)
+    {
+        // Валідація
+        $request->validate([
+            'title' => 'required|string|max:255',
+            // Додайте інші правила валідації
+        ]);
+
+        // Отримання компанії
+        $company = Companies::findOrFail($id);
+
+        // Оновлення основних даних компанії
+        $company->title_company = $request->input('title');
+        $company->about_company = $request->input('about_company');
+        $company->additional_information = $request->input('additional_information');
+        $company->boss = $request->input('boss');
+        $company->boss_position = $request->input('boss_position');
+        $company->save();
+
+        // Оновлення контактів
+        Contacts::where('company_id', $id)->delete();
+        $phones = $request->input('phones', []);
+        $phoneComments = $request->input('phone_comment', []);
+        $faxValues = $request->input('fax', []);
+        for ($i = 0; $i < count($phones); $i++) {
+            Contacts::create([
+                'company_id' => $company->id,
+                'phone_number' => $phones[$i],
+                'comment_to_phone' => $phoneComments[$i] ?? '',
+                'contacts_fax' => isset($faxValues[$i]) ? 1 : 0,
+            ]);
+        }
+
+        // Оновлення соціальних мереж
+        CompanySocial::where('company_id', $id)->delete();
+        $socialLinks = $request->input('social_link', []);
+        $socialTypes = $request->input('social_type', []);
+        for ($i = 0; $i < count($socialLinks); $i++) {
+            CompanySocial::create([
+                'company_id' => $company->id,
+                'social_link' => $socialLinks[$i],
+                'social_type' => $socialTypes[$i] ?? '',
+            ]);
+        }
+
+        // Оновлення категорій
+        $selectedCategoriesString = $request->input('selectedCategories', '');
+        $selectedCategories = explode(',', $selectedCategoriesString);
+        $company->categories()->sync($selectedCategories);
+
+        // Оновлення email
+        $emails = $request->input('email_text', []);
+        $emailLinks = $request->input('email_link', []);
+        $company->emails()->detach();
+        for ($i = 0; $i < count($emails); $i++) {
+            $email = Email::create([
+                'link' => $emailLinks[$i],
+                'value' => $emails[$i],
+            ]);
+            $company->emails()->attach($email->id);
+        }
+
+        // Оновлення методів оплати
+        $selectedPaymentMethods = $request->input('company_payments', []);
+        $newPaymentMethods = [];
+        foreach ($selectedPaymentMethods as $paymentId) {
+            $payment = Payments::find($paymentId);
+            if (!$payment) {
+                $paymentName = $request->input("company_payments_name.$paymentId");
+                $payment = Payments::create(['payment_name' => $paymentName]);
+            }
+            $newPaymentMethods[] = $payment->id;
+        }
+        $allPaymentMethods = array_merge($selectedPaymentMethods, $newPaymentMethods);
+        $company->payments()->sync($allPaymentMethods);
+
+        // Оновлення зв'язків з іншими компаніями
+        $selectedPostIds = $request->input('related_companies', []);
+        $company->relatedCompanies()->sync($selectedPostIds);
+
+        return redirect()->back()->with('success', 'Компанія успішно оновлена.');
+    }
     public function getAllCategories($categories, $parent = null)
     {
         $result = [];

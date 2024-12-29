@@ -228,7 +228,7 @@ jQuery(document).ready(function ($) {
 
 jQuery(document).ready(function ($) {
 
-    jQuery("#section-ads-list ul").paginathing({
+    $("#section-ads-list ul").paginathing({
         perPage: 10,
         limitPagination: 5,
         prevNext: true,
@@ -381,7 +381,7 @@ jQuery(document).ready(function () {
 // });
 
 jQuery(document).ready(function ($) {
-    jQuery('div.front-slider').slick(
+    $('div.front-slider').slick(
         {
             adaptiveHeight: true,
             vertical: true,
@@ -948,3 +948,36 @@ function diplay_hide(blockId) {
         jQuery(blockId).slideUp(500);
     }
 }
+jQuery(document).ready(function($) {
+    // Ініціалізація Sortable
+    const menuList = document.getElementById('menu-items');
+    new Sortable(menuList, {
+        group: 'menus',  // Дозволяє перетягувати пункти між різними списками
+        onEnd: function(evt) {
+            // Після завершення перетягування зберігаємо новий порядок
+            const sortedIds = Array.from(menuList.children).map(item => item.dataset.id);
+            console.log('Новий порядок пунктів:', sortedIds);
+        }
+    });
+
+    // Обробка кнопки збереження
+    $('#save-menu-order').on('click', function() {
+        const sortedIds = Array.from(menuList.children).map(item => item.dataset.id);
+
+        // Використовуємо AJAX для відправки нового порядку на сервер
+        $.ajax({
+            url: '/admin/menus/update-order',
+            method: 'POST',
+            data: {
+                sortedIds: sortedIds,
+                _token: '{{ csrf_token() }}'  // Не забудьте передати CSRF токен
+            },
+            success: function(response) {
+                console.log('Порядок меню оновлено');
+            },
+            error: function(error) {
+                console.error('Помилка при оновленні порядку:', error);
+            }
+        });
+    });
+});

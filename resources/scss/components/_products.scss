@@ -1,0 +1,76 @@
+nav.ubermenu.ubermenu-responsive-default {
+  margin-top: 67px;
+  border: none;
+}
+
+h2.woocommerce-loop-product__title {
+  height: auto;
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+}
+
+ul.products {
+  li {
+	div.over-wrapper div.woocommerce-product-details__short-description {
+	  display: none;
+	  z-index: 100;
+	  
+	  p {
+		text-align: start;
+	  }
+	}
+	
+	&.product a:hover div.woocommerce-product-details__short-description {
+	  display: block !important;
+	  position: absolute;
+	  background-color: #fff;
+	  margin-top: 50px;
+	}
+  }
+  
+  > li div.over-wrapper {
+	overflow: hidden;
+	height: 100%;
+	
+	img {
+	  height: 200px !important;
+	}
+  }
+}
+form.checkout.woocommerce-checkout {
+  .form-row {
+	display: flex;
+	flex-flow: column;
+  }
+  
+  h3 {
+	font-family: Roboto,sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 21px;
+	color: #000;
+  }
+  
+  label {
+	font-family: Roboto,sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 21px;
+	color: #000;
+  }
+}
+
+
+form.checkout.woocommerce-checkout input {
+  &[type=email], &[type=tel], &[type=text] {
+	padding: 11px;
+	background: #fff;
+	border: 1px solid #000;
+	box-sizing: border-box;
+	border-radius: 5px;
+	width: 100%;
+	max-width: 320px;
+  }
+}

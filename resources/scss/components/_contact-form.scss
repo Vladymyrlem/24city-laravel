@@ -1,0 +1,51 @@
+#wpcf7-f40614-p40616-o1 input.wpcf7-submit, input.send-comment {
+  background: #c20e1a;
+  border-radius: 5px;
+  border: 0;
+  padding: 10px 40px;
+  margin-top: 7px;
+  font-family: Roboto,sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #f1f1f1;
+  margin-top: 6px;
+}
+
+#wpcf7-f40614-p40616-o1 {
+  label {
+	font-family: Roboto,sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 21px;
+	color: #000;
+	margin-bottom: 20px;
+  }
+  
+  p {
+	margin-bottom: 0 !important;
+  }
+  
+  .wpcf7-list-item-label {
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+	color: #000;
+	margin-bottom: 20px;
+  }
+}
+#wpcf7-f40614-p40616-o1 input {
+  &[type=tel], &[type=text] {
+	padding: 11px;
+	background: #fff;
+	border: 1px solid #000;
+	box-sizing: border-box;
+	border-radius: 5px;
+	width: 100%;
+	max-width: 320px;
+  }
+}

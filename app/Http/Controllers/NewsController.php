@@ -41,4 +41,8 @@ class NewsController extends Controller
         $news = News::find($slug);
         return view('pages.news.show', compact('news'));
     }
+    public function create()
+    {
+        return view('admin.news.create');
+    }
 }

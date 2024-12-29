@@ -25,8 +25,11 @@
         "murdercode/laravel-shortcode-plus": "^3.0",
         "spatie/laravel-backup": "^8.3",
         "spatie/laravel-medialibrary": "^10.0.0",
+        "spatie/laravel-menu": "^4.2",
+        "spatie/laravel-navigation": "*",
         "spatie/laravel-stats": "^2.1",
-        "tinymce/tinymce": "^6.6",
+        "spatie/menu": "^3.2",
+        "tinymce/tinymce": "^7.2",
         "unisharp/laravel-filemanager": "^2.6"
     },
     "require-dev": {

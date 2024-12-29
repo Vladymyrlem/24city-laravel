@@ -1,0 +1,99 @@
+div {
+  &.ad-content div.entry-content, &.affiche-content div.entry-content, &.news-content div.entry-content, &.outline-content div.entry-content, &.people-content div.entry-content, &.press-content div.entry-content, &.realestate-content div.entry-content, &.shares-content div.entry-content {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	width: auto;
+	max-width: 100%;
+	padding: 0 0 0 10px;
+  }
+  
+  &.ad-content div.entry-content {
+	margin-top: 8px;
+  }
+}
+.ad-content .entry-content > p, .affiche-content .entry-content > p, .outline-content .entry-content > p, div.news-content div.entry-content p {
+  height: 100%;
+  max-height: 40px;
+  overflow-y: hidden;
+  font-family: Roboto,sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #172648;
+}
+
+.ad-content .post-bottom, .affiche-content .post-bottomm, .outline-content .post-bottom {
+  font-family: Roboto,sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #616161;
+}
+
+.ad-content .post-bottom i {
+  margin-left: 0;
+}
+ul {
+  &.affiche-list > li, &.bizov-list > li, &.news-list > li, &.outlines-list > li, &.peoples-list > li, &.press-list > li {
+	padding: 26px 24px 24px 23px;
+	margin-bottom: 17px;
+	background-color: #fff;
+	border-radius: 20px;
+  }
+  
+  &.affiche-list > li {
+	padding: 16px 17px 16px 16px;
+  }
+  
+  &.ads-list {
+	display: flex;
+	flex-flow: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	
+	> li {
+	  flex: 0 0 100%;
+	  width: 100%;
+	  max-width: 100%;
+	  padding: 19px 25px 10px 25px;
+	  margin-bottom: 23px;
+	  background-color: #fff;
+	  border-radius: 20px;
+	  
+	  &:hover {
+		background-color: #e2e8f6;
+	  }
+	}
+  }
+  
+  &.affiche-list > li:hover, &.bizov-list > li:hover, &.news-list > li:hover, &.outlines-list > li:hover, &.peoples-list > li:hover {
+	background-color: #e2e8f6;
+  }
+  
+  &.affiche-list > li.affiche-block ul.the_champ_sharing_ul, &.heateor_ss_follow_ul {
+	display: block !important;
+  }
+  
+  &.ads-list > li .ads-content .entry-content p, &.affiche-list > li .affiche-content .entry-content p, &.news-list > li p, &.outlines-list > li p, &.peoples-list > li p, &.press-list > li p {
+	font-family: Roboto,sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 21px;
+	color: #172648;
+	margin-top: 10px;
+  }
+}
+
+.ad-content .entry-content a {
+  font-family: Roboto,sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000;
+  margin-bottom: 6px;
+}

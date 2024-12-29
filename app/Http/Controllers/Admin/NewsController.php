@@ -47,7 +47,12 @@ class NewsController extends Controller
             abort(404); // Видає 404 помилку, якщо пост не знайдений
         }
     }
-
+    public function create()
+    {
+        $news = News::all();
+        $categories = NewsCategory::all();
+        return view('admin.news.create', compact('news', 'categories'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -58,12 +63,30 @@ class NewsController extends Controller
     {
         $news = News::find($id);
         $categories = NewsCategory::all();
-        $postCategories = $news->categories->pluck('id')->toArray();
 
         $tags = Tag::all();
-        return view('admin.news.edit', compact('categories', 'tags', 'news', 'postCategories'));
+        return view('admin.news.edit', compact('categories', 'tags', 'news'));
     }
+    public function store(Request $request)
+    {
+        $news = new News();
+        $news->title = $request->input('title');
+        $news->content = $request->input('content');
+        $news->excerpt = $request->input('excerpt');
+        $news->status = $request->input('status');
+        $thumbnail = $request->file('image_url');
+        $news->save(); // Зберігаємо новину в базу, щоб отримати ID
+        $selectedCategories = $request->input('categories', []);
 
+        foreach ($selectedCategories as $categoryId) {
+            // Перевірити, чи існує категорія з таким ідентифікатором перед додаванням
+            $category = NewsCategory::find($categoryId);
+            if ($category) {
+                $news->categories()->attach($category->id);
+            }
+        }
+        return redirect()->back()->with('success', 'Selected posts saved successfully.');
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -83,5 +106,34 @@ class NewsController extends Controller
         $ads->update($request->all());
         $ads->tags()->sync($request->tags_id);
         return redirect()->route('admin.news.list')->with('success', 'Изменения сохранены');
+    }
+    public function destroy($id)
+    {
+        $news = News::findOrFail($id);
+        $news->delete();
+
+        return redirect()->route('admin.news.list')->with('success', 'Menu item deleted successfully.');
+    }
+
+    public function trash()
+    {
+        $news = News::onlyTrashed()->get();
+        return view('admin.news.trash', compact('news'));
+    }
+
+    public function restore($id)
+    {
+        $news = News::onlyTrashed()->findOrFail($id);
+        $news->restore();
+
+        return redirect()->route('admin.news.trash')->with('success', 'Menu item restored successfully.');
+    }
+
+    public function forceDelete($id)
+    {
+        $news = News::onlyTrashed()->findOrFail($id);
+        $news->forceDelete();
+
+        return redirect()->route('admin.news.trash')->with('success', 'Menu item permanently deleted.');
     }
 }

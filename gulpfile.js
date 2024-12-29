@@ -15,6 +15,27 @@ gulp.task('styles', function () {
         .pipe(sourcemaps.write('.')) // Зберігаємо sourcemaps в тій же папці
         .pipe(gulp.dest('public/css'));
 });
+gulp.task('scss', function () {
+    const sourceFile = 'resources/style.scss';
+    const outputDir = 'public/css';
+
+    // Звичайна (не мініфікована) версія
+    gulp.src(sourceFile)
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(outputDir));
+
+    // Мініфікована версія
+    return gulp.src(sourceFile)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(cleanCSS())
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.init())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(outputDir));
+});
+
 
 
 // Concatenate and minify JavaScript files

@@ -55,7 +55,7 @@ export default {
             return 'company_payments[new_payment_method]';
         },
         getPosts() {
-            axios.get('http://24city.laravel/api/payments')
+            axios.get('https://testwork.hudzhal.com.ua/api/payments')
                 .then(response => {
                     this.payments = response.data;
                 })
